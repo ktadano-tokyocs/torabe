@@ -59,6 +59,9 @@
         html { scroll-behavior: smooth; }
         body { font-family: 'Noto Sans JP', sans-serif; -webkit-font-smoothing: antialiased; }
 
+        /* 日本語見出しの文節途中改行を防ぐ */
+        h2, h3, h4 { word-break: keep-all; overflow-wrap: break-word; }
+
         .hero-bg {
             background-color: #E6F5F2;
             min-height: 100vh;
@@ -235,7 +238,7 @@
                 <img src="images/title.png" alt="とらすとべーす フリースクール" class="hero-title-img w-full max-w-[90vw] sm:max-w-2xl md:max-w-3xl mx-auto mb-4 h-auto object-contain" width="800" height="240" decoding="async">
                 <h1 class="sr-only">とらすとべーす フリースクール</h1>
 
-                <p class="text-gray-800 font-bold text-lg md:text-xl mb-2">「学校だけが学びじゃない」を20年実践してきた場所</p>
+                <p class="text-gray-800 font-bold text-base sm:text-lg md:text-xl mb-2">「学校だけが学びじゃない」を<br class="sm:hidden">20年実践してきた場所</p>
                 <p class="text-gray-600 text-sm md:text-base mb-3">中野区新井 ／ マイクロスクール</p>
                 <p class="text-gray-500 text-xs mb-8">
                     <span class="inline-flex items-center gap-1 bg-white/70 px-3 py-1 rounded-full border border-gray-200">
@@ -533,16 +536,16 @@
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <span class="text-primary font-bold tracking-widest text-xs uppercase mb-2 block">Concept</span>
                 <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-8">
-                    私たちは、子どもたち一人ひとりが<br/>
-                    「可能性と自信に満ちた学び手である」<br/>
+                    私たちは、子どもたち一人ひとりが<br class="hidden sm:inline">
+                    「可能性と自信に満ちた学び手である」<br class="hidden sm:inline">
                     と信じています。
                 </h2>
 
                 <!-- フレーミング段落 -->
                 <div class="bg-accent-yellow border border-yellow-200 rounded-xl p-6 mb-10 text-left">
                     <p class="text-gray-700 leading-relaxed text-sm md:text-base">
-                        「今日は休んでいい」「今日は頑張れた」。<br/>
-                        その両方を肯定できる場所として、とらべは存在しています。<br/>
+                        「今日は休んでいい」「今日は頑張れた」。<br class="hidden sm:inline">
+                        その両方を肯定できる場所として、とらべは存在しています。<br class="hidden sm:inline">
                         学校に感じる「なんとなくの違和感」の正体が、ここに来ると言語化できるかもしれません。
                     </p>
                 </div>
@@ -1066,11 +1069,11 @@
                 </div>
 
                 <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">
-                    入学を決めなくていいです。<br/>
+                    入学を決めなくていいです。<br class="hidden sm:inline">
                     合うかどうかを一緒に確かめましょう。
                 </h2>
                 <p class="text-white/90 text-sm md:text-base mb-10">
-                    他スクール情報も提供する個別相談を実施中です。<br/>
+                    他スクール情報も提供する個別相談を実施中です。<br class="hidden sm:inline">
                     まずはお子さんと一緒に、雰囲気を感じに来てください。
                 </p>
 
@@ -1097,7 +1100,7 @@
                 <div class="flex flex-col sm:flex-row gap-4 justify-center mb-6">
                     <a href="#" class="btn-ripple btn-pulse inline-flex items-center justify-center bg-secondary hover:bg-yellow-400 text-gray-900 text-base sm:text-lg font-bold px-6 sm:px-10 py-4 rounded-full shadow-xl transition-all transform hover:scale-105">
                         <span class="material-icons-outlined mr-2">event_available</span>
-                        見学・説明会・体験のお申し込みはこちら
+                        見学・説明会・体験の<br class="sm:hidden">お申し込みはこちら
                     </a>
                     <a href="tel:0353189700" class="btn-ripple inline-flex items-center justify-center bg-white/20 hover:bg-white/30 text-white text-base font-bold px-8 py-4 rounded-full shadow-md transition-all transform hover:scale-105 border border-white/30">
                         <span class="material-icons-outlined mr-2">phone</span>
