@@ -89,6 +89,7 @@
         }
         @media (prefers-reduced-motion: reduce) {
             .hero-scroll-hint { animation: none; }
+            .site-header { transition-duration: 0s !important; }
         }
         .text-gradient {
             background-clip: text;
@@ -164,7 +165,8 @@
     <div id="app">
 
         <!-- ===== HEADER ===== -->
-        <header :class="['fixed w-full z-50 transition-all duration-300 backdrop-blur-sm',
+        <header :class="['site-header fixed top-0 inset-x-0 z-50 transition-[transform,box-shadow] duration-300 ease-out backdrop-blur-sm will-change-transform',
+            isHeaderHidden ? '-translate-y-full' : 'translate-y-0',
             isScrolled ? 'bg-primary shadow-lg' : 'bg-primary/95 shadow-md']">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between items-center h-16 md:h-20">
@@ -229,19 +231,68 @@
                 <h1 class="sr-only">とらすとべーす フリースクール</h1>
 
                 <p class="text-gray-800 font-bold text-5xl sm:text-6xl md:text-7xl mb-2">歩 止 歩 止</p>
-                <p class="text-gray-800 font-bold text-base sm:text-lg md:text-xl mb-2">「歩いてもいい、止まってもいい」<br class="sm:hidden">20年実践してきた場所</p>
+                <p class="text-gray-800 font-bold text-base sm:text-lg md:text-xl mb-2">「歩いてもいい、止まってもいい」</p>
                 <p class="text-gray-600 text-sm md:text-base mb-3">東京都中野区 ／ アットホームな一軒家 ／ 個別対応（少人数）</p>
 
-                <!-- デュアルCTA -->
-                <div class="flex flex-col sm:flex-row gap-4 justify-center mb-4">
-                    <button @click="scrollTo('cta')" class="btn-ripple btn-pulse inline-flex items-center justify-center bg-secondary hover:bg-yellow-400 text-gray-900 text-base md:text-lg font-bold px-8 py-4 rounded-full shadow-xl transition-all transform hover:scale-105 hover:shadow-2xl">
-                        <span class="material-icons-outlined mr-2">event_available</span>
-                        見学・説明会に申し込む
-                    </button>
-                    <button @click="scrollTo('fees')" class="btn-ripple inline-flex items-center justify-center bg-white/80 hover:bg-white text-gray-800 text-base font-bold px-8 py-4 rounded-full shadow-md transition-all transform hover:scale-105 border border-gray-200">
-                        <span class="material-icons-outlined mr-2 text-primary">payments</span>
-                        料金を見る
-                    </button>
+                <!-- ページ内メニュー（目次） -->
+                <div class="mt-6 mb-6">
+                    <p class="text-xs font-bold tracking-widest text-gray-700/80 uppercase mb-3">Contents</p>
+                    <div class="grid grid-cols-3 gap-2 sm:gap-4 max-w-xl sm:max-w-2xl mx-auto">
+                        <a href="#features" @click.prevent="scrollTo('features')"
+                           class="group btn-ripple rounded-2xl border border-white/40 bg-white/85 hover:bg-white shadow-sm hover:shadow-md transition-all transform hover:-translate-y-0.5 focus:outline-none focus-visible:ring-4 focus-visible:ring-secondary/40">
+                            <div class="p-3 sm:p-5 min-h-[88px] sm:min-h-[96px] flex flex-col items-center justify-center text-center">
+                                <span class="inline-flex items-center justify-center w-11 h-11 rounded-full bg-primary/10 text-primary mb-2">
+                                    <span class="material-icons-outlined text-[26px]">auto_awesome</span>
+                                </span>
+                                <span class="text-sm sm:text-base font-bold text-gray-900">特長</span>
+                            </div>
+                        </a>
+                        <a href="#concept" @click.prevent="scrollTo('concept')"
+                           class="group btn-ripple rounded-2xl border border-white/40 bg-white/85 hover:bg-white shadow-sm hover:shadow-md transition-all transform hover:-translate-y-0.5 focus:outline-none focus-visible:ring-4 focus-visible:ring-secondary/40">
+                            <div class="p-3 sm:p-5 min-h-[88px] sm:min-h-[96px] flex flex-col items-center justify-center text-center">
+                                <span class="inline-flex items-center justify-center w-11 h-11 rounded-full bg-yellow-400/20 text-yellow-700 mb-2">
+                                    <span class="material-icons-outlined text-[26px]">lightbulb</span>
+                                </span>
+                                <span class="text-sm sm:text-base font-bold text-gray-900">コンセプト</span>
+                            </div>
+                        </a>
+                        <a href="#schedule" @click.prevent="scrollTo('schedule')"
+                           class="group btn-ripple rounded-2xl border border-white/40 bg-white/85 hover:bg-white shadow-sm hover:shadow-md transition-all transform hover:-translate-y-0.5 focus:outline-none focus-visible:ring-4 focus-visible:ring-secondary/40">
+                            <div class="p-3 sm:p-5 min-h-[88px] sm:min-h-[96px] flex flex-col items-center justify-center text-center">
+                                <span class="inline-flex items-center justify-center w-11 h-11 rounded-full bg-blue-500/15 text-blue-600 mb-2">
+                                    <span class="material-icons-outlined text-[26px]">schedule</span>
+                                </span>
+                                <span class="text-sm sm:text-base font-bold text-gray-900">1日の流れ</span>
+                            </div>
+                        </a>
+                        <a href="#staff" @click.prevent="scrollTo('staff')"
+                           class="group btn-ripple rounded-2xl border border-white/40 bg-white/85 hover:bg-white shadow-sm hover:shadow-md transition-all transform hover:-translate-y-0.5 focus:outline-none focus-visible:ring-4 focus-visible:ring-secondary/40">
+                            <div class="p-3 sm:p-5 min-h-[88px] sm:min-h-[96px] flex flex-col items-center justify-center text-center">
+                                <span class="inline-flex items-center justify-center w-11 h-11 rounded-full bg-teal-500/15 text-teal-700 mb-2">
+                                    <span class="material-icons-outlined text-[26px]">groups</span>
+                                </span>
+                                <span class="text-sm sm:text-base font-bold text-gray-900">スタッフ</span>
+                            </div>
+                        </a>
+                        <a href="#access" @click.prevent="scrollTo('access')"
+                           class="group btn-ripple rounded-2xl border border-white/40 bg-white/85 hover:bg-white shadow-sm hover:shadow-md transition-all transform hover:-translate-y-0.5 focus:outline-none focus-visible:ring-4 focus-visible:ring-secondary/40">
+                            <div class="p-3 sm:p-5 min-h-[88px] sm:min-h-[96px] flex flex-col items-center justify-center text-center">
+                                <span class="inline-flex items-center justify-center w-11 h-11 rounded-full bg-emerald-500/15 text-emerald-700 mb-2">
+                                    <span class="material-icons-outlined text-[26px]">place</span>
+                                </span>
+                                <span class="text-sm sm:text-base font-bold text-gray-900">アクセス</span>
+                            </div>
+                        </a>
+                        <a href="#faq" @click.prevent="scrollTo('faq')"
+                           class="group btn-ripple rounded-2xl border border-white/40 bg-white/85 hover:bg-white shadow-sm hover:shadow-md transition-all transform hover:-translate-y-0.5 focus:outline-none focus-visible:ring-4 focus-visible:ring-secondary/40">
+                            <div class="p-3 sm:p-5 min-h-[88px] sm:min-h-[96px] flex flex-col items-center justify-center text-center">
+                                <span class="inline-flex items-center justify-center w-11 h-11 rounded-full bg-purple-500/15 text-purple-700 mb-2">
+                                    <span class="material-icons-outlined text-[26px]">help_outline</span>
+                                </span>
+                                <span class="text-sm sm:text-base font-bold text-gray-900">FAQ</span>
+                            </div>
+                        </a>
+                    </div>
                 </div>
 
                 <div class="mt-4 text-primary animate-bounce hero-scroll-hint">
@@ -299,83 +350,6 @@
             </div>
         </section>
 
-        <!-- ===== 3. とらべで変わること（新規）===== -->
-        <section id="transformation" class="py-20 bg-white fade-in-section">
-            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16">
-                    <span class="text-primary font-bold tracking-widest text-xs uppercase mb-2 block">Transformation</span>
-                    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">とらべで変わること</h2>
-                    <p class="text-sm text-gray-500 max-w-xl mx-auto">子どもだけでなく、保護者も変わります。</p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-                    <!-- Card 1 -->
-                    <div class="rounded-2xl overflow-hidden shadow-sm border border-gray-100">
-                        <div class="bg-red-50 p-5 border-b border-red-100">
-                            <div class="flex items-center gap-2 mb-2">
-                                <span class="bg-red-100 text-red-500 text-xs font-bold px-2 py-1 rounded-full">Before</span>
-                            </div>
-                            <p class="text-sm font-bold text-gray-700">型にはまった授業をこなす毎日</p>
-                            <p class="text-xs text-gray-500 mt-1">「なんとなく退屈そう」「興味が続かない」</p>
-                        </div>
-                        <div class="bg-accent-green p-5">
-                            <div class="flex items-center gap-2 mb-2">
-                                <span class="bg-primary text-white text-xs font-bold px-2 py-1 rounded-full">After</span>
-                            </div>
-                            <p class="text-sm font-bold text-primary">好奇心のまま学びが広がる</p>
-                            <p class="text-xs text-gray-600 mt-1">「なぜ？」が止まらない。マイプロジェクトが加速する</p>
-                        </div>
-                        <div class="p-4 bg-white text-center">
-                            <span class="material-icons-outlined text-3xl text-primary">psychology</span>
-                            <p class="text-xs font-bold text-gray-700 mt-1">学びの変化</p>
-                        </div>
-                    </div>
-
-                    <!-- Card 2 -->
-                    <div class="rounded-2xl overflow-hidden shadow-sm border border-gray-100">
-                        <div class="bg-red-50 p-5 border-b border-red-100">
-                            <div class="flex items-center gap-2 mb-2">
-                                <span class="bg-red-100 text-red-500 text-xs font-bold px-2 py-1 rounded-full">Before</span>
-                            </div>
-                            <p class="text-sm font-bold text-gray-700">評価・比較される毎日</p>
-                            <p class="text-xs text-gray-500 mt-1">「テストの点数で判断される」「他の子と比べられる」</p>
-                        </div>
-                        <div class="bg-accent-green p-5">
-                            <div class="flex items-center gap-2 mb-2">
-                                <span class="bg-primary text-white text-xs font-bold px-2 py-1 rounded-full">After</span>
-                            </div>
-                            <p class="text-sm font-bold text-primary">自分のペースで成長を実感</p>
-                            <p class="text-xs text-gray-600 mt-1">昨日の自分との比較。「できた」の積み重ねが自信になる</p>
-                        </div>
-                        <div class="p-4 bg-white text-center">
-                            <span class="material-icons-outlined text-3xl text-primary">trending_up</span>
-                            <p class="text-xs font-bold text-gray-700 mt-1">成長の変化</p>
-                        </div>
-                    </div>
-
-                    <!-- Card 3 -->
-                    <div class="rounded-2xl overflow-hidden shadow-sm border border-gray-100">
-                        <div class="bg-red-50 p-5 border-b border-red-100">
-                            <div class="flex items-center gap-2 mb-2">
-                                <span class="bg-red-100 text-red-500 text-xs font-bold px-2 py-1 rounded-full">Before</span>
-                            </div>
-                            <p class="text-sm font-bold text-gray-700">保護者も孤独な探索</p>
-                            <p class="text-xs text-gray-500 mt-1">「周りに相談できる人がいない」「正解が分からない」</p>
-                        </div>
-                        <div class="bg-accent-green p-5">
-                            <div class="flex items-center gap-2 mb-2">
-                                <span class="bg-primary text-white text-xs font-bold px-2 py-1 rounded-full">After</span>
-                            </div>
-                            <p class="text-sm font-bold text-primary">同じ価値観の仲間と出会える</p>
-                            <p class="text-xs text-gray-600 mt-1">「オルタナ教育」を選んだ保護者コミュニティが生まれる</p>
-                        </div>
-                        <div class="p-4 bg-white text-center">
-                            <span class="material-icons-outlined text-3xl text-primary">people</span>
-                            <p class="text-xs font-bold text-gray-700 mt-1">保護者の変化</p>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- Mid-page CTA -->
                 <div class="bg-accent-green rounded-2xl p-8 md:p-10 text-center border border-primary/20">
                     <p class="text-lg md:text-xl font-bold text-gray-900 mb-2">まずは見学に来てみてください</p>
@@ -399,7 +373,7 @@
                     <span class="text-primary font-bold tracking-widest text-xs uppercase mb-2 block">Features</span>
                     <h2 class="text-3xl font-bold text-gray-900 mb-4">とらべが選ばれる4つの特長</h2>
                     <p class="text-sm text-gray-500 max-w-2xl mx-auto">
-                        2004年設立の「東京コミュニティスクール (TCS)」が20年以上にわたり培ってきたノウハウを活かした第2校としてオープンします。
+                        2004年設立の「東京コミュニティスクール (TCS)」が20年以上にわたり培ってきたノウハウを活かした第2校としてオープンしました。
                     </p>
                 </div>
 
@@ -1117,6 +1091,10 @@
             setup() {
                 const isMobileMenuOpen = ref(false);
                 const isScrolled = ref(false);
+                const isHeaderHidden = ref(false);
+                const lastScrollY = ref(0);
+                const SCROLL_TOP_ALWAYS_VISIBLE = 80;
+                const SCROLL_DIRECTION_THRESHOLD = 8;
 
                 // FAQ データ
                 const faqs = ref([
@@ -1160,9 +1138,29 @@
                     isMobileMenuOpen.value = !isMobileMenuOpen.value;
                 };
 
-                // スクロール検知
+                // スクロール検知（下方向でヘッダー非表示・上方向で再表示）
                 const handleScroll = () => {
-                    isScrolled.value = window.scrollY > 50;
+                    const y = window.scrollY;
+                    isScrolled.value = y > 50;
+
+                    if (isMobileMenuOpen.value) {
+                        isHeaderHidden.value = false;
+                        lastScrollY.value = y;
+                        return;
+                    }
+
+                    if (y < SCROLL_TOP_ALWAYS_VISIBLE) {
+                        isHeaderHidden.value = false;
+                    } else {
+                        const delta = y - lastScrollY.value;
+                        if (delta > SCROLL_DIRECTION_THRESHOLD) {
+                            isHeaderHidden.value = true;
+                        } else if (delta < -SCROLL_DIRECTION_THRESHOLD) {
+                            isHeaderHidden.value = false;
+                        }
+                    }
+
+                    lastScrollY.value = y;
                 };
 
                 // スムーススクロール
@@ -1178,7 +1176,8 @@
                 };
 
                 onMounted(() => {
-                    window.addEventListener('scroll', handleScroll);
+                    lastScrollY.value = window.scrollY;
+                    window.addEventListener('scroll', handleScroll, { passive: true });
                     handleScroll();
 
                     // スクロールfade-inアニメーション
@@ -1202,6 +1201,7 @@
                 return {
                     isMobileMenuOpen,
                     isScrolled,
+                    isHeaderHidden,
                     faqs,
                     openFaqIndex,
                     toggleFaq,
