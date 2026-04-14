@@ -175,8 +175,8 @@
                         <span class="font-bold text-xl text-white tracking-wide">とらべ</span>
                     </div>
                     <nav class="hidden md:flex items-center space-x-6">
-                        <a href="#features" @click.prevent="scrollTo('features')" class="text-white hover:text-secondary transition-colors text-sm font-medium">特長</a>
                         <a href="#concept" @click.prevent="scrollTo('concept')" class="text-white hover:text-secondary transition-colors text-sm font-medium">コンセプト</a>
+                        <a href="#features" @click.prevent="scrollTo('features')" class="text-white hover:text-secondary transition-colors text-sm font-medium">特長</a>
                         <a href="#schedule" @click.prevent="scrollTo('schedule')" class="text-white hover:text-secondary transition-colors text-sm font-medium">1日の流れ</a>
                         <a href="#staff" @click.prevent="scrollTo('staff')" class="text-white hover:text-secondary transition-colors text-sm font-medium">スタッフ</a>
                         <a href="#fees" @click.prevent="scrollTo('fees')" class="text-white hover:text-secondary transition-colors text-sm font-medium">料金</a>
@@ -208,8 +208,8 @@
                             見学・説明会に申し込む
                         </button>
                     </div>
-                    <a href="#features" @click.prevent="scrollTo('features')" class="px-6 py-4 border-b border-gray-100 text-gray-700 font-medium">特長</a>
                     <a href="#concept" @click.prevent="scrollTo('concept')" class="px-6 py-4 border-b border-gray-100 text-gray-700 font-medium">コンセプト</a>
+                    <a href="#features" @click.prevent="scrollTo('features')" class="px-6 py-4 border-b border-gray-100 text-gray-700 font-medium">特長</a>
                     <a href="#schedule" @click.prevent="scrollTo('schedule')" class="px-6 py-4 border-b border-gray-100 text-gray-700 font-medium">1日の流れ</a>
                     <a href="#staff" @click.prevent="scrollTo('staff')" class="px-6 py-4 border-b border-gray-100 text-gray-700 font-medium">スタッフ</a>
                     <a href="#fees" @click.prevent="scrollTo('fees')" class="px-6 py-4 border-b border-gray-100 text-gray-700 font-medium">料金</a>
@@ -630,20 +630,8 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <!-- Staff 1 -->
                     <div class="bg-surface-light rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all border border-gray-100 flex flex-col h-full">
-                        <div class="h-40 sm:h-48 relative overflow-hidden"
-                             style="background: linear-gradient(135deg, #0B9B88 0%, #047a6a 100%);">
-                            <div class="absolute inset-0 flex items-center justify-center">
-                                <span class="text-7xl font-black text-white/20 select-none leading-none">永</span>
-                            </div>
-                            <div class="absolute inset-0 flex items-center justify-center">
-                                <span class="material-icons-outlined text-white/70" style="font-size: 4rem;">admin_panel_settings</span>
-                            </div>
-                            <div class="absolute bottom-3 right-3 bg-white/20 backdrop-blur-sm rounded-full px-2 py-0.5 flex items-center gap-1">
-                                <span class="material-icons-outlined text-white text-xs">school</span>
-                                <span class="text-white text-xs font-bold">Director</span>
-                            </div>
-                            <div class="absolute -top-6 -left-6 w-24 h-24 rounded-full bg-white/10"></div>
-                            <div class="absolute -bottom-4 -right-4 w-20 h-20 rounded-full bg-white/10"></div>
+                        <div class="h-40 sm:h-48 relative overflow-hidden">
+                            <img src="images/emachan.jpg" alt="永易 江麻" class="w-full h-full object-cover object-center">
                         </div>
                         <div class="p-6 text-left flex-grow flex flex-col">
                             <span class="text-xs font-bold text-primary uppercase tracking-wider mb-1 block">Director</span>
@@ -659,20 +647,8 @@
 
                     <!-- Staff 2 -->
                     <div class="bg-surface-light rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all border border-gray-100 flex flex-col h-full">
-                        <div class="h-40 sm:h-48 relative overflow-hidden"
-                             style="background: linear-gradient(135deg, #0d8c5e 0%, #0B9B88 100%);">
-                            <div class="absolute inset-0 flex items-center justify-center">
-                                <span class="text-7xl font-black text-white/20 select-none leading-none">稲</span>
-                            </div>
-                            <div class="absolute inset-0 flex items-center justify-center">
-                                <span class="material-icons-outlined text-white/70" style="font-size: 4rem;">menu_book</span>
-                            </div>
-                            <div class="absolute bottom-3 right-3 bg-white/20 backdrop-blur-sm rounded-full px-2 py-0.5 flex items-center gap-1">
-                                <span class="material-icons-outlined text-white text-xs">explore</span>
-                                <span class="text-white text-xs font-bold">Master</span>
-                            </div>
-                            <div class="absolute -top-6 -left-6 w-24 h-24 rounded-full bg-white/10"></div>
-                            <div class="absolute -bottom-4 -right-4 w-20 h-20 rounded-full bg-white/10"></div>
+                        <div class="h-40 sm:h-48 relative overflow-hidden">
+                            <img src="images/inabi.jpg" alt="稲葉 祐一朗" class="w-full h-full object-cover object-center">
                         </div>
                         <div class="p-6 text-left flex-grow flex flex-col">
                             <span class="text-xs font-bold text-primary uppercase tracking-wider mb-1 block">Master</span>
@@ -688,20 +664,8 @@
 
                     <!-- Staff 3 -->
                     <div class="bg-surface-light rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all border border-gray-100 flex flex-col h-full">
-                        <div class="h-40 sm:h-48 relative overflow-hidden"
-                             style="background: linear-gradient(135deg, #FDB813 0%, #e8a50f 100%);">
-                            <div class="absolute inset-0 flex items-center justify-center">
-                                <span class="text-7xl font-black text-white/25 select-none leading-none">大</span>
-                            </div>
-                            <div class="absolute inset-0 flex items-center justify-center">
-                                <span class="material-icons-outlined text-white/70" style="font-size: 4rem;">favorite</span>
-                            </div>
-                            <div class="absolute bottom-3 right-3 bg-white/25 backdrop-blur-sm rounded-full px-2 py-0.5 flex items-center gap-1">
-                                <span class="material-icons-outlined text-white text-xs">spa</span>
-                                <span class="text-white text-xs font-bold">Anchor</span>
-                            </div>
-                            <div class="absolute -top-6 -left-6 w-24 h-24 rounded-full bg-white/15"></div>
-                            <div class="absolute -bottom-4 -right-4 w-20 h-20 rounded-full bg-white/15"></div>
+                        <div class="h-40 sm:h-48 relative overflow-hidden">
+                            <img src="images/yuyu.jpg" alt="大知里 由" class="w-full h-full object-cover object-center">
                         </div>
                         <div class="p-6 text-left flex-grow flex flex-col">
                             <span class="text-xs font-bold text-primary uppercase tracking-wider mb-1 block">Anchor</span>
