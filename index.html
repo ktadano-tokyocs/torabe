@@ -171,7 +171,7 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between items-center h-16 md:h-20">
                     <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" @click="scrollTo('top')">
-                        <span class="material-icons-outlined text-white text-3xl">school</span>
+                        <img src="images/torabe-log-white.png" alt="" class="h-8 w-8 md:h-9 md:w-9 object-contain shrink-0" width="36" height="36" decoding="async" role="presentation">
                         <span class="font-bold text-xl text-white tracking-wide">とらべ</span>
                     </div>
                     <nav class="hidden md:flex items-center space-x-6">
@@ -223,9 +223,15 @@
         <section id="top" class="relative pt-20 pb-24 md:pt-40 md:pb-32 overflow-hidden hero-bg flex flex-col min-h-screen">
             <div class="hero-bg-image" aria-hidden="true"></div>
             <div class="hero-scrim absolute inset-0 pointer-events-none" aria-hidden="true"></div>
+            <!-- ハンバーガー（ヘッダー右）の下・ヒーロー右上 -->
+            <div class="absolute z-20 right-3 top-20 sm:right-5 md:right-8 md:top-40">
+                <a href="https://tokyocs.org/14127" target="_blank" rel="noopener noreferrer" class="inline-block rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-transparent">
+                    <img src="images/volunteer-logo.svg" alt="ボランティア募集中" class="h-8 sm:h-9 w-auto max-w-[min(58vw,12rem)] object-contain object-right drop-shadow-sm" width="165" height="36" decoding="async">
+                </a>
+            </div>
             <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10 flex flex-col flex-1 justify-center">
 
-                <img src="images/title.png" alt="とらすとべーす フリースクール" class="hero-title-img w-full max-w-[80vw] sm:max-w-2xl md:max-w-3xl mx-auto mb-4 h-auto object-contain" width="800" height="240" decoding="async">
+                <img src="images/title.png" alt="とらすとべーす フリースクール" class="hero-title-img w-full max-w-[80vw] sm:max-w-2xl md:max-w-3xl mx-auto mb-4 mt-12 sm:mt-10 md:mt-8 h-auto object-contain" width="800" height="240" decoding="async">
 
                 <img src="images/torabe-log.png" alt="とらすとべーす フリースクール" class="hero-title-img w-full max-w-[50vw] sm:max-w-2xl md:max-w-3xl mx-auto mb-4 h-auto object-contain" width="800" height="240" decoding="async">
                 <h1 class="sr-only">とらすとべーす フリースクール</h1>
@@ -301,7 +307,69 @@
             </div>
         </section>
 
-        <!-- ===== 2. 共感セクション ===== -->
+        <!-- ===== 2. コンセプト ===== -->
+        <section id="concept" class="py-20 bg-white fade-in-section">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <span class="text-primary font-bold tracking-widest text-xs uppercase mb-2 block">Concept</span>
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-8">
+                    私たちは、子どもたち一人ひとりが<br class="hidden sm:inline">
+                    「可能性と自信に満ちた学び手である」<br class="hidden sm:inline">
+                    と信じています。
+                </h2>
+
+                <!-- フレーミング段落 -->
+                <div class="bg-accent-yellow border border-yellow-200 rounded-xl p-6 mb-10 text-left">
+                    <p class="text-gray-700 leading-relaxed text-sm md:text-base">
+                        「今日は休んでいい」「今日は頑張れた」。<br class="hidden sm:inline">
+                        その両方を肯定できる場所として、とらべは存在しています。<br class="hidden sm:inline">
+                        学校に感じる「なんとなくの違和感」の正体が、ここに来ると言語化できるかもしれません。
+                    </p>
+                </div>
+
+                <div class="bg-gray-50 rounded-2xl p-8 md:p-12 border border-gray-100 relative overflow-hidden">
+                    <h3 class="text-xl md:text-2xl font-bold text-primary mb-8">
+                        「歩いてもいい、止まってもいい、つながっていい」歩止歩止（HodoHodo）
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
+                        <div class="text-center">
+                            <div class="w-20 h-20 mx-auto bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                                <span class="material-icons-outlined text-primary text-4xl">directions_walk</span>
+                            </div>
+                            <h4 class="font-bold text-gray-800 mb-2">「歩」く</h4>
+                            <p class="text-xs text-gray-500 leading-relaxed">
+                                右足と左足、両足で自分のペースで学んでいくことができる。
+                            </p>
+                        </div>
+                        <div class="text-center border-t md:border-t-0 border-gray-200 pt-8 md:pt-0">
+                            <div class="w-20 h-20 mx-auto bg-orange-100 rounded-full flex items-center justify-center mb-4">
+                                <span class="material-icons-outlined text-orange-500 text-4xl">pan_tool</span>
+                            </div>
+                            <h4 class="font-bold text-gray-800 mb-2">「止」まる</h4>
+                            <p class="text-xs text-gray-500 leading-relaxed">
+                                止まることも動き。自分の現在地を知る、振り返ることができる。
+                            </p>
+                        </div>
+                        <div class="text-center border-t md:border-t-0 border-gray-200 pt-8 md:pt-0">
+                            <div class="w-20 h-20 mx-auto bg-secondary/20 rounded-full flex items-center justify-center mb-4">
+                                <span class="material-icons-outlined text-yellow-600 text-4xl">people</span>
+                            </div>
+                            <h4 class="font-bold text-gray-800 mb-2">「つながる」</h4>
+                            <p class="text-xs text-gray-500 leading-relaxed">
+                                スタッフ・仲間・保護者。自分だけじゃない、つながりの中で育ちあう。
+                            </p>
+                        </div>
+                    </div>
+                    <div class="mt-10 pt-8 border-t border-gray-200">
+                        <p class="text-sm font-medium text-gray-700">
+                            自由な環境で、自分のペースで学ぶことができます。<br/>
+                            一人ひとりの興味関心や特性に合わせた学びを実現します。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== 3. 共感セクション ===== -->
         <section class="py-20 bg-background-light fade-in-section">
             <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-2xl md:text-3xl font-bold text-center text-primary mb-12">
@@ -350,7 +418,7 @@
             </div>
         </section>
 
-        <!-- ===== 3. Mid-page CTA ===== -->
+        <!-- ===== 4. Mid-page CTA ===== -->
         <section class="py-12 md:py-16 bg-background-light fade-in-section">
             <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="bg-accent-green rounded-2xl p-8 md:p-10 text-center border border-primary/20">
@@ -368,7 +436,7 @@
             </div>
         </section>
 
-        <!-- ===== 4. 特長4選 ===== -->
+        <!-- ===== 5. 特長4選 ===== -->
         <section id="features" class="py-20 bg-background-light fade-in-section">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16">
@@ -471,68 +539,6 @@
                         <span class="material-icons-outlined">event_available</span>
                         これらを体感しに見学へ行く
                     </button>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== 5. コンセプト ===== -->
-        <section id="concept" class="py-20 bg-white fade-in-section">
-            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <span class="text-primary font-bold tracking-widest text-xs uppercase mb-2 block">Concept</span>
-                <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-8">
-                    私たちは、子どもたち一人ひとりが<br class="hidden sm:inline">
-                    「可能性と自信に満ちた学び手である」<br class="hidden sm:inline">
-                    と信じています。
-                </h2>
-
-                <!-- フレーミング段落 -->
-                <div class="bg-accent-yellow border border-yellow-200 rounded-xl p-6 mb-10 text-left">
-                    <p class="text-gray-700 leading-relaxed text-sm md:text-base">
-                        「今日は休んでいい」「今日は頑張れた」。<br class="hidden sm:inline">
-                        その両方を肯定できる場所として、とらべは存在しています。<br class="hidden sm:inline">
-                        学校に感じる「なんとなくの違和感」の正体が、ここに来ると言語化できるかもしれません。
-                    </p>
-                </div>
-
-                <div class="bg-gray-50 rounded-2xl p-8 md:p-12 border border-gray-100 relative overflow-hidden">
-                    <h3 class="text-xl md:text-2xl font-bold text-primary mb-8">
-                        「歩いてもいい、止まってもいい、つながっていい」歩止歩止（HodoHodo）
-                    </h3>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
-                        <div class="text-center">
-                            <div class="w-20 h-20 mx-auto bg-primary/10 rounded-full flex items-center justify-center mb-4">
-                                <span class="material-icons-outlined text-primary text-4xl">directions_walk</span>
-                            </div>
-                            <h4 class="font-bold text-gray-800 mb-2">「歩」く</h4>
-                            <p class="text-xs text-gray-500 leading-relaxed">
-                                右足と左足、両足で自分のペースで学んでいくことができる。
-                            </p>
-                        </div>
-                        <div class="text-center border-t md:border-t-0 border-gray-200 pt-8 md:pt-0">
-                            <div class="w-20 h-20 mx-auto bg-orange-100 rounded-full flex items-center justify-center mb-4">
-                                <span class="material-icons-outlined text-orange-500 text-4xl">pan_tool</span>
-                            </div>
-                            <h4 class="font-bold text-gray-800 mb-2">「止」まる</h4>
-                            <p class="text-xs text-gray-500 leading-relaxed">
-                                止まることも動き。自分の現在地を知る、振り返ることができる。
-                            </p>
-                        </div>
-                        <div class="text-center border-t md:border-t-0 border-gray-200 pt-8 md:pt-0">
-                            <div class="w-20 h-20 mx-auto bg-secondary/20 rounded-full flex items-center justify-center mb-4">
-                                <span class="material-icons-outlined text-yellow-600 text-4xl">people</span>
-                            </div>
-                            <h4 class="font-bold text-gray-800 mb-2">「つながる」</h4>
-                            <p class="text-xs text-gray-500 leading-relaxed">
-                                スタッフ・仲間・保護者。自分だけじゃない、つながりの中で育ちあう。
-                            </p>
-                        </div>
-                    </div>
-                    <div class="mt-10 pt-8 border-t border-gray-200">
-                        <p class="text-sm font-medium text-gray-700">
-                            自由な環境で、自分のペースで学ぶことができます。<br/>
-                            一人ひとりの興味関心や特性に合わせた学びを実現します。
-                        </p>
-                    </div>
                 </div>
             </div>
         </section>
@@ -1051,9 +1057,6 @@
                         電話で問い合わせる
                     </a>
                 </div>
-                <p class="text-xs text-white/70">
-                    ※ 定員に達し次第、受付を終了します。お早めにどうぞ。
-                </p>
 
             </div>
         </section>
@@ -1069,9 +1072,15 @@
                             <span class="material-icons-outlined text-sm">place</span>
                             〒165-0026 東京都中野区新井2-35-2
                         </p>
-                        <p class="flex items-center justify-center gap-2">
-                            <span class="material-icons-outlined text-sm">phone</span>
-                            <a href="tel:0353189700" class="hover:text-secondary transition-colors">TEL: 03-5318-9700</a>
+                        <p class="flex flex-col items-center justify-center gap-2 text-center">
+                            <span class="flex items-center justify-center gap-2">
+                                <span class="material-icons-outlined text-sm">phone</span>
+                                <a href="tel:0353189700" class="hover:text-secondary transition-colors">TEL: 03-5318-9700</a>
+                            </span>
+                            <span class="text-xs text-white/75 leading-relaxed">
+                                繋がらない場合はこちら：
+                                <a href="tel:0359891869" class="hover:text-secondary transition-colors">03-5989-1869</a>
+                            </span>
                         </p>
                         <p class="flex items-center justify-center gap-2 text-xs opacity-70 mt-4">
                             <span class="material-icons-outlined text-xs">business</span>
