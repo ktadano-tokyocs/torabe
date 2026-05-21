@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head><meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: #F9FAFB; padding: 0; }
+  .hero { position: relative; height: 200px; overflow: hidden; background: #E6F5F2; border-radius: 14px; margin: 16px; }
+  .bg { position: absolute; inset: 0; background-image: url('../assets/background.png'); background-size: cover; background-position: center; opacity: 0.6; }
+  .scrim { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(255,255,255,0.55), rgba(255,255,255,0.3) 50%, rgba(255,255,255,0.4)); }
+  .content { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; gap: 6px; }
+  .title-img { max-height: 55px; width: auto; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.1)); }
+  .logo { height: 32px; width: 32px; object-fit: contain; }
+  .tagline { font-size: 20px; font-weight: 900; color: #333; }
+  .sub { font-size: 10px; color: #555; }
+  .label { position: absolute; bottom: 8px; right: 10px; font-size: 9px; color: #9CA3AF; background: white; padding: 2px 6px; border-radius: 20px; }
+</style>
+</head>
+<body>
+  <div class="hero">
+    <div class="bg"></div>
+    <div class="scrim"></div>
+    <div class="content">
+      <img class="title-img" src="../assets/title.png" alt="とらすとベース フリースクール">
+      <img class="logo" src="../assets/torabe-log.png" alt="">
+      <div class="tagline">歩 止 歩 止</div>
+      <div class="sub">「歩いてもいい、止まってもいい」</div>
+    </div>
+    <div class="label">Hero — bg opacity 0.6 + white scrim</div>
+  </div>
+</body></html>

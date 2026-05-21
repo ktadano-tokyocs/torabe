@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head><meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: #F9FAFB; padding: 20px; }
+  .row { display: flex; gap: 14px; align-items: stretch; flex-wrap: wrap; }
+  .card { border-radius: 14px; padding: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; flex: 1; min-width: 120px; }
+  .card-light { background: white; border: 1px solid #E5E7EB; }
+  .card-dark  { background: #0B9B88; }
+  .card-gray  { background: #374151; }
+  .label { font-size: 9px; font-weight: 700; color: #9CA3AF; letter-spacing: 0.08em; text-transform: uppercase; }
+  .label-white { color: rgba(255,255,255,0.6); }
+  img { display: block; }
+  .logo-header { display: flex; align-items: center; gap: 8px; }
+  .logo-header span { font-size: 18px; font-weight: 700; color: #1F2937; }
+  .logo-header-white span { color: white; }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="card card-light" style="min-height:100px">
+      <img src="../assets/torabe-log.png" alt="logo" style="height:60px;width:60px;object-fit:contain">
+      <div class="label">Mark — Light BG</div>
+    </div>
+    <div class="card card-dark" style="min-height:100px">
+      <img src="../assets/torabe-log-white.png" alt="logo white" style="height:60px;width:60px;object-fit:contain">
+      <div class="label label-white">Mark — Dark BG</div>
+    </div>
+    <div class="card card-light" style="min-height:100px">
+      <div class="logo-header">
+        <img src="../assets/torabe-log.png" alt="" style="height:36px;width:36px;object-fit:contain">
+        <span style="font-size:18px;font-weight:700;color:#1F2937">とらべ</span>
+      </div>
+      <div class="label">Logo + Wordmark</div>
+    </div>
+    <div class="card card-dark" style="min-height:100px">
+      <div class="logo-header logo-header-white">
+        <img src="../assets/torabe-log-white.png" alt="" style="height:36px;width:36px;object-fit:contain">
+        <span style="font-size:18px;font-weight:700;color:white">とらべ</span>
+      </div>
+      <div class="label label-white">Logo + Wordmark (White)</div>
+    </div>
+    <div class="card card-light" style="min-height:100px">
+      <img src="../assets/title.png" alt="title" style="max-height:60px;width:auto;max-width:180px;object-fit:contain">
+      <div class="label">Title (Hand-drawn)</div>
+    </div>
+  </div>
+</body></html>

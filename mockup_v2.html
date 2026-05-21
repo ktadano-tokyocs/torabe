@@ -1,0 +1,1383 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>とらすとベース フリースクール | 見学・説明会のお申し込み</title>
+
+<!-- LCP -->
+<link rel="preload" as="image" href="mockup_v2/images/background.png">
+<link rel="preload" as="image" href="mockup_v2/images/title.png">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@500;700;900&family=Cormorant+Garamond:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        primary: "#0B9B88",
+        "primary-deep": "#08826F",
+        "primary-soft": "#E6F5F2",
+        secondary: "#FDB813",
+        "secondary-soft": "#FFF5D6",
+        ink: "#1F2937",
+        "ink-soft": "#374151",
+        "bg-cream": "#FBFAF6",
+        "bg-mist": "#F4F6F4",
+        line: "#E7E2D6",
+      },
+      fontFamily: {
+        sans: ["Noto Sans JP", "sans-serif"],
+        serif: ["Noto Serif JP", "serif"],
+        display: ["Cormorant Garamond", "Noto Serif JP", "serif"],
+      },
+    }
+  }
+};
+</script>
+
+<!-- Vue 3 -->
+<script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+
+<style>
+:root{
+  --primary:#0B9B88;
+  --primary-deep:#08826F;
+  --primary-soft:#E6F5F2;
+  --secondary:#FDB813;
+  --secondary-soft:#FFF5D6;
+  --ink:#1F2937;
+  --ink-soft:#4B5563;
+  --muted:#6B7280;
+  --line:#E5E7EB;
+  --line-soft:#F3F4F6;
+  --bg:#FBFAF6;
+  --bg-mist:#F4F6F4;
+}
+*{-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN",sans-serif;
+  font-feature-settings:"palt";
+  color:var(--ink);
+  background:var(--bg);
+  -webkit-font-smoothing:antialiased;
+  letter-spacing:0.01em;
+  line-height:1.8;
+}
+::-webkit-scrollbar{width:8px;}
+::-webkit-scrollbar-thumb{background:rgba(11,155,136,0.25);border-radius:20px;}
+::-webkit-scrollbar-thumb:hover{background:rgba(11,155,136,0.4);}
+
+h1,h2,h3,h4{word-break:keep-all;overflow-wrap:break-word;}
+img{display:block;max-width:100%;}
+
+/* ───────── Typography utilities ───────── */
+.font-display{font-family:"Cormorant Garamond","Noto Serif JP",serif;font-style:italic;}
+.font-serif-jp{font-family:"Noto Serif JP","Hiragino Mincho ProN",serif;}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:"Cormorant Garamond",serif;font-style:italic;
+  font-size:13px;letter-spacing:0.24em;color:var(--primary);
+}
+.eyebrow::before{content:"";width:24px;height:1px;background:currentColor;opacity:0.6;}
+.eyebrow.center{justify-content:center;}
+.eyebrow.center::after{content:"";width:24px;height:1px;background:currentColor;opacity:0.6;}
+.section-num{
+  font-family:"Cormorant Garamond",serif;font-style:italic;font-weight:500;
+  color:var(--secondary);
+}
+
+/* Section heading rhythm */
+.s-head{display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;margin-bottom:48px;}
+.s-head h2{
+  font-family:"Noto Serif JP",serif;
+  font-weight:700;
+  font-size:clamp(24px,5.4vw,36px);
+  letter-spacing:0.04em;
+  line-height:1.5;
+  color:var(--ink);
+}
+.s-head .num{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:28px;color:var(--secondary);line-height:1;}
+.s-head .lede{max-width:560px;color:var(--ink-soft);font-size:14px;line-height:1.9;padding:0 4px;}
+
+/* ───────── Buttons ───────── */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  padding:16px 28px;border-radius:999px;
+  font-weight:700;font-size:15px;letter-spacing:0.04em;
+  transition:transform .25s, box-shadow .25s, background .25s;
+  min-height:54px;
+}
+.btn:hover{transform:translateY(-2px);}
+.btn-primary{background:var(--primary);color:#fff;box-shadow:0 8px 22px -10px rgba(11,155,136,0.55);}
+.btn-primary:hover{background:var(--primary-deep);box-shadow:0 14px 28px -12px rgba(11,155,136,0.6);}
+.btn-secondary{background:var(--secondary);color:#1A1812;box-shadow:0 8px 22px -10px rgba(253,184,19,0.5);}
+.btn-secondary:hover{background:#F1AC10;}
+.btn-ghost{background:rgba(255,255,255,0.12);color:#fff;border:1px solid rgba(255,255,255,0.32);}
+.btn-ghost:hover{background:rgba(255,255,255,0.2);}
+.btn-outline{background:transparent;color:var(--primary);border:1px solid var(--primary);}
+.btn-outline:hover{background:var(--primary);color:#fff;}
+.btn .arr{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:20px;line-height:1;}
+
+/* Pulse for status dot */
+@keyframes pulse-dot{
+  0%{box-shadow:0 0 0 0 rgba(253,184,19,0.55);}
+  70%{box-shadow:0 0 0 10px rgba(253,184,19,0);}
+  100%{box-shadow:0 0 0 0 rgba(253,184,19,0);}
+}
+.pulse-dot{animation:pulse-dot 2s infinite;}
+
+/* Subtle dotted divider line (path metaphor) */
+.dotted-path{
+  background-image:radial-gradient(circle, var(--primary) 1.2px, transparent 1.4px);
+  background-size:8px 8px;
+  background-repeat:repeat-y;
+  background-position:center;
+  width:2px;
+}
+
+/* Cards */
+.card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:20px;
+  box-shadow:0 1px 0 rgba(31,41,55,0.02), 0 12px 32px -24px rgba(31,41,55,0.18);
+  transition:box-shadow .3s, transform .3s, border-color .3s;
+}
+.card:hover{box-shadow:0 1px 0 rgba(31,41,55,0.02), 0 20px 40px -24px rgba(31,41,55,0.24);}
+
+/* Fade-in */
+.fade-in{opacity:0;transform:translateY(20px);transition:opacity .8s ease, transform .8s ease;}
+.fade-in.visible{opacity:1;transform:none;}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation:none !important;transition:none !important;}
+  .fade-in{opacity:1;transform:none;}
+}
+
+/* ───────── HEADER ───────── */
+.site-header{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  background:rgba(11,155,136,0.94);
+  backdrop-filter:saturate(150%) blur(10px);
+  -webkit-backdrop-filter:saturate(150%) blur(10px);
+  transition:transform .35s ease, background .25s ease, box-shadow .25s ease;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+.site-header.scrolled{background:rgba(8,130,111,0.96);box-shadow:0 4px 18px -8px rgba(0,0,0,0.18);}
+.site-header.nav-hidden{transform:translateY(-100%);}
+.site-header .bar{display:flex;align-items:center;justify-content:space-between;height:60px;}
+@media (min-width:768px){.site-header .bar{height:72px;}}
+.brand{display:flex;align-items:center;gap:10px;cursor:pointer;}
+.brand img{width:32px;height:32px;object-fit:contain;}
+.brand .name{color:#fff;font-weight:700;font-size:18px;letter-spacing:0.08em;}
+.nav-link{color:#fff;font-size:13px;font-weight:500;position:relative;padding:8px 0;}
+.nav-link::after{content:"";position:absolute;left:50%;bottom:0;width:0;height:1.5px;background:var(--secondary);transition:width .3s, left .3s;}
+.nav-link:hover::after{width:100%;left:0;}
+
+/* Mobile menu */
+.menu-btn{
+  width:44px;height:44px;display:flex;align-items:center;justify-content:center;
+  color:#fff;border-radius:999px;transition:background .2s;
+}
+.menu-btn:hover{background:rgba(255,255,255,0.12);}
+.mobile-menu{
+  position:absolute;top:100%;left:0;right:0;
+  background:#fff;z-index:48;
+  overflow-y:auto;
+  padding:0;
+  max-height:calc(100vh - 60px);
+  box-shadow:0 8px 24px rgba(0,0,0,0.12);
+}
+.menu-enter-active{transition:opacity .2s ease-out, transform .2s ease-out;}
+.menu-leave-active{transition:opacity .15s ease-in, transform .15s ease-in;}
+.menu-enter-from,.menu-leave-to{opacity:0;transform:translateY(-6px);}
+.mobile-menu .m-cta{padding:20px;background:var(--primary-soft);}
+.mobile-menu a.m-link{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 22px;border-bottom:1px solid var(--line-soft);
+  color:var(--ink);font-weight:500;font-size:15px;
+}
+.mobile-menu a.m-link .mn{font-family:"Cormorant Garamond",serif;font-style:italic;color:var(--secondary);font-size:13px;letter-spacing:0.2em;}
+
+/* ───────── HERO ───────── */
+.hero{
+  position:relative;
+  min-height:100vh;min-height:100dvh;
+  padding:80px 0 60px;
+  overflow:hidden;
+  background:var(--primary-soft);
+  display:flex;flex-direction:column;
+}
+@media (min-width:768px){.hero{padding:96px 0 80px;}}
+.hero-bg{
+  position:absolute;inset:0;
+  background-image:url('mockup_v2/images/background.png');
+  background-size:cover;background-position:center 35%;
+  opacity:0.5;
+  pointer-events:none;
+}
+.hero-scrim{
+  position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg, rgba(251,250,246,0.55) 0%, rgba(251,250,246,0.2) 35%, rgba(251,250,246,0.4) 75%, rgba(251,250,246,0.85) 100%);
+}
+.hero-inner{
+  position:relative;z-index:2;
+  width:100%;max-width:1200px;margin:0 auto;padding:0 22px;
+  display:flex;flex-direction:column;flex:1;
+}
+
+.hero-volunteer{
+  position:absolute;top:72px;right:14px;z-index:5;
+  display:inline-flex;align-items:center;gap:10px;
+  padding:8px 14px;border-radius:999px;
+  background:rgba(255,255,255,0.85);backdrop-filter:blur(6px);
+  border:1px solid rgba(11,155,136,0.18);
+  font-size:11px;font-weight:600;letter-spacing:0.08em;color:var(--primary-deep);
+}
+.hero-volunteer .dot{width:6px;height:6px;border-radius:50%;background:var(--secondary);}
+@media (min-width:768px){.hero-volunteer{top:96px;right:24px;font-size:12px;padding:10px 18px;}}
+
+.hero-head{display:flex;flex-direction:column;align-items:center;text-align:center;gap:18px;margin-top:36px;}
+.hero-logo{width:clamp(48px,13vw,88px);height:clamp(48px,13vw,88px);}
+.hero-title-img{
+  width:auto;height:clamp(32px,10vw,60px);max-width:90vw;object-fit:contain;
+  filter:drop-shadow(0 2px 4px rgba(0,0,0,0.08));
+}
+.hero-tagline-en{
+  font-family:"Cormorant Garamond",serif;font-style:italic;
+  font-size:12px;letter-spacing:0.32em;color:var(--primary);text-transform:uppercase;
+}
+
+.hero-kanji{
+  font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN",sans-serif;
+  font-weight:900;
+  font-size:clamp(64px,18vw,140px);
+  line-height:1;letter-spacing:0.08em;
+  color:var(--ink);
+  display:flex;justify-content:center;align-items:flex-end;flex-wrap:nowrap;
+}
+.hero-kanji .ch{display:inline-block;}
+.hero-kanji .ch.alt{color:var(--primary);transform:translateY(0.04em);}
+.hero-kanji .space{width:0.12em;display:inline-block;}
+
+.hero-sub{
+  font-family:"Noto Serif JP",serif;
+  font-weight:500;font-size:clamp(15px,3.6vw,20px);
+  color:var(--ink);letter-spacing:0.06em;
+}
+.hero-sub::before,.hero-sub::after{color:var(--secondary);font-family:"Cormorant Garamond",serif;font-style:italic;}
+.hero-meta{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:6px 10px;
+  font-size:11px;letter-spacing:0.08em;color:var(--ink-soft);
+}
+.hero-meta .pill{
+  padding:4px 12px;background:rgba(255,255,255,0.7);
+  border:1px solid rgba(11,155,136,0.18);
+  border-radius:999px;color:var(--primary-deep);font-weight:500;
+}
+
+/* TOC card grid */
+.hero-toc{
+  margin-top:auto;padding-top:36px;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:8px;
+}
+@media (min-width:640px){.hero-toc{grid-template-columns:repeat(6,1fr);gap:10px;}}
+.toc-card{
+  position:relative;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:6px;padding:14px 6px;
+  background:rgba(255,255,255,0.78);backdrop-filter:blur(4px);
+  border:1px solid rgba(255,255,255,0.7);
+  border-radius:14px;
+  transition:background .25s, transform .25s, border-color .25s;
+  min-height:72px;text-decoration:none;
+}
+.toc-card:hover{background:#fff;transform:translateY(-2px);border-color:var(--primary);}
+.toc-card .n{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:12px;color:var(--secondary);letter-spacing:0.16em;line-height:1;}
+.toc-card .l{font-family:"Noto Serif JP",serif;font-weight:700;font-size:12px;color:var(--ink);letter-spacing:0.04em;}
+@media (min-width:768px){
+  .toc-card{padding:18px 8px;min-height:88px;}
+  .toc-card .l{font-size:14px;}
+  .toc-card .n{font-size:13px;}
+}
+
+.hero-scroll{
+  display:flex;justify-content:center;margin-top:18px;
+  color:var(--primary);font-family:"Cormorant Garamond",serif;font-style:italic;font-size:11px;letter-spacing:0.32em;text-transform:uppercase;
+}
+
+/* ───────── Section frame ───────── */
+.section{padding:72px 0;}
+@media (min-width:768px){.section{padding:96px 0;}}
+.wrap{max-width:1100px;margin:0 auto;padding:0 22px;}
+.wrap-sm{max-width:760px;margin:0 auto;padding:0 22px;}
+
+/* Decorative path divider */
+.path-divider{
+  display:flex;align-items:center;justify-content:center;gap:8px;padding:0 0 36px;
+}
+.path-divider span{width:5px;height:5px;border-radius:50%;background:var(--primary);opacity:0.3;}
+.path-divider span:nth-child(2){opacity:0.55;}
+.path-divider span:nth-child(3){opacity:0.8;background:var(--secondary);}
+.path-divider span:nth-child(4){opacity:0.55;}
+.path-divider span:nth-child(5){opacity:0.3;}
+
+/* ───────── CONCEPT ───────── */
+.concept-card{
+  background:#fff;
+  border-radius:24px;
+  padding:40px 24px;
+  border:1px solid var(--line);
+  box-shadow:0 1px 0 rgba(31,41,55,0.02), 0 16px 40px -28px rgba(31,41,55,0.18);
+  position:relative;
+}
+@media (min-width:768px){.concept-card{padding:64px 56px;}}
+.concept-card::before, .concept-card::after{
+  content:"";position:absolute;width:32px;height:32px;
+}
+.concept-card::before{top:14px;left:14px;border-top:1px solid var(--secondary);border-left:1px solid var(--secondary);}
+.concept-card::after{bottom:14px;right:14px;border-bottom:1px solid var(--secondary);border-right:1px solid var(--secondary);}
+.concept-h{
+  font-family:"Noto Serif JP",serif;font-weight:700;
+  font-size:clamp(20px,4.8vw,28px);
+  letter-spacing:0.06em;line-height:1.5;text-align:center;
+  color:var(--primary);
+}
+.concept-h .quote{color:var(--secondary);}
+@media(max-width:600px){.concept-h-row{display:flex;flex-direction:column;align-items:stretch;}.sp-l{text-align:left;}.sp-r{text-align:right;}}
+.concept-romaji{
+  font-family:"Cormorant Garamond",serif;font-style:italic;
+  text-align:center;color:var(--secondary);
+  font-size:14px;letter-spacing:0.32em;
+  margin:6px 0 36px;
+}
+.concept-split{
+  display:grid;grid-template-columns:1fr;gap:24px;
+  max-width:560px;margin:0 auto;
+  align-items:start;
+}
+@media (min-width:640px){.concept-split{grid-template-columns:1fr 1px 1fr;gap:24px;align-items:center;}}
+.concept-split .axis{display:none;align-self:stretch;background:linear-gradient(to bottom, transparent, var(--line), transparent);}
+@media (min-width:640px){.concept-split .axis{display:block;}}
+
+.concept-half{display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;padding:8px 0;}
+.concept-glyph{
+  width:88px;height:88px;display:flex;align-items:center;justify-content:center;
+  border-radius:50%;
+  font-family:"Noto Serif JP",serif;font-weight:900;font-size:56px;line-height:1;
+}
+.concept-glyph.green{background:var(--primary-soft);color:var(--primary);}
+.concept-glyph.yellow{background:var(--secondary-soft);color:#B7791F;}
+.concept-half h4{font-family:"Noto Serif JP",serif;font-size:17px;font-weight:700;color:var(--ink);}
+.concept-half p{font-size:13px;color:var(--ink-soft);line-height:1.85;max-width:240px;}
+
+.concept-foot{
+  margin-top:36px;padding-top:28px;border-top:1px dashed var(--line);
+  text-align:center;color:var(--ink-soft);font-size:14px;line-height:1.95;
+}
+
+/* ───────── EMPATHY ───────── */
+.empathy{background:var(--bg-mist);}
+.empathy-list{display:grid;grid-template-columns:1fr;gap:10px;}
+@media (min-width:640px){.empathy-list{grid-template-columns:1fr 1fr;gap:14px;}}
+.empathy-item{
+  display:flex;gap:14px;align-items:flex-start;
+  background:#fff;border:1px solid var(--line);
+  border-radius:18px;padding:20px 18px;
+  transition:border-color .3s, transform .3s;
+}
+.empathy-item:hover{border-color:var(--primary);}
+.empathy-item .ic{
+  flex-shrink:0;width:42px;height:42px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--primary-soft);color:var(--primary);
+}
+.empathy-item .ic .material-icons-outlined{font-size:22px;}
+.empathy-item p{font-family:"Noto Serif JP",serif;font-size:14px;line-height:1.9;color:var(--ink);}
+
+.empathy-resolve{
+  margin-top:28px;padding:28px 22px;text-align:center;
+  background:var(--primary);color:#fff;border-radius:20px;
+  position:relative;overflow:hidden;
+}
+.empathy-resolve::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(ellipse at top right, rgba(253,184,19,0.16), transparent 60%);
+}
+.empathy-resolve .lbl{font-family:"Cormorant Garamond",serif;font-style:italic;letter-spacing:0.28em;font-size:12px;opacity:0.85;}
+.empathy-resolve p{font-family:"Noto Serif JP",serif;font-weight:700;font-size:clamp(18px,4.4vw,22px);letter-spacing:0.06em;margin-top:8px;line-height:1.6;position:relative;}
+.empathy-resolve p .em{color:var(--secondary);}
+
+/* ───────── MID-CTA ───────── */
+.midcta-card{
+  background:#fff;border:1px solid var(--line);border-radius:24px;
+  padding:32px 22px;text-align:center;
+  box-shadow:0 1px 0 rgba(31,41,55,0.02), 0 16px 40px -28px rgba(31,41,55,0.18);
+}
+.midcta-card h3{font-family:"Noto Serif JP",serif;font-size:19px;font-weight:700;letter-spacing:0.04em;}
+.midcta-meta{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 18px;margin:14px 0 22px;}
+.midcta-meta .it{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:12px;color:var(--ink-soft);font-weight:500;letter-spacing:0.04em;
+}
+.midcta-meta .it .material-icons-outlined{font-size:16px;color:var(--primary);}
+
+/* ───────── FEATURES ───────── */
+.features-intro{text-align:center;color:var(--ink-soft);font-size:13px;line-height:1.95;max-width:600px;margin:0 auto 36px;}
+.features-grid{display:grid;grid-template-columns:1fr;gap:14px;}
+@media (min-width:768px){.features-grid{grid-template-columns:1fr 1fr;gap:18px;}}
+
+.feat-card{
+  position:relative;
+  background:#fff;border:1px solid var(--line);
+  border-radius:22px;padding:28px 22px;
+  display:flex;flex-direction:column;gap:14px;
+  overflow:hidden;transition:box-shadow .3s, transform .3s, border-color .3s;
+}
+.feat-card:hover{box-shadow:0 1px 0 rgba(31,41,55,0.02), 0 16px 36px -22px rgba(31,41,55,0.22);}
+.feat-card.tint{background:#FFFAF0;border-color:#F2E2C2;}
+.feat-card .blob{position:absolute;top:-40px;right:-40px;width:120px;height:120px;border-radius:50%;background:var(--primary-soft);opacity:0.55;pointer-events:none;filter:blur(2px);}
+.feat-card.tint .blob{background:var(--secondary-soft);opacity:0.85;}
+.feat-head{display:flex;align-items:flex-start;gap:14px;position:relative;z-index:1;}
+.feat-num{
+  flex-shrink:0;width:44px;height:44px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:"Cormorant Garamond",serif;font-style:italic;font-weight:500;
+  font-size:24px;line-height:1;
+  background:var(--primary);color:#fff;border-radius:14px;
+  letter-spacing:0;
+}
+.feat-card.tint .feat-num{background:var(--secondary);color:#1A1812;}
+.feat-title{
+  font-family:"Noto Serif JP",serif;font-weight:700;font-size:17px;letter-spacing:0.04em;
+  color:var(--ink);line-height:1.55;
+}
+.feat-title .sub{display:block;font-size:13px;font-weight:500;color:var(--primary-deep);margin-top:4px;letter-spacing:0.04em;}
+.feat-card.tint .feat-title .sub{color:#B07419;}
+.feat-desc{font-size:13.5px;color:var(--ink-soft);line-height:1.95;position:relative;z-index:1;}
+.feat-list{display:flex;flex-direction:column;gap:6px;position:relative;z-index:1;}
+.feat-list li{
+  list-style:none;font-size:13px;color:var(--ink-soft);
+  display:flex;gap:10px;align-items:baseline;
+}
+.feat-list li::before{content:"●";color:var(--primary);font-size:7px;transform:translateY(-3px);}
+.feat-card.tint .feat-list li::before{color:var(--secondary);}
+.feat-pillrow{display:flex;flex-wrap:wrap;gap:8px;position:relative;z-index:1;}
+.feat-pill{
+  font-size:12px;font-weight:500;
+  padding:6px 12px;border-radius:999px;
+  background:rgba(11,155,136,0.08);color:var(--primary-deep);
+  display:inline-flex;align-items:center;gap:6px;
+}
+.feat-card.tint .feat-pill{background:rgba(253,184,19,0.15);color:#8A5A0F;}
+.feat-pill .material-icons-outlined{font-size:14px;}
+.feat-note{
+  margin-top:4px;padding:12px 14px;border-radius:12px;
+  background:var(--primary-soft);display:flex;gap:10px;align-items:flex-start;
+  font-size:12px;color:var(--ink-soft);line-height:1.85;position:relative;z-index:1;
+}
+.feat-note .material-icons-outlined{color:var(--primary);font-size:16px;flex-shrink:0;}
+.feat-bottom{display:flex;justify-content:space-around;border-top:1px dashed var(--line);padding-top:14px;margin-top:4px;position:relative;z-index:1;}
+.feat-bottom .b{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:11px;color:var(--ink-soft);letter-spacing:0.04em;}
+.feat-bottom .b .material-icons-outlined{color:var(--primary);font-size:18px;}
+
+/* ───────── SCHEDULE ───────── */
+.schedule{background:#fff;}
+.sched-grid{display:grid;grid-template-columns:1fr;gap:28px;}
+@media (min-width:960px){.sched-grid{grid-template-columns:1.05fr 0.95fr;gap:48px;}}
+.sched-photo{
+  aspect-ratio:4/3;overflow:hidden;border-radius:20px;
+  position:relative;background:var(--primary-soft);
+  box-shadow:0 1px 0 rgba(31,41,55,0.02), 0 14px 36px -22px rgba(31,41,55,0.22);
+}
+.sched-photo img{width:100%;height:100%;object-fit:cover;}
+.sched-photo .badge{
+  position:absolute;top:14px;left:14px;padding:6px 14px;
+  background:rgba(255,255,255,0.92);border-radius:999px;
+  font-family:"Cormorant Garamond",serif;font-style:italic;font-size:12px;
+  color:var(--primary-deep);letter-spacing:0.16em;
+}
+.sched-h{font-family:"Noto Serif JP",serif;font-weight:700;font-size:20px;letter-spacing:0.04em;margin-top:24px;line-height:1.55;}
+.sched-p{font-size:14px;color:var(--ink-soft);line-height:1.95;margin-top:12px;}
+.sched-p b{color:var(--primary);font-weight:700;}
+.sched-facilities{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:22px;}
+@media (min-width:640px){.sched-facilities{grid-template-columns:repeat(4,1fr);}}
+.sched-fac{
+  background:var(--bg);border:1px solid var(--line);
+  padding:14px 10px;text-align:center;border-radius:14px;
+  display:flex;flex-direction:column;gap:6px;align-items:center;
+  transition:border-color .3s;
+}
+.sched-fac:hover{border-color:var(--primary);}
+.sched-fac .material-icons-outlined{color:var(--secondary);font-size:22px;}
+.sched-fac .lbl{font-family:"Noto Serif JP",serif;font-weight:700;font-size:11px;color:var(--ink);letter-spacing:0.04em;}
+
+.timeline-card{
+  background:var(--bg);border:1px solid var(--line);border-radius:22px;
+  padding:32px 24px;
+}
+@media (min-width:768px){.timeline-card{padding:40px 32px;}}
+.timeline-head{
+  display:flex;align-items:center;gap:10px;color:var(--primary);
+  font-family:"Cormorant Garamond",serif;font-style:italic;
+  font-size:14px;letter-spacing:0.18em;
+}
+.timeline-head .material-icons-outlined{font-size:20px;}
+.timeline-title{font-family:"Noto Serif JP",serif;font-size:18px;font-weight:700;margin:6px 0 28px;letter-spacing:0.04em;}
+.timeline{position:relative;padding-left:32px;}
+.timeline::before{
+  content:"";position:absolute;left:5.5px;top:6px;bottom:6px;width:0;
+  border-left:2px dotted rgba(11,155,136,0.45);
+}
+.tl-item{position:relative;padding-bottom:24px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-item .marker{
+  position:absolute;left:-32px;top:5px;width:13px;height:13px;
+  border-radius:50%;background:#fff;border:2px solid var(--primary);
+}
+.tl-item.start .marker{background:var(--secondary);border-color:var(--secondary);}
+.tl-item.end .marker{background:#9CA3AF;border-color:#9CA3AF;}
+.tl-time{
+  display:inline-block;font-family:"Cormorant Garamond",serif;font-weight:500;
+  font-size:18px;color:var(--ink);letter-spacing:0.04em;line-height:1;
+}
+.tl-h{font-family:"Noto Serif JP",serif;font-size:14px;font-weight:700;color:var(--ink);margin-top:4px;letter-spacing:0.02em;}
+.tl-p{font-size:12px;color:var(--muted);margin-top:4px;line-height:1.8;}
+
+/* ───────── STAFF ───────── */
+.staff{background:var(--bg-mist);}
+.staff-grid{display:grid;grid-template-columns:1fr;gap:20px;}
+@media (min-width:768px){.staff-grid{grid-template-columns:repeat(3,1fr);gap:22px;}}
+.staff-card{
+  background:#fff;border:1px solid var(--line);
+  border-radius:22px;overflow:hidden;
+  display:flex;flex-direction:column;
+  transition:box-shadow .3s, transform .3s;
+}
+.staff-card:hover{box-shadow:0 1px 0 rgba(31,41,55,0.02), 0 18px 40px -22px rgba(31,41,55,0.22);}
+.staff-photo{aspect-ratio:4/3;position:relative;overflow:hidden;background:var(--primary-soft);}
+.staff-photo img{width:100%;height:100%;object-fit:cover;}
+.staff-photo .role{
+  position:absolute;top:14px;left:14px;
+  padding:5px 12px;background:rgba(255,255,255,0.95);border-radius:999px;
+  font-family:"Cormorant Garamond",serif;font-style:italic;font-size:11px;letter-spacing:0.2em;
+  color:var(--primary-deep);text-transform:uppercase;
+}
+.staff-body{padding:24px 22px;display:flex;flex-direction:column;flex:1;}
+.staff-name{
+  font-family:"Noto Serif JP",serif;font-size:20px;font-weight:700;color:var(--ink);letter-spacing:0.06em;
+}
+.staff-name .romaji{
+  display:block;font-family:"Cormorant Garamond",serif;font-style:italic;font-weight:500;
+  font-size:12px;color:var(--secondary);letter-spacing:0.2em;margin-top:4px;
+}
+.staff-divider{width:28px;height:1.5px;background:var(--secondary);margin:14px 0;}
+.staff-bio{font-size:12.5px;line-height:1.95;color:var(--ink-soft);}
+.staff-bio p{margin-bottom:10px;}
+.staff-bio p:last-child{margin-bottom:0;}
+.staff-bio .lead{font-family:"Noto Serif JP",serif;font-weight:700;color:var(--ink);font-size:13px;margin-bottom:8px;}
+.staff-bio b{color:var(--ink);font-weight:700;}
+.staff-bio blockquote{
+  margin:12px 0;padding:10px 14px;border-left:2px solid var(--primary);
+  background:var(--primary-soft);border-radius:0 8px 8px 0;
+  display:flex;flex-direction:column;gap:3px;font-size:12px;
+}
+.staff-more{max-height:0;opacity:0;overflow:hidden;transition:max-height .5s ease, opacity .4s ease;}
+.staff-more.open{max-height:6000px;opacity:1;}
+.staff-toggle{
+  align-self:flex-start;margin-top:auto;padding-top:16px;
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:"Cormorant Garamond",serif;font-style:italic;
+  font-size:13px;letter-spacing:0.16em;color:var(--primary);font-weight:500;
+}
+.staff-toggle .material-icons-outlined{font-size:18px;transition:transform .3s;}
+.staff-toggle.open .material-icons-outlined{transform:rotate(180deg);}
+
+/* ───────── FEES ───────── */
+.subsidy{
+  background:linear-gradient(135deg, #2A3340 0%, #1F2937 100%);
+  color:#fff;border-radius:22px;padding:28px 24px;
+  display:flex;flex-direction:column;align-items:flex-start;gap:14px;
+  margin-bottom:18px;
+  position:relative;overflow:hidden;
+}
+.subsidy::before{
+  content:"";position:absolute;top:-30px;right:-30px;width:160px;height:160px;
+  background:radial-gradient(circle, rgba(253,184,19,0.22), transparent 70%);
+}
+.subsidy .ico{
+  width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:rgba(253,184,19,0.18);color:var(--secondary);position:relative;
+}
+.subsidy .ico .material-icons-outlined{font-size:28px;}
+.subsidy h3{font-family:"Noto Serif JP",serif;font-size:16px;font-weight:700;letter-spacing:0.04em;line-height:1.6;position:relative;}
+.subsidy p{font-size:12.5px;color:rgba(255,255,255,0.82);line-height:1.95;position:relative;}
+@media (min-width:768px){
+  .subsidy{flex-direction:row;align-items:center;gap:24px;padding:32px 32px;}
+}
+
+.fee-table{
+  background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;
+}
+.fee-row{display:grid;grid-template-columns:1fr;}
+@media (min-width:640px){.fee-row{grid-template-columns:200px 1fr;}}
+.fee-row + .fee-row{border-top:1px solid var(--line);}
+.fee-row .k{
+  padding:14px 20px;background:var(--bg);
+  font-family:"Noto Serif JP",serif;font-weight:700;font-size:13px;
+  color:var(--ink);display:flex;align-items:center;gap:10px;letter-spacing:0.04em;
+  border-bottom:1px solid var(--line-soft);
+}
+@media (min-width:640px){.fee-row .k{border-bottom:none;border-right:1px solid var(--line);padding:20px 22px;}}
+.fee-row .k .nn{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:13px;color:var(--secondary);letter-spacing:0.16em;}
+.fee-row .v{padding:18px 20px;display:flex;align-items:center;flex-wrap:wrap;gap:10px;}
+@media (min-width:640px){.fee-row .v{padding:20px 22px;}}
+.fee-row .v .amt{
+  font-family:"Cormorant Garamond",serif;font-weight:500;font-size:24px;color:var(--ink);
+}
+.fee-row .v .amt .yen{font-family:"Noto Serif JP",serif;font-size:16px;margin-left:3px;}
+.fee-row .v .age{font-family:"Noto Serif JP",serif;font-size:15px;font-weight:700;color:var(--ink);}
+.fee-row .v small{font-size:11px;color:var(--muted);letter-spacing:0.06em;}
+.fee-row.hl{background:var(--primary-soft);}
+.fee-row.hl .k{background:var(--primary);color:#fff;}
+.fee-row.hl .k .nn{color:var(--secondary);}
+.fee-row.hl .v{flex-direction:column;align-items:flex-start;gap:8px;}
+.fee-row.hl .v p{font-size:13px;color:var(--ink);line-height:1.9;}
+.fee-row.hl .v p b{color:var(--primary-deep);font-weight:700;}
+
+/* ───────── ACCESS ───────── */
+.access-card{
+  display:grid;grid-template-columns:1fr;gap:28px;
+  background:#fff;border:1px solid var(--line);border-radius:22px;
+  padding:28px 22px;
+}
+@media (min-width:768px){.access-card{grid-template-columns:1fr 1.1fr;gap:36px;padding:40px;}}
+.access-info{display:flex;flex-direction:column;gap:20px;}
+.access-row{
+  display:grid;grid-template-columns:32px 1fr;gap:14px;align-items:start;
+  padding-bottom:16px;border-bottom:1px solid var(--line-soft);
+}
+.access-row:last-child{border-bottom:none;padding-bottom:0;}
+.access-row .ic{
+  width:32px;height:32px;border-radius:50%;background:var(--primary-soft);
+  display:flex;align-items:center;justify-content:center;color:var(--primary);
+}
+.access-row .ic .material-icons-outlined{font-size:18px;}
+.access-row .lbl{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:11px;letter-spacing:0.2em;color:var(--secondary);text-transform:uppercase;}
+.access-row .val{font-family:"Noto Serif JP",serif;font-size:14px;color:var(--ink);line-height:1.7;margin-top:2px;}
+.access-row .val a{color:var(--primary-deep);font-weight:700;border-bottom:1px solid var(--primary);}
+.access-row .val .sub{display:block;font-size:11px;color:var(--muted);margin-top:6px;font-family:"Noto Sans JP",sans-serif;font-weight:400;}
+.access-map{
+  aspect-ratio:4/3;border-radius:16px;overflow:hidden;
+  position:relative;background:var(--bg);
+  box-shadow:inset 0 0 0 1px var(--line);
+}
+.access-map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+
+/* ───────── FINAL CTA ───────── */
+.cta{
+  position:relative;overflow:hidden;
+  background:linear-gradient(135deg, var(--primary) 0%, var(--primary-deep) 100%);
+  color:#fff;padding:80px 0;
+}
+@media (min-width:768px){.cta{padding:100px 0;}}
+.cta::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(ellipse at 80% 0%, rgba(253,184,19,0.16), transparent 50%),
+             radial-gradient(ellipse at 20% 100%, rgba(255,255,255,0.08), transparent 60%);
+}
+.cta .wrap{position:relative;text-align:center;}
+.cta-status{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:8px 18px;border:1px solid rgba(255,255,255,0.28);
+  border-radius:999px;font-size:12px;letter-spacing:0.06em;
+  margin-bottom:30px;
+}
+.cta-status .dot{width:8px;height:8px;border-radius:50%;background:var(--secondary);}
+.cta h2{
+  font-family:"Noto Serif JP",serif;font-weight:700;
+  font-size:clamp(22px,5.8vw,34px);
+  letter-spacing:0.04em;line-height:1.55;color:#fff;margin-bottom:18px;
+}
+.cta h2 .em{color:var(--secondary);}
+.cta-lede{color:rgba(255,255,255,0.85);font-size:13.5px;line-height:1.95;max-width:520px;margin:0 auto 36px;}
+.cta-promises{
+  display:grid;grid-template-columns:1fr;gap:12px;max-width:760px;margin:0 auto 32px;
+}
+@media (min-width:640px){.cta-promises{grid-template-columns:repeat(3,1fr);gap:14px;}}
+.cta-promise{
+  padding:22px 18px;border-radius:18px;
+  background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.16);
+  backdrop-filter:blur(8px);
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+}
+.cta-promise .material-icons-outlined{color:var(--secondary);font-size:28px;}
+.cta-promise .label{font-family:"Noto Serif JP",serif;font-weight:700;font-size:15px;letter-spacing:0.04em;}
+.cta-promise .sub{font-size:11.5px;color:rgba(255,255,255,0.7);line-height:1.7;letter-spacing:0.04em;}
+
+.cta-actions{display:flex;flex-direction:column;gap:10px;align-items:stretch;max-width:480px;margin:0 auto;}
+@media (min-width:640px){.cta-actions{flex-direction:row;justify-content:center;max-width:none;}}
+
+/* ───────── FOOTER ───────── */
+.footer{background:var(--primary-deep);color:#fff;padding:40px 0 28px;border-top:1px solid rgba(255,255,255,0.1);}
+.footer-card{
+  background:rgba(255,255,255,0.1);backdrop-filter:blur(4px);
+  border:1px solid rgba(255,255,255,0.16);border-radius:20px;
+  padding:32px 24px;max-width:520px;margin:0 auto;
+  text-align:center;
+}
+.footer-icon{width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.14);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;}
+.footer-icon .material-icons-outlined{color:#fff;font-size:26px;}
+.footer-name{font-family:"Noto Serif JP",serif;font-size:18px;font-weight:700;color:#fff;letter-spacing:0.08em;margin-bottom:14px;}
+.footer-info{display:flex;flex-direction:column;gap:8px;font-size:13px;color:rgba(255,255,255,0.85);}
+.footer-info a{color:#fff;border-bottom:1px solid rgba(255,255,255,0.3);}
+.footer-info small{font-size:11px;color:rgba(255,255,255,0.6);letter-spacing:0.06em;}
+.footer-copy{text-align:center;margin-top:24px;font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:0.1em;}
+</style>
+</head>
+
+<body>
+<div id="app">
+
+<!-- ═══════════════ HEADER ═══════════════ -->
+<header class="site-header" :class="{scrolled:isScrolled, 'nav-hidden':isHeaderHidden}">
+  <div class="max-w-7xl mx-auto px-5 md:px-8">
+    <div class="bar">
+      <div class="brand" @click="scrollTo('top')">
+        <img src="mockup_v2/images/torabe-log-white.png" alt="">
+        <span class="name">とらべ</span>
+      </div>
+      <nav class="hidden md:flex items-center gap-7">
+        <a class="nav-link" href="#concept" @click.prevent="scrollTo('concept')">コンセプト</a>
+        <a class="nav-link" href="#features" @click.prevent="scrollTo('features')">特長</a>
+        <a class="nav-link" href="#schedule" @click.prevent="scrollTo('schedule')">1日の流れ</a>
+        <a class="nav-link" href="#staff" @click.prevent="scrollTo('staff')">スタッフ</a>
+        <a class="nav-link" href="#fees" @click.prevent="scrollTo('fees')">料金</a>
+        <a class="nav-link" href="#access" @click.prevent="scrollTo('access')">アクセス</a>
+        <button class="btn btn-secondary" style="padding:10px 22px;min-height:auto;font-size:13px;" @click="scrollTo('cta')">見学・説明会へ <span class="arr">→</span></button>
+      </nav>
+      <div class="md:hidden">
+        <button class="menu-btn" @click="toggleMenu" aria-label="メニュー">
+          <span class="material-icons-outlined" style="font-size:26px;">{{ isMobileMenuOpen ? 'close' : 'menu' }}</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <transition name="menu">
+    <div v-if="isMobileMenuOpen" class="mobile-menu md:hidden">
+      <div class="m-cta">
+        <button class="btn btn-primary w-full" @click="scrollTo('cta')">見学・説明会に申し込む <span class="arr">→</span></button>
+      </div>
+      <a class="m-link" href="#concept"  @click.prevent="scrollTo('concept')"><span>コンセプト</span><span class="mn">01</span></a>
+      <a class="m-link" href="#features" @click.prevent="scrollTo('features')"><span>特長</span><span class="mn">02</span></a>
+      <a class="m-link" href="#schedule" @click.prevent="scrollTo('schedule')"><span>1日の流れ</span><span class="mn">03</span></a>
+      <a class="m-link" href="#staff"    @click.prevent="scrollTo('staff')"><span>スタッフ</span><span class="mn">04</span></a>
+      <a class="m-link" href="#fees"     @click.prevent="scrollTo('fees')"><span>料金</span><span class="mn">05</span></a>
+      <a class="m-link" href="#access"   @click.prevent="scrollTo('access')"><span>アクセス</span><span class="mn">06</span></a>
+    </div>
+  </transition>
+</header>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section id="top" class="hero" data-screen-label="01 Hero">
+  <div class="hero-bg"></div>
+  <div class="hero-scrim"></div>
+
+  <a href="https://activo.jp/articles/112781" target="_blank" rel="noopener noreferrer" class="hero-volunteer">
+    <span class="dot"></span>
+    <span>ボランティア募集中</span>
+  </a>
+
+  <div class="hero-inner">
+    <div class="hero-head">
+      <div style="display:flex;align-items:center;gap:clamp(8px,2vw,16px);">
+        <img src="mockup_v2/images/torabe-log.png" alt="" class="hero-logo">
+        <img src="mockup_v2/images/title.png" alt="とらすとべーす フリースクール" class="hero-title-img">
+      </div>
+      <h1 class="sr-only">とらすとべーす フリースクール</h1>
+
+      <div class="hero-kanji" aria-label="歩止歩止">
+        <span class="ch">歩</span><span class="space"></span><span class="ch alt">止</span><span class="space"></span><span class="ch">歩</span><span class="space"></span><span class="ch alt">止</span>
+      </div>
+
+      <p class="hero-sub">「歩いてもいい、止まってもいい」</p>
+
+      <div class="hero-meta">
+        <span class="pill">東京都中野区</span>
+        <span class="pill">アットホームな一軒家</span>
+        <span class="pill">個別対応（少人数）</span>
+      </div>
+    </div>
+
+    <nav class="hero-toc">
+      <a class="toc-card" href="#features" @click.prevent="scrollTo('features')"><span class="n">01</span><span class="l">特長</span></a>
+      <a class="toc-card" href="#concept" @click.prevent="scrollTo('concept')"><span class="n">02</span><span class="l">コンセプト</span></a>
+      <a class="toc-card" href="#schedule" @click.prevent="scrollTo('schedule')"><span class="n">03</span><span class="l">1日の流れ</span></a>
+      <a class="toc-card" href="#staff" @click.prevent="scrollTo('staff')"><span class="n">04</span><span class="l">スタッフ</span></a>
+      <a class="toc-card" href="#fees" @click.prevent="scrollTo('fees')"><span class="n">05</span><span class="l">募集要項</span></a>
+      <a class="toc-card" href="#access" @click.prevent="scrollTo('access')"><span class="n">06</span><span class="l">アクセス</span></a>
+    </nav>
+
+    <div class="hero-scroll">SCROLL</div>
+  </div>
+</section>
+
+<!-- ═══════════════ CONCEPT ═══════════════ -->
+<section id="concept" class="section fade-in" data-screen-label="02 Concept">
+  <div class="wrap-sm">
+    <div class="s-head">
+      <span class="eyebrow center">Concept &nbsp;／&nbsp; 01</span>
+      <h2>とらべの<br class="sm:hidden">コンセプト</h2>
+    </div>
+
+    <div class="concept-card">
+      <p class="concept-h">
+        <span class="concept-h-row"><span class="sp-l"><span class="quote">「</span>歩いてもいい、</span><span class="sp-r">止まってもいい<span class="quote">」</span></span></span><br>
+        歩止歩止
+      </p>
+      <p class="concept-romaji">— HODO HODO —</p>
+
+      <div class="concept-split">
+        <div class="concept-half">
+          <div class="concept-glyph green" style="font-family:'Noto Sans JP','Hiragino Kaku Gothic ProN',sans-serif;">歩</div>
+          <h4>「歩」く</h4>
+          <p>右足と左足、両足で自分のペースで学んでいくことができる。</p>
+        </div>
+        <div class="axis"></div>
+        <div class="concept-half">
+          <div class="concept-glyph yellow" style="font-family:'Noto Sans JP','Hiragino Kaku Gothic ProN',sans-serif;">止</div>
+          <h4>「止」まる</h4>
+          <p>止まることも動き。自分の現在地を知る、振り返ることができる。</p>
+        </div>
+      </div>
+
+      <p class="concept-foot">
+        自由な環境で、自分のペースで学ぶことができます。<br>
+        一人ひとりの興味関心や特性に合わせた学びを実現します。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ EMPATHY ═══════════════ -->
+<section class="empathy section fade-in" data-screen-label="03 Empathy">
+  <div class="wrap">
+    <div class="s-head">
+      <span class="eyebrow center">For Parents</span>
+      <h2>お子様の学びについて、<br>こんな想いはありませんか？</h2>
+    </div>
+
+    <div class="empathy-list">
+      <div class="empathy-item">
+        <div class="ic"><span class="material-icons-outlined">class</span></div>
+        <p>学校の授業が一律すぎて、うちの子には合っていない気がする。</p>
+      </div>
+      <div class="empathy-item">
+        <div class="ic"><span class="material-icons-outlined">directions_run</span></div>
+        <p>決まった科目・時間割より、もっと自由に学ばせてあげたい。</p>
+      </div>
+      <div class="empathy-item">
+        <div class="ic"><span class="material-icons-outlined">home</span></div>
+        <p>少人数で、一人ひとりと向き合ってくれる場所を探している。</p>
+      </div>
+      <div class="empathy-item">
+        <div class="ic"><span class="material-icons-outlined">sentiment_dissatisfied</span></div>
+        <p>学校に行き渋っている。でも家にいるだけでは不安…</p>
+      </div>
+    </div>
+
+    <div class="empathy-resolve">
+      <span class="lbl">— OUR ANSWER —</span>
+      <p>その選択肢の一つとして、<br class="sm:hidden"><span class="em">とらべ</span>があります。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ MID CTA ═══════════════ -->
+<section class="section fade-in" style="padding-top:0;padding-bottom:72px;">
+  <div class="wrap-sm">
+    <div class="midcta-card">
+      <h3>まずは見学に来てみてください</h3>
+      <div class="midcta-meta">
+        <span class="it"><span class="material-icons-outlined">schedule</span>約1〜2時間</span>
+        <span class="it"><span class="material-icons-outlined">child_care</span>お子さん同伴OK</span>
+        <span class="it"><span class="material-icons-outlined">chat</span>個別相談 無料</span>
+      </div>
+      <button class="btn btn-primary" @click="scrollTo('cta')">
+        <span class="material-icons-outlined" style="font-size:18px;">event_available</span>
+        見学を申し込む（無料） <span class="arr">→</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FEATURES ═══════════════ -->
+<section id="features" class="section fade-in" style="padding-top:0;" data-screen-label="04 Features">
+  <div class="wrap">
+    <div class="s-head">
+      <span class="eyebrow center">Features &nbsp;／&nbsp; 02</span>
+      <h2>とらべが選ばれる<br>4つの特長</h2>
+      <p class="lede">2004年設立の「東京コミュニティスクール（TCS）」が20年以上にわたり培ってきたノウハウを活かした第2校としてオープンしました。</p>
+    </div>
+
+    <div class="features-grid">
+      <article class="feat-card">
+        <div class="blob"></div>
+        <div class="feat-head">
+          <div class="feat-num">01</div>
+          <h3 class="feat-title">日本語<span class="sub">「表現する力」を一生の武器に</span></h3>
+        </div>
+        <p class="feat-desc">学び続ける力の基盤として、日本語の学びを重視しています。</p>
+        <ul class="feat-list">
+          <li>「読む」 — 物語の面白さに触れる</li>
+          <li>「ことば」 — 語彙の獲得を目指す</li>
+          <li>「書く」 — 創造的に作文する</li>
+        </ul>
+        <p style="font-size:12px;color:var(--primary-deep);font-weight:500;margin-top:4px;letter-spacing:0.04em;">これら三本柱で、個に応じたやり方で学びます。</p>
+      </article>
+
+      <article class="feat-card tint">
+        <div class="blob"></div>
+        <div class="feat-head">
+          <div class="feat-num">02</div>
+          <h3 class="feat-title">探究<span class="sub">「なぜ？」を追いかける力が育つ</span></h3>
+        </div>
+        <p class="feat-desc">「私たちはどのように自分らしく生き続けるのか？」などの6つの探究領域のもと学びます。</p>
+        <div class="feat-pillrow">
+          <span class="feat-pill"><span class="material-icons-outlined">people</span>皆で探究するスタイル</span>
+          <span class="feat-pill"><span class="material-icons-outlined">person</span>個別のマイプロジェクト</span>
+        </div>
+      </article>
+
+      <article class="feat-card">
+        <div class="blob"></div>
+        <div class="feat-head">
+          <div class="feat-num">03</div>
+          <h3 class="feat-title">原体験<span class="sub">本物の体験が自信をつくる</span></h3>
+        </div>
+        <p class="feat-desc">日々の公園などに加え、多くのアウトドアイベントを用意しています。<br><span style="font-size:12px;color:var(--muted);">畑・川遊び・登山・乗馬・ムササビ観察・スキーなど。</span></p>
+        <p class="feat-note"><span class="material-icons-outlined">info</span>アウトドアに不安がある場合は、無理せず自分のペースで参加を選択できます。</p>
+      </article>
+
+      <article class="feat-card">
+        <div class="blob"></div>
+        <div class="feat-head">
+          <div class="feat-num">04</div>
+          <h3 class="feat-title">個別評価<span class="sub">成績でなく「成長」で見守る</span></h3>
+        </div>
+        <p class="feat-desc">学期ごとに評価を作成し、子どもの現状から将来像まで視野を広げた「学びの方向性」をまとめます。</p>
+        <div class="feat-bottom">
+          <div class="b"><span class="material-icons-outlined">supervised_user_circle</span>保護者面談</div>
+          <div class="b"><span class="material-icons-outlined">face</span>子ども面談</div>
+        </div>
+      </article>
+    </div>
+
+    <div style="text-align:center;margin-top:40px;">
+      <button class="btn btn-secondary" @click="scrollTo('cta')">
+        <span class="material-icons-outlined" style="font-size:18px;">event_available</span>
+        これらを体感しに見学へ <span class="arr">→</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ SCHEDULE ═══════════════ -->
+<section id="schedule" class="schedule section fade-in" data-screen-label="05 Schedule">
+  <div class="wrap">
+    <div class="s-head">
+      <span class="eyebrow center">Environment &amp; Schedule &nbsp;／&nbsp; 03</span>
+      <h2>学習環境と<br>一日の過ごし方</h2>
+    </div>
+
+    <div class="sched-grid">
+      <div>
+        <div class="sched-photo">
+          <img src="mockup_v2/images/torabe-house.webp" alt="とらすとベース フリースクールの一軒家外観">
+          <span class="badge">TORABE HOUSE</span>
+        </div>
+        <h3 class="sched-h">安心して学べる、アットホームな一軒家</h3>
+        <p class="sched-p">スタッフが組み立てる時間の他、子どもが自分で選ぶ<b>「余白」</b>の時間がたっぷりあります。「つくりたい」「しりたい」など、一人ひとりがやりたいことを選べます。</p>
+        <div class="sched-facilities">
+          <div class="sched-fac"><span class="material-icons-outlined">tv</span><span class="lbl">スマートボード</span></div>
+          <div class="sched-fac"><span class="material-icons-outlined">laptop_mac</span><span class="lbl">iPad / MacBook</span></div>
+          <div class="sched-fac"><span class="material-icons-outlined">build</span><span class="lbl">工作スペース</span></div>
+          <div class="sched-fac"><span class="material-icons-outlined">deck</span><span class="lbl">屋上エリア</span></div>
+        </div>
+      </div>
+
+      <div class="timeline-card">
+        <div class="timeline-head">
+          <span class="material-icons-outlined">schedule</span>
+          A DAY AT TORABE
+        </div>
+        <h3 class="timeline-title">一日のスケジュール例</h3>
+        <div class="timeline">
+          <div class="tl-item start">
+            <span class="marker"></span>
+            <span class="tl-time">8:30</span>
+            <h4 class="tl-h">オープン</h4>
+          </div>
+          <div class="tl-item">
+            <span class="marker"></span>
+            <span class="tl-time">9:00</span>
+            <h4 class="tl-h">朝の会・日本語 + α メニュー</h4>
+            <p class="tl-p">基礎となる日本語の学びや、それぞれの課題に取り組みます。</p>
+          </div>
+          <div class="tl-item">
+            <span class="marker"></span>
+            <span class="tl-time">12:00</span>
+            <h4 class="tl-h">ランチ・かんがえたい（探究）</h4>
+            <p class="tl-p">みんなで昼食をとった後、探究活動やマイプロジェクトを進めます。</p>
+          </div>
+          <div class="tl-item">
+            <span class="marker"></span>
+            <span class="tl-time">15:45</span>
+            <h4 class="tl-h">振り返り・そうじ</h4>
+            <p class="tl-p">一日の学びを振り返り、使った場所を綺麗にします。</p>
+          </div>
+          <div class="tl-item end">
+            <span class="marker"></span>
+            <span class="tl-time">17:00</span>
+            <h4 class="tl-h">クローズ</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ STAFF ═══════════════ -->
+<section id="staff" class="staff section fade-in" data-screen-label="06 Staff">
+  <div class="wrap">
+    <div class="s-head">
+      <span class="eyebrow center">Staff &nbsp;／&nbsp; 04</span>
+      <h2>共に学びを創る<br class="sm:hidden">スタッフ</h2>
+      <p class="lede">多様なバックグラウンドを持つスタッフが、子どもたち一人ひとりに寄り添います。</p>
+    </div>
+
+    <div class="staff-grid">
+      <!-- Ema -->
+      <article class="staff-card">
+        <div class="staff-photo">
+          <img src="mockup_v2/images/emachan.jpg" alt="永易 江麻">
+          <span class="role">Director</span>
+        </div>
+        <div class="staff-body">
+          <h3 class="staff-name">永易 江麻<span class="romaji">Ema Nagayasu</span></h3>
+          <div class="staff-divider"></div>
+          <div class="staff-bio">
+            <p>東京コミュニティスクール（TCS）に出会ったのは就活を控えた大学生の時。大学で自閉症やダウン症など障害がある子どもたちと過ごすサークルに参加したことから、人の成長や教育ということに関心を持ち始め、それをライフワークにしたいと考えていた頃でした。これまで、TCSには、スタッフ、理事、保護者と様々な立場で携わってきました。</p>
+            <div class="staff-more" :class="{open:isEmaBioOpen}">
+              <p>TCSに出会ってくれたご家庭の中には、不登校を経験しているケースもありました。私は、子どもが学校に通えていない現状を見るより、TCSがよりよい学び場であることが子どものためになると信じて、TCSの学びをいかによくするかということに尽力してきました。</p>
+              <p>転機となったのは、2019年に、東京都フリースクール等ネットワーク（TFN）の立ち上げに関わり、設立と同時に事務局長に就任したことです。活動を続ける中で、居場所がない、感覚の過敏さ、理解されないことへの不安、他の選択肢を選ぶパワーさえ失っている、不登校が子どもや保護者にもたらす深刻な現状に触れました。</p>
+              <p>そこで感じたことは、不登校（学校に通えない状態）ではなく、<b>不学（学びたいのに学びたいように学べていない状態）を解決したい</b>ということでした。</p>
+              <p>子どもたちには、「やりたい・知りたい・つくりたい・考えたい・やりとりしたい」、各々が学びたいという気持ちを持っています。その気持ちを失わせることなく、学ぶことを楽しんでほしい。</p>
+              <p>こうして、「学びの選択肢を提案し、学びを選べる時代へ」というTCSの思いを実現するために、TCS歴20年を経て、新たに得たミッションが「とらべ」の開校・運営です。</p>
+              <blockquote>
+                <span>「子どもを知るところから始める」</span>
+                <span>「子ども自身が動く」</span>
+                <span>「ラーニングコミュニティとして、大人も学び続ける」</span>
+                <span>「生きていく上で大切な概念の獲得」</span>
+                <span>「成長を促進するための評価」</span>
+              </blockquote>
+              <p>というTCSカルチャーを維持しつつ、「学び続ける人・創造し続ける人」という目指す学習者像はそのままに、「余白の中で学びを組み立てる」という、東京コミュニティスクールとは違う学びのスタイルを提案することが試されています。</p>
+              <p>子どもの個性は様々で、学び方だって多様なはず。誰もが積極的に自分に合った学びを選択できる環境、それが公教育で実現できれば、我々の役目は終わりだと思っています。</p>
+              <p>その実験場として、とらべは生まれました。とらべにワクワクしてくださる方と共に、とらべを創っていきたい。一緒にとらべを創ってくれる、子どもたち・保護者・スタッフを待っています。</p>
+            </div>
+          </div>
+          <button class="staff-toggle" :class="{open:isEmaBioOpen}" @click="isEmaBioOpen = !isEmaBioOpen">
+            {{ isEmaBioOpen ? '閉じる' : '続きを読む' }}
+            <span class="material-icons-outlined">expand_more</span>
+          </button>
+        </div>
+      </article>
+
+      <!-- Inaba -->
+      <article class="staff-card">
+        <div class="staff-photo">
+          <img src="mockup_v2/images/inabi.jpg" alt="稲葉 祐一朗">
+          <span class="role">Master</span>
+        </div>
+        <div class="staff-body">
+          <h3 class="staff-name">稲葉 祐一朗<span class="romaji">Yuichiro Inaba</span></h3>
+          <div class="staff-divider"></div>
+          <div class="staff-bio">
+            <p class="lead">1. なぜ大人は忘れてしまうのか？</p>
+            <p>小学生のころは明るく元気な少年だったと思うのですが、中学２年になるとそんな自分の「やり方」がわからなくなり、毎日、学校に行くのもつらくなりました。なぜか先生たちとうまく行かず、テストで点が取れていないわけでもないのに、通知表は悪くなっていく一方。それでも、そういう言葉になりきれない不安や不満を担任の先生に打ち明けてもみたのですが、全く理解してもらえませんでした。</p>
+            <p>「自分だって子どもだったはずなのに、なんで忘れてしまうんだろう？」<br>自分だけは大人になっても子どものときの感覚を忘れない。そう強く心に誓ったのでした。</p>
+            <div class="staff-more" :class="{open:isStaffBioOpen}">
+              <p class="lead">2. デンマーク、新しい価値観との出会い</p>
+              <p>30代になるタイミングでデンマークのフォルケホイスコーレと出会いました。フォルケホイスコーレは16歳以上なら誰でも入れる「大人の学校」として知られる場所で、デンマーク国内だけで70近いフォルケホイスコーレがありました。そのうちの一つに入学し、世界中から集まった人々との寮生活を共にし、自分が学びたいと思う授業を選択しながら国際情勢や政治哲学、衝突と戦争という堅い科目から、体育や映画製作、アート＆クラフトなどの軽い科目まで履修して１年間を過ごしました。</p>
+              <p>フォルケホイスコーレで過ごす中で、デンマークという国ではいかに「普通」という概念が希薄かということに驚きました。「普通」がないとは言わないけれど、みんなそれに囚われていないのです。日本での生活は、たくさんの「普通」に縛られたものだったんだなと気づきました。また自分に合う学校が存在しないとき、自分たちでそれを作ってしまえばいい、という自由な発想がありました。帰国後、じゃあ自分でできることをかたちにしてみようと思いました。</p>
+              <p class="lead">3. フリースクールを作ってみる</p>
+              <p>2016年から６年間、栃木県で「小山フリースクールおるたの家」というフリースクールを経営しました。自分にできることはなにか？という問いから日本が抱える不登校の問題に気づき、一軒家を借りて日中開放し、小中学生を受け入れることにしました。ただ場所がある、ということが、子どもたちにとってどれだけ大切なことか。学校外の選択肢を一つ作ることに大きな意義を感じました。</p>
+              <p class="lead">4. 積極的な学びを経験する</p>
+              <p>学校で疲弊した子どもたちのエネルギーの回復を優先することと、学びを取り入れていくこととのギャップをどう埋めるかという部分に葛藤を抱えていました。そういったときに東京コミュニティスクールと出会い、コロナ禍でフリースクールを一度閉じ、より積極的に学びを作っていくTCSに入職するという決断をしました。</p>
+              <p class="lead">5. マスターとしての役割</p>
+              <p>とらべが目指すのは、まさに私が経験してきたフリースクールとTCSの学びの間の部分です。個人個人の成長をしっかりと見極めながら、彼らにあった学びを提案していく。それがとらべのマスターとしての仕事だと考えています。</p>
+            </div>
+          </div>
+          <button class="staff-toggle" :class="{open:isStaffBioOpen}" @click="isStaffBioOpen = !isStaffBioOpen">
+            {{ isStaffBioOpen ? '閉じる' : '続きを読む' }}
+            <span class="material-icons-outlined">expand_more</span>
+          </button>
+        </div>
+      </article>
+
+      <!-- Yuyu -->
+      <article class="staff-card">
+        <div class="staff-photo">
+          <img src="mockup_v2/images/yuyu.jpg" alt="大知里 由">
+          <span class="role">Anchor</span>
+        </div>
+        <div class="staff-body">
+          <h3 class="staff-name">大知里 由<span class="romaji">Yu Ochisato</span></h3>
+          <div class="staff-divider"></div>
+          <div class="staff-bio">
+            <p class="lead">分かりたい気持ち</p>
+            <p>「人の気持ちを理解できる弁護士になりたい」小学校の卒業文集に書いた私の夢です。大切な人に理解して貰えなかった経験から生まれた、私の中の根っことなる気持ちです。ただ、この夢が中学校卒業時には「アーティスト」に変わることになる。その人生の分岐点となったきっかけは、密やかで激しい揺らぎでした。中1の時、学級委員だった私は教壇に立ち文化祭について話をしていました。向かって左手側、前から4列目の席に座っていたTは、40人の中の1人として、ただ自分の席に座っていた。でも、みんなの前で何かをそれらしく話している私なんかよりも、茶色い重めの前髪の間から世界を見ている彼女の方がずっと信頼できるような、そういうものが彼女にはあった。そして察したのです。私には見えていない世界がある。ここにいては見えない世界がある。分かりたい。その瞬間、とぷん、と世界の裏っかわに潜ったような、そんな感覚をくっきりと覚えています。深い深い海でした。広く厳しく面白い世界でした。</p>
+            <div class="staff-more" :class="{open:isYuyuBioOpen}">
+              <p class="lead">分けられない思い</p>
+              <p>3歳から音楽を始め、絵本や小説も大好きだった私には、音楽も美術も文学も全てが分かち難く支え合って存在し、それぞれがそれぞれの言い換えだったり、部分的には溶け合っていたりするような感覚が幼い頃からありました。そして、実は学問もほとんど変わりなく、全ては美しさという点で私の中ではくっついている。なんてことを考えていた中3の冬、仲の良かった美術の先生に「お前、旭美（出身校の俗称）行けば？」と言われ、カルトンを抱えてデッサンを始めました。元々答えの決まっていることにはあまり興味が持てない性分でしたし、正解のない表現の世界にこそ自分の時間を費やす価値がある、という直感に従い、後戻りはできない自覚もなく芸術の道を選びました。</p>
+              <p class="lead">分からせてもらったこと</p>
+              <p>そして、1学年普通科9クラスに美術科が1クラスという編成の公立高校に進学しました。すごい学校だった。すごい時間だった。何があって何がなかったのか、今こそ深ーく考えているわけですが、本当の自由があったことは確か。教師と生徒間には尊重があり、そこは寛容性に満ちていた。何かを押し付けられた覚えはなく、自主自律に終始して、本質的で上質な自由を謳歌した3年間でした。根底に揺るぎない信頼があり、場に対して、他者に対して、自分に対して、自分の将来に対して、自分と自分の力と世界への信頼感を全身に浴び続けるような時間でした。あなたの人生は信頼に値する、と。</p>
+              <p class="lead">分かち合うという自分の使い方</p>
+              <p>勿論それから紆余曲折あり、1人娘の子育ても終わりに近づいてきた2025年、とらべのオープンに関わるご縁をいただきました。仕事や子育てをしながらも、芸術のみならず、学問という美しさからも逃れられなかった私は、現在も人間性心理学やコミュニケーション学を中心に学び続けています。様々な貴重な経験や学びから受け取ってきた素晴らしい心震わすものーー総称でいうと「愛」を、私を通して誰かに届けられたらいいなぁ、それができたら最高だな。こどもたちと分かち合いながらどこまでも成長していきたいです。</p>
+            </div>
+          </div>
+          <button class="staff-toggle" :class="{open:isYuyuBioOpen}" @click="isYuyuBioOpen = !isYuyuBioOpen">
+            {{ isYuyuBioOpen ? '閉じる' : '続きを読む' }}
+            <span class="material-icons-outlined">expand_more</span>
+          </button>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FEES ═══════════════ -->
+<section id="fees" class="section fade-in" data-screen-label="07 Fees">
+  <div class="wrap-sm">
+    <div class="s-head">
+      <span class="eyebrow center">Information &nbsp;／&nbsp; 05</span>
+      <h2>募集要項・費用</h2>
+    </div>
+
+    <div class="subsidy">
+      <div class="ico"><span class="material-icons-outlined">savings</span></div>
+      <div>
+        <h3>助成金制度のご案内（自治体・年度により異なります）</h3>
+        <p>お住まいの自治体によっては、フリースクール利用に対する助成金制度が設けられている場合があります（例：東京都フリースクール等利用者助成金 上限2万円/月）。制度の有無・内容は自治体や年度によって異なり、必ずしも利用できるとは限りません。詳細はお住まいの自治体またはスタッフへお問い合わせください。</p>
+      </div>
+    </div>
+
+    <div class="fee-table">
+      <div class="fee-row">
+        <div class="k"><span class="nn">01</span>対象年齢</div>
+        <div class="v"><span class="age">小学1〜6年生</span></div>
+      </div>
+      <div class="fee-row">
+        <div class="k"><span class="nn">02</span>入学金</div>
+        <div class="v"><span class="amt">220,000<span class="yen">円</span></span><small>（初年度のみ）</small></div>
+      </div>
+      <div class="fee-row">
+        <div class="k"><span class="nn">03</span>施設拡充費</div>
+        <div class="v"><span class="amt">110,000<span class="yen">円</span></span><small>（初年度のみ）</small></div>
+      </div>
+      <div class="fee-row">
+        <div class="k"><span class="nn">04</span>学費</div>
+        <div class="v"><span class="amt">990,000<span class="yen">円</span></span><small>（年額）</small></div>
+      </div>
+      <div class="fee-row hl">
+        <div class="k"><span class="nn">＊</span>助成金（参考）</div>
+        <div class="v">
+          <p>自治体の助成金が適用される場合、<b>実質負担が軽減される可能性があります</b><br>（試算例：990,000円 − 最大240,000円 = 約750,000円／年）</p>
+          <small>※助成金は自治体・年度・審査により異なり、利用できない場合もあります。上記はあくまで試算例です。</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ ACCESS ═══════════════ -->
+<section id="access" class="section fade-in" data-screen-label="08 Access" style="background:#fff;">
+  <div class="wrap-sm">
+    <div class="s-head">
+      <span class="eyebrow center">Access &nbsp;／&nbsp; 06</span>
+      <h2>アクセス</h2>
+    </div>
+
+    <div class="access-card">
+      <div class="access-info">
+        <div class="access-row">
+          <div class="ic"><span class="material-icons-outlined">location_on</span></div>
+          <div>
+            <span class="lbl">Address</span>
+            <p class="val">〒165-0026<br>東京都中野区新井2-35-2</p>
+          </div>
+        </div>
+        <div class="access-row">
+          <div class="ic"><span class="material-icons-outlined">phone</span></div>
+          <div>
+            <span class="lbl">Phone</span>
+            <p class="val">
+              <a href="tel:0353189700">03-5318-9700</a>
+              <span class="sub">繋がらない場合はこちら： <a href="tel:0359891869">03-5989-1869</a></span>
+            </p>
+          </div>
+        </div>
+        <div class="access-row">
+          <div class="ic"><span class="material-icons-outlined">train</span></div>
+          <div>
+            <span class="lbl">Station</span>
+            <p class="val">中野駅北口より徒歩15分</p>
+          </div>
+        </div>
+        <div class="access-row">
+          <div class="ic"><span class="material-icons-outlined">business</span></div>
+          <div>
+            <span class="lbl">Operator</span>
+            <p class="val">NPO法人東京コミュニティスクール</p>
+          </div>
+        </div>
+      </div>
+      <div class="access-map">
+        <iframe
+          src="https://maps.google.com/maps?q=35.7114807,139.66216&output=embed&hl=ja&z=17"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="とらすとベース フリースクール の地図"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FINAL CTA ═══════════════ -->
+<section id="cta" class="cta" data-screen-label="09 CTA">
+  <div class="wrap">
+    <div class="cta-status">
+      <span class="dot pulse-dot"></span>
+      <span>現在、2026年度の見学受付中です</span>
+    </div>
+
+    <h2>
+      入学を決めなくていいです。<br>
+      <span class="em">合うかどうか</span>を、一緒に確かめましょう。
+    </h2>
+    <p class="cta-lede">
+      他スクール情報も提供する個別相談を実施中です。<br>
+      まずはお子さんと一緒に、雰囲気を感じに来てください。
+    </p>
+
+    <div class="cta-promises">
+      <div class="cta-promise">
+        <span class="material-icons-outlined">schedule</span>
+        <span class="label">約1〜2時間</span>
+        <span class="sub">じっくり話せる時間を確保</span>
+      </div>
+      <div class="cta-promise">
+        <span class="material-icons-outlined">child_care</span>
+        <span class="label">お子さん同伴OK</span>
+        <span class="sub">実際の雰囲気をご体感ください</span>
+      </div>
+      <div class="cta-promise">
+        <span class="material-icons-outlined">chat</span>
+        <span class="label">個別相談 無料</span>
+        <span class="sub">入学後の不安も遠慮なく</span>
+      </div>
+    </div>
+
+    <div class="cta-actions">
+      <a href="#" class="btn btn-secondary">
+        <span class="material-icons-outlined" style="font-size:18px;">event_available</span>
+        見学・説明会・体験のお申し込み <span class="arr">→</span>
+      </a>
+      <a href="tel:0353189700" class="btn btn-ghost">
+        <span class="material-icons-outlined" style="font-size:18px;">phone</span>
+        電話で問い合わせる
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-card">
+      <div class="footer-icon"><span class="material-icons-outlined">school</span></div>
+      <h3 class="footer-name">とらすとベース<br>フリースクール</h3>
+      <div class="footer-info">
+        <span>〒165-0026 東京都中野区新井2-35-2</span>
+        <span>TEL: <a href="tel:0353189700">03-5318-9700</a></span>
+        <small>繋がらない場合は <a href="tel:0359891869" style="color:rgba(255,255,255,0.7);border-bottom:1px solid rgba(255,255,255,0.3);">03-5989-1869</a></small>
+        <small>運営：NPO法人東京コミュニティスクール</small>
+      </div>
+    </div>
+    <p class="footer-copy">© 2026 Trust Base Free School. All rights reserved.</p>
+  </div>
+</footer>
+
+</div>
+
+<script>
+const { createApp, ref, onMounted, onUnmounted } = Vue;
+createApp({
+  setup(){
+    const isMobileMenuOpen = ref(false);
+    const isScrolled = ref(false);
+    const isHeaderHidden = ref(false);
+    const lastScrollY = ref(0);
+    const isEmaBioOpen = ref(false);
+    const isStaffBioOpen = ref(false);
+    const isYuyuBioOpen = ref(false);
+
+    const toggleMenu = () => { isMobileMenuOpen.value = !isMobileMenuOpen.value; };
+    const scrollTo = (id) => {
+      isMobileMenuOpen.value = false;
+      const el = document.getElementById(id);
+      if(el){
+        const top = el.getBoundingClientRect().top + window.pageYOffset - 64;
+        window.scrollTo({top, behavior:'smooth'});
+      }
+    };
+    const handleScroll = () => {
+      const y = window.scrollY;
+      isScrolled.value = y > 40;
+      if(isMobileMenuOpen.value){ isHeaderHidden.value = false; lastScrollY.value = y; return; }
+      if(y < 96){ isHeaderHidden.value = false; }
+      else {
+        const d = y - lastScrollY.value;
+        if(d > 8) isHeaderHidden.value = true;
+        else if(d < -8) isHeaderHidden.value = false;
+      }
+      lastScrollY.value = y;
+    };
+
+    onMounted(() => {
+      lastScrollY.value = window.scrollY;
+      window.addEventListener('scroll', handleScroll, {passive:true});
+      const io = new IntersectionObserver(es => {
+        es.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+      }, {threshold:0.08, rootMargin:'0px 0px -40px 0px'});
+      document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+    });
+    onUnmounted(() => window.removeEventListener('scroll', handleScroll));
+
+    return { isMobileMenuOpen, isScrolled, isHeaderHidden, isEmaBioOpen, isStaffBioOpen, isYuyuBioOpen, toggleMenu, scrollTo };
+  }
+}).mount('#app');
+</script>
+</body>
+</html>

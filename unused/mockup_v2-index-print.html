@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>とらすとベース フリースクール｜歩いてもいい、止まってもいい</title>
+
+    <!-- LCP: Hero images -->
+    <link rel="preload" as="image" href="images/title.png">
+    <link rel="preload" as="image" href="images/background.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Zen+Maru+Gothic:wght@400;500;700;900&family=Yomogi&display=swap" rel="stylesheet">
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#0B9B88",
+                        "primary-deep": "#087D6D",
+                        secondary: "#FDB813",
+                        coral: "#F27059",
+                        sky: "#7DB9DE",
+                        cream: "#FFF8E7",
+                        paper: "#FAF6EF",
+                        ink: "#2F2A24",
+                        "ink-soft": "#5C544B",
+                    },
+                    fontFamily: {
+                        sans: ["Zen Maru Gothic", "Noto Sans JP", "sans-serif"],
+                        noto: ["Noto Sans JP", "sans-serif"],
+                        hand: ["Yomogi", "Zen Maru Gothic", "cursive"],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <!-- Vue -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <style>
+        /* ---- PRINT STYLES ---- */
+        @page { size: A4 portrait; margin: 12mm 10mm; }
+        @media print {
+            html, body {
+                background: #FAF6EF !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            /* Hide interactive/ornamental chrome */
+            header, .sticky-cta, .bob, .float-y { display: none !important; }
+            /* Always show both audiences? — keep parents view only */
+            body[data-audience="parents"] .audience-kids-only { display: none !important; }
+            /* Reveal all fade-in sections */
+            .fade-in-section { opacity: 1 !important; transform: none !important; }
+            /* Pagination hints */
+            section { break-inside: avoid; page-break-inside: avoid; }
+            section#top { padding-top: 0 !important; min-height: 0 !important; }
+            section + section { break-before: auto; }
+            #concept, #day, #features, #staff, #fees, #access, #faq, #cta { break-before: page; }
+            img, .photo-frame, .stroke-wobble, .stroke-wobble-sm { break-inside: avoid; }
+            h1, h2, h3 { break-after: avoid; }
+            /* Collapse big vertical padding */
+            section.py-16, section.py-20 { padding-top: 18px !important; padding-bottom: 18px !important; }
+            .min-h-\[92vh\] { min-height: 0 !important; }
+            /* Don't cut shadows */
+            .shadow-block, .shadow-block-soft, .shadow-block-primary, .shadow-block-coral, .shadow-block-secondary {
+                box-shadow: 3px 3px 0 rgba(47,42,36,0.75) !important;
+            }
+            /* Ensure links readable */
+            a { color: inherit !important; text-decoration: none !important; }
+            /* Iframe won't print nicely */
+            iframe { display: none !important; }
+            /* Sticky/fixed elements */
+            .fixed, .sticky-cta { position: static !important; }
+            /* Mood/scroll hints already removed */
+            /* Background image opacity is fine */
+        }
+    </style>
+    <style>
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Zen Maru Gothic', 'Noto Sans JP', sans-serif;
+            background: #FAF6EF;
+            color: #2F2A24;
+            -webkit-font-smoothing: antialiased;
+        }
+        h1,h2,h3,h4 { word-break: keep-all; overflow-wrap: break-word; letter-spacing: 0.02em; }
+
+        /* ---- Hand-drawn paper feel ---- */
+        .paper-grain {
+            background-image:
+                radial-gradient(rgba(47,42,36,0.035) 1px, transparent 1px),
+                radial-gradient(rgba(47,42,36,0.025) 1px, transparent 1px);
+            background-size: 3px 3px, 7px 7px;
+            background-position: 0 0, 1px 2px;
+        }
+        .stroke-wobble {
+            border: 2.5px solid #2F2A24;
+            border-radius: 28px 22px 26px 24px / 24px 28px 22px 26px;
+        }
+        .stroke-wobble-sm {
+            border: 2px solid #2F2A24;
+            border-radius: 18px 14px 20px 16px / 16px 20px 14px 18px;
+        }
+        .underline-hand {
+            background-image: linear-gradient(transparent 62%, rgba(253,184,19,0.55) 62%, rgba(253,184,19,0.55) 92%, transparent 92%);
+            background-repeat: no-repeat;
+        }
+        .dashed-hand {
+            background-image: linear-gradient(to right, #2F2A24 60%, transparent 0%);
+            background-size: 8px 2px; background-repeat: repeat-x;
+            background-position: 0 50%;
+            height: 2px;
+        }
+
+        /* Hand-drawn shadow (offset block) */
+        .shadow-block {
+            box-shadow: 6px 6px 0 #2F2A24;
+        }
+        .shadow-block-soft {
+            box-shadow: 4px 4px 0 rgba(47,42,36,0.85);
+        }
+        .shadow-block-primary {
+            box-shadow: 5px 5px 0 #0B9B88;
+        }
+        .shadow-block-coral {
+            box-shadow: 5px 5px 0 #F27059;
+        }
+        .shadow-block-secondary {
+            box-shadow: 5px 5px 0 #FDB813;
+        }
+
+        /* Audience toggle */
+        .audience-pill {
+            transition: all .25s ease;
+        }
+
+        /* Hero */
+        .hero-wrap {
+            background: linear-gradient(180deg, #FFF8E7 0%, #FAF6EF 100%);
+            position: relative; overflow: hidden;
+        }
+        .hero-wrap::before {
+            content: "";
+            position: absolute; inset: 0;
+            background-image:
+                radial-gradient(circle at 12% 18%, rgba(253,184,19,0.12) 0, transparent 28%),
+                radial-gradient(circle at 88% 82%, rgba(11,155,136,0.10) 0, transparent 30%),
+                radial-gradient(circle at 76% 12%, rgba(242,112,89,0.08) 0, transparent 25%);
+            pointer-events: none;
+        }
+
+        /* Squiggle underline for section labels */
+        .squiggle {
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 8'><path d='M0 4 C 10 0, 20 8, 30 4 S 50 0, 60 4 S 80 8, 80 4' fill='none' stroke='%23FDB813' stroke-width='2.5' stroke-linecap='round'/></svg>");
+            background-repeat: repeat-x;
+            background-position: left bottom;
+            background-size: 80px 8px;
+            padding-bottom: 10px;
+        }
+
+        /* Tape corner */
+        .tape {
+            position: absolute;
+            width: 70px; height: 22px;
+            background: rgba(253,184,19,0.55);
+            transform: rotate(-6deg);
+            top: -10px; left: 50%; margin-left: -35px;
+            box-shadow: 0 2px 4px rgba(47,42,36,0.1);
+        }
+        .tape::before, .tape::after {
+            content:""; position:absolute; top:0; bottom:0; width:4px;
+            background-image: linear-gradient(45deg, transparent 33%, rgba(0,0,0,.04) 33% 66%, transparent 66%);
+            background-size: 6px 6px;
+        }
+        .tape::before{left:0;} .tape::after{right:0;}
+
+        /* FAQ */
+        .faq-content {
+            overflow: hidden;
+            transition: max-height .35s ease, opacity .3s ease;
+            max-height: 0; opacity: 0;
+        }
+        .faq-content.open { max-height: 500px; opacity: 1; }
+
+        /* Fade in on scroll */
+        .fade-in-section {
+            opacity: 0; transform: translateY(20px);
+            transition: opacity .6s ease, transform .6s ease;
+        }
+        .fade-in-section.visible { opacity:1; transform: translateY(0); }
+
+        /* Mood chips */
+        .mood-chip {
+            transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease;
+        }
+        .mood-chip:hover {
+            transform: translateY(-3px) rotate(-1deg);
+        }
+        .mood-chip.selected {
+            background: #FDB813;
+            box-shadow: 4px 4px 0 #2F2A24;
+            transform: rotate(-1deg);
+        }
+
+        /* Kid-mode typography boost */
+        body[data-audience="kids"] .kid-amp p,
+        body[data-audience="kids"] .kid-amp li,
+        body[data-audience="kids"] .kid-amp span {
+            font-family: 'Zen Maru Gothic', sans-serif;
+            font-weight: 500;
+        }
+        body[data-audience="kids"] .audience-parent-only { display: none; }
+        body[data-audience="parents"] .audience-kids-only { display: none; }
+
+        /* Pulsing dot */
+        @keyframes pulse-dot { 0%,100% { opacity: 1;} 50% { opacity: .4;} }
+        .pulsing-dot { animation: pulse-dot 1.5s infinite; }
+
+        @keyframes float-y { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+        .float-y { animation: float-y 3.5s ease-in-out infinite; }
+
+        @keyframes wiggle {
+            0%,100% { transform: rotate(0deg); }
+            25% { transform: rotate(-2deg); }
+            75% { transform: rotate(2deg); }
+        }
+        .wiggle-hover:hover { animation: wiggle .5s ease-in-out; }
+
+        /* Sticky bottom CTA (mobile) */
+        .sticky-cta {
+            position: fixed; left: 12px; right: 12px; bottom: 12px;
+            z-index: 40;
+        }
+        @media (min-width: 768px) { .sticky-cta { display: none; } }
+
+        ::selection { background: #FDB813; color: #2F2A24; }
+
+        /* Timeline connectors */
+        .timeline-step .step-dot {
+            width: 48px; height: 48px;
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'Yomogi', cursive;
+            font-size: 18px; font-weight: 700;
+        }
+
+        /* Photo frame */
+        .photo-frame {
+            padding: 8px 8px 44px 8px;
+            background: #fff;
+            border: 1px solid #E7DFD0;
+            box-shadow: 3px 4px 0 rgba(47,42,36,0.15);
+            transform: rotate(-1deg);
+            position: relative;
+        }
+        .photo-frame .caption {
+            position: absolute; bottom: 10px; left: 0; right: 0;
+            text-align: center;
+            font-family: 'Yomogi', cursive;
+            font-size: 13px; color: #5C544B;
+        }
+
+        /* Scroll indicator */
+        @keyframes bob { 0%,100% { transform: translateY(0); opacity: .7; } 50% { transform: translateY(6px); opacity: 1; } }
+        .bob { animation: bob 1.6s ease-in-out infinite; }
+
+        /* Ruby / furigana default */
+        ruby rt { font-size: .55em; color: #5C544B; font-weight: 400; }
+        body[data-audience="parents"] ruby rt { display: none; }
+    </style>
+</head>
+<body data-audience="parents" class="bg-paper text-ink">
+    <div id="app">
+
+        <!-- ============== STICKY HEADER ============== -->
+        <header :class="['fixed top-0 inset-x-0 z-50 transition-transform duration-300',
+            isHeaderHidden ? '-translate-y-full' : 'translate-y-0']">
+            <div class="backdrop-blur-md bg-paper/90 border-b-2 border-ink/10">
+                <div class="max-w-6xl mx-auto px-4 sm:px-6 h-14 md:h-16 flex items-center justify-between">
+                    <a href="#top" @click.prevent="scrollTo('top')" class="flex items-center gap-2 wiggle-hover">
+                        <img src="images/torabe-log.png" alt="" class="h-8 w-8 md:h-9 md:w-9" width="36" height="36">
+                        <span class="font-bold text-lg tracking-wider">とらべ</span>
+                    </a>
+                    <nav class="hidden md:flex items-center gap-5 text-sm font-medium text-ink-soft">
+                        <a href="#concept" @click.prevent="scrollTo('concept')" class="hover:text-primary transition-colors">大切にしてること</a>
+                        <a href="#day" @click.prevent="scrollTo('day')" class="hover:text-primary transition-colors">1日の流れ</a>
+                        <a href="#features" @click.prevent="scrollTo('features')" class="hover:text-primary transition-colors">学びの柱</a>
+                        <a href="#staff" @click.prevent="scrollTo('staff')" class="hover:text-primary transition-colors">スタッフ</a>
+                        <a href="#fees" @click.prevent="scrollTo('fees')" class="hover:text-primary transition-colors">料金</a>
+                        <a href="#faq" @click.prevent="scrollTo('faq')" class="hover:text-primary transition-colors">FAQ</a>
+                    </nav>
+                    <div class="flex items-center gap-2">
+                        <button @click="scrollTo('cta')" class="hidden sm:inline-flex items-center gap-1.5 bg-ink text-paper px-4 py-2 rounded-full text-sm font-bold hover:bg-primary transition-colors">
+                            <span>見学に行く</span>
+                            <span aria-hidden="true">→</span>
+                        </button>
+                        <button @click="isMobileMenuOpen = !isMobileMenuOpen" class="md:hidden p-2 -mr-2 text-ink" aria-label="メニュー">
+                            <svg v-if="!isMobileMenuOpen" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+                            <svg v-else width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- mobile dropdown -->
+            <transition enter-active-class="transition duration-200" enter-from-class="opacity-0 -translate-y-2" enter-to-class="opacity-100" leave-active-class="transition duration-150" leave-to-class="opacity-0">
+                <div v-if="isMobileMenuOpen" class="md:hidden bg-paper border-b-2 border-ink/10 shadow-lg">
+                    <div class="px-4 py-3 flex flex-col divide-y divide-ink/10">
+                        <a href="#concept" @click.prevent="scrollTo('concept')" class="py-3 text-sm font-medium">大切にしてること</a>
+                        <a href="#day" @click.prevent="scrollTo('day')" class="py-3 text-sm font-medium">1日の流れ</a>
+                        <a href="#features" @click.prevent="scrollTo('features')" class="py-3 text-sm font-medium">学びの柱</a>
+                        <a href="#staff" @click.prevent="scrollTo('staff')" class="py-3 text-sm font-medium">スタッフ</a>
+                        <a href="#fees" @click.prevent="scrollTo('fees')" class="py-3 text-sm font-medium">料金</a>
+                        <a href="#faq" @click.prevent="scrollTo('faq')" class="py-3 text-sm font-medium">FAQ</a>
+                        <button @click="scrollTo('cta')" class="mt-3 bg-ink text-paper py-3 rounded-full text-sm font-bold">見学に行く →</button>
+                    </div>
+                </div>
+            </transition>
+        </header>
+
+        <!-- ============== HERO ============== -->
+        <section id="top" class="hero-wrap pt-24 md:pt-28 pb-12 md:pb-16 min-h-[92vh] flex items-center">
+            <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 w-full">
+
+                <!-- Audience toggle -->
+                <div class="flex justify-center mb-6 md:mb-8">
+                    <div class="inline-flex items-center gap-1 bg-white border-2 border-ink rounded-full p-1 shadow-block-soft" role="tablist" aria-label="読み手を選ぶ">
+                        <button @click="setAudience('parents')" :class="['audience-pill px-4 md:px-5 py-2 rounded-full text-xs md:text-sm font-bold', audience==='parents' ? 'bg-ink text-paper' : 'text-ink-soft hover:text-ink']" role="tab" :aria-selected="audience==='parents'">保護者のかたへ</button>
+                        <button @click="setAudience('kids')" :class="['audience-pill px-4 md:px-5 py-2 rounded-full text-xs md:text-sm font-bold', audience==='kids' ? 'bg-coral text-white' : 'text-ink-soft hover:text-ink']" role="tab" :aria-selected="audience==='kids'">
+                            <ruby>こども<rt>じぶん</rt></ruby>のかたへ
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Hand-drawn title -->
+                <div class="text-center">
+                    <img src="images/title.png" alt="とらすとべーす フリースクール" class="w-full max-w-[78vw] sm:max-w-xl md:max-w-2xl mx-auto h-auto drop-shadow-md float-y" width="800" height="240" decoding="async">
+                    <h1 class="sr-only">とらすとベース フリースクール</h1>
+                </div>
+
+                <!-- Parent view -->
+                <div class="audience-parent-only mt-8 md:mt-10 text-center">
+                    <p class="inline-block text-3xl sm:text-4xl md:text-5xl font-black tracking-[0.3em] text-ink underline-hand px-2">
+                        歩　止　歩　止
+                    </p>
+                    <p class="mt-4 text-base md:text-lg text-ink font-medium">
+                        「歩いてもいい、止まってもいい」
+                    </p>
+                    <p class="mt-2 text-sm md:text-base text-ink-soft max-w-xl mx-auto">
+                        <ruby>中野区<rt>なかのく</rt></ruby>の、小さな一軒家。<br class="sm:hidden">
+                        子ども一人ひとりのペースで学ぶ、<br class="hidden sm:inline">
+                        少人数のフリースクールです。
+                    </p>
+                </div>
+
+                <!-- Kid view -->
+                <div class="audience-kids-only kid-amp mt-8 md:mt-10 text-center">
+                    <p class="font-hand text-2xl sm:text-3xl md:text-4xl text-ink leading-relaxed">
+                        <ruby>歩<rt>ある</rt></ruby>いてもいいし、<br>
+                        <ruby>止<rt>と</rt></ruby>まってもいい。
+                    </p>
+                    <p class="mt-4 text-base md:text-lg text-ink-soft">
+                        <ruby>今日<rt>きょう</rt></ruby>の<ruby>気分<rt>きぶん</rt></ruby>は、どれにちかい？
+                    </p>
+                </div>
+
+
+
+                <!-- ページ内目次 (要望復元 / 新デザイン適用) -->
+                <nav class="mt-10 md:mt-12" aria-label="目次">
+                    <div class="flex flex-wrap justify-center items-center gap-x-1 gap-y-2 max-w-3xl mx-auto">
+                        <a href="#concept"  @click.prevent="scrollTo('concept')"  class="px-3 py-1.5 text-sm font-bold text-ink hover:text-primary-deep transition-colors underline-hand">コンセプト</a>
+                        <span class="text-ink/30" aria-hidden="true">·</span>
+                        <a href="#features" @click.prevent="scrollTo('features')" class="px-3 py-1.5 text-sm font-bold text-ink hover:text-primary-deep transition-colors hover:underline-hand">特長</a>
+                        <span class="text-ink/30" aria-hidden="true">·</span>
+                        <a href="#day"      @click.prevent="scrollTo('day')"      class="px-3 py-1.5 text-sm font-bold text-ink hover:text-primary-deep transition-colors hover:underline-hand">1日の流れ</a>
+                        <span class="text-ink/30" aria-hidden="true">·</span>
+                        <a href="#staff"    @click.prevent="scrollTo('staff')"    class="px-3 py-1.5 text-sm font-bold text-ink hover:text-primary-deep transition-colors hover:underline-hand">スタッフ</a>
+                        <span class="text-ink/30 audience-parent-only" aria-hidden="true">·</span>
+                        <a href="#fees"     @click.prevent="scrollTo('fees')"     class="audience-parent-only px-3 py-1.5 text-sm font-bold text-ink hover:text-primary-deep transition-colors hover:underline-hand">料金</a>
+                        <span class="text-ink/30" aria-hidden="true">·</span>
+                        <a href="#access"   @click.prevent="scrollTo('access')"   class="px-3 py-1.5 text-sm font-bold text-ink hover:text-primary-deep transition-colors hover:underline-hand">アクセス</a>
+                        <span class="text-ink/30" aria-hidden="true">·</span>
+                        <a href="#faq"      @click.prevent="scrollTo('faq')"      class="px-3 py-1.5 text-sm font-bold text-ink hover:text-primary-deep transition-colors hover:underline-hand">FAQ</a>
+                    </div>
+                </nav>
+
+                <!-- Quick facts row -->
+                <div class="mt-8 md:mt-10 flex flex-wrap justify-center gap-2 md:gap-3 text-xs md:text-sm">
+                    <span class="inline-flex items-center gap-1.5 bg-white border border-ink/20 rounded-full px-3 py-1.5">
+                        <span class="w-1.5 h-1.5 rounded-full bg-primary"></span> 中野区・新井薬師前
+                    </span>
+                    <span class="inline-flex items-center gap-1.5 bg-white border border-ink/20 rounded-full px-3 py-1.5">
+                        <span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> 小学1〜6年生
+                    </span>
+                    <span class="inline-flex items-center gap-1.5 bg-white border border-ink/20 rounded-full px-3 py-1.5">
+                        <span class="w-1.5 h-1.5 rounded-full bg-coral"></span> 少人数 / 個別対応
+                    </span>
+                    <span class="inline-flex items-center gap-1.5 bg-white border border-ink/20 rounded-full px-3 py-1.5">
+                        <span class="w-1.5 h-1.5 rounded-full bg-sky"></span> 在籍校と両立OK
+                    </span>
+                </div>
+
+                <!-- Primary CTA -->
+                <div class="mt-8 md:mt-10 flex flex-col sm:flex-row justify-center items-center gap-3">
+                    <button @click="scrollTo('cta')" class="group inline-flex items-center gap-2 bg-ink text-paper px-7 py-4 rounded-full font-bold text-base shadow-block-secondary hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[8px_8px_0_#FDB813] transition-all">
+                        <span>まずは見学に来てみる</span>
+                        <span class="group-hover:translate-x-1 transition-transform">→</span>
+                    </button>
+                    <a href="#concept" @click.prevent="scrollTo('concept')" class="inline-flex items-center gap-1 text-sm font-medium text-ink-soft hover:text-ink transition-colors">
+                        先に詳しく読む
+                        <span class="bob inline-block">↓</span>
+                    </a>
+                </div>
+
+                <!-- Volunteer pill -->
+                <div class="mt-6 text-center">
+                    <a href="https://tokyocs.org/14127" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-xs text-ink-soft hover:text-primary transition-colors underline-offset-2 hover:underline">
+                        <img src="images/volunteer-logo.svg" alt="" class="h-5 w-auto">
+                        ボランティア募集中
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============== 2. 共感 / 想い ============== -->
+        <section class="py-16 md:py-20 fade-in-section">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6">
+                <!-- PARENT: こんな想い -->
+                <div class="audience-parent-only">
+                    <div class="text-center mb-10">
+                        <span class="squiggle text-xs font-bold tracking-[0.25em] text-primary uppercase">For Parents</span>
+                        <h2 class="mt-3 text-2xl md:text-4xl font-bold text-ink leading-snug">
+                            こんな想い、ありませんか？
+                        </h2>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
+                        <div v-for="(item,i) in parentFeels" :key="i" class="bg-white stroke-wobble-sm p-5 md:p-6 flex gap-4 items-start shadow-block-soft">
+                            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-cream border-2 border-ink flex items-center justify-center font-hand font-bold text-ink">{{ i+1 }}</div>
+                            <p class="text-sm md:text-base text-ink leading-relaxed pt-1">「{{ item }}」</p>
+                        </div>
+                    </div>
+                    <div class="mt-8 text-center">
+                        <div class="inline-block bg-ink text-paper stroke-wobble px-6 md:px-8 py-4 md:py-5 shadow-block-secondary">
+                            <p class="font-bold text-base md:text-lg">その選択肢のひとつとして、<span class="text-secondary">とらべ</span>があります。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- KIDS: こんな日もあるよね -->
+                <div class="audience-kids-only kid-amp">
+                    <div class="text-center mb-10">
+                        <span class="squiggle text-xs font-bold tracking-[0.25em] text-coral uppercase">For Kids</span>
+                        <h2 class="mt-3 text-2xl md:text-4xl font-bold text-ink leading-snug">
+                            <ruby>学校<rt>がっこう</rt></ruby>って、ときどき<br class="sm:hidden"><ruby>大変<rt>たいへん</rt></ruby>じゃない？
+                        </h2>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
+                        <div v-for="(item,i) in kidFeels" :key="i" class="bg-white stroke-wobble-sm p-5 md:p-6 flex gap-4 items-start shadow-block-soft">
+                            <div class="flex-shrink-0 text-3xl md:text-4xl" style="font-family:'Yomogi', cursive;">{{ item.emoji }}</div>
+                            <p class="text-sm md:text-base text-ink leading-relaxed pt-1" v-html="item.text"></p>
+                        </div>
+                    </div>
+                    <div class="mt-8 text-center">
+                        <div class="inline-block bg-ink text-paper stroke-wobble px-6 md:px-8 py-4 md:py-5 shadow-block-coral">
+                            <p class="font-bold text-base md:text-lg"><ruby>大丈夫<rt>だいじょうぶ</rt></ruby>。そんな<ruby>日<rt>ひ</rt></ruby>も、ここにはいていいよ。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============== 3. CONCEPT / 歩止歩止 ============== -->
+        <section id="concept" class="py-16 md:py-20 bg-cream/60 fade-in-section relative overflow-hidden">
+            <div class="absolute inset-0 paper-grain pointer-events-none"></div>
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 relative">
+                <div class="text-center mb-12">
+                    <span class="squiggle text-xs font-bold tracking-[0.25em] text-primary uppercase">Concept</span>
+                    <h2 class="mt-3 text-2xl md:text-4xl font-bold text-ink leading-snug">
+                        <span class="audience-parent-only">大切にしている、3つのこと</span>
+                        <span class="audience-kids-only"><ruby>大切<rt>たいせつ</rt></ruby>にしてる、3つのこと</span>
+                    </h2>
+                    <p class="mt-4 font-hand text-2xl md:text-3xl tracking-[0.4em] text-primary-deep">歩 止 歩 止</p>
+                    <p class="mt-1 text-xs tracking-widest text-ink-soft">— HODO HODO —</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+                    <!-- 歩く -->
+                    <div class="bg-white stroke-wobble p-6 md:p-7 shadow-block-primary relative">
+                        <div class="absolute -top-4 -left-3 bg-primary text-white font-hand text-lg rounded-full w-14 h-14 flex items-center justify-center rotate-[-8deg] shadow-block-soft">歩く</div>
+                        <div class="mt-5 text-5xl md:text-6xl text-primary leading-none">
+                            <svg viewBox="0 0 64 64" class="w-14 h-14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="14" r="5"/><path d="M22 32 L32 22 L42 32 L40 46"/><path d="M32 32 L32 44 L24 56"/><path d="M32 44 L40 56"/></svg>
+                        </div>
+                        <h3 class="mt-4 text-lg md:text-xl font-bold text-ink">
+                            <span class="audience-parent-only">自分のペースで進む</span>
+                            <span class="audience-kids-only"><ruby>自分<rt>じぶん</rt></ruby>のペースで<ruby>進<rt>すす</rt></ruby>む</span>
+                        </h3>
+                        <p class="mt-3 text-sm text-ink-soft leading-relaxed">
+                            <span class="audience-parent-only">右足と左足、両足で自分のペースで学んでいくことができる。</span>
+                            <span class="audience-kids-only">はやくでも、ゆっくりでもいい。<ruby>君<rt>きみ</rt></ruby>のペースが、ここのペース。</span>
+                        </p>
+                    </div>
+                    <!-- 止まる -->
+                    <div class="bg-white stroke-wobble p-6 md:p-7 shadow-block-coral relative md:translate-y-6">
+                        <div class="absolute -top-4 -left-3 bg-coral text-white font-hand text-lg rounded-full w-14 h-14 flex items-center justify-center rotate-[5deg] shadow-block-soft">止まる</div>
+                        <div class="mt-5 text-5xl md:text-6xl text-coral leading-none">
+                            <svg viewBox="0 0 64 64" class="w-14 h-14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="16" y="16" width="32" height="32" rx="4"/><path d="M24 32 L40 32"/></svg>
+                        </div>
+                        <h3 class="mt-4 text-lg md:text-xl font-bold text-ink">
+                            <span class="audience-parent-only">止まることも、動き。</span>
+                            <span class="audience-kids-only"><ruby>止<rt>と</rt></ruby>まることも、<ruby>動<rt>うご</rt></ruby>き。</span>
+                        </h3>
+                        <p class="mt-3 text-sm text-ink-soft leading-relaxed">
+                            <span class="audience-parent-only">止まることで自分の現在地を知り、振り返ることができる。</span>
+                            <span class="audience-kids-only"><ruby>今<rt>いま</rt></ruby>どこにいるか、みる<ruby>時間<rt>じかん</rt></ruby>も、<ruby>大切<rt>たいせつ</rt></ruby>。</span>
+                        </p>
+                    </div>
+                    <!-- つながる -->
+                    <div class="bg-white stroke-wobble p-6 md:p-7 shadow-block-secondary relative">
+                        <div class="absolute -top-4 -left-3 bg-secondary text-ink font-hand text-lg rounded-full w-14 h-14 flex items-center justify-center rotate-[-4deg] shadow-block-soft">つながる</div>
+                        <div class="mt-5 text-5xl md:text-6xl text-secondary leading-none">
+                            <svg viewBox="0 0 64 64" class="w-14 h-14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="20" cy="24" r="6"/><circle cx="44" cy="24" r="6"/><circle cx="32" cy="44" r="6"/><path d="M24 30 L40 30"/><path d="M22 28 L30 40"/><path d="M42 28 L34 40"/></svg>
+                        </div>
+                        <h3 class="mt-4 text-lg md:text-xl font-bold text-ink">
+                            <span class="audience-parent-only">つながりの中で育ちあう</span>
+                            <span class="audience-kids-only">ひとりじゃ、ないよ</span>
+                        </h3>
+                        <p class="mt-3 text-sm text-ink-soft leading-relaxed">
+                            <span class="audience-parent-only">スタッフ・仲間・保護者。自分だけじゃない、つながりの中で育ちあう。</span>
+                            <span class="audience-kids-only">スタッフも、<ruby>仲間<rt>なかま</rt></ruby>もいる。みんなでいっしょに<ruby>育<rt>そだ</rt></ruby>っていこう。</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============== 4. 1日のリズム ============== -->
+        <section id="day" class="py-16 md:py-20 fade-in-section">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6">
+                <div class="text-center mb-10 md:mb-12">
+                    <span class="squiggle text-xs font-bold tracking-[0.25em] text-primary uppercase">A Day at Torabe</span>
+                    <h2 class="mt-3 text-2xl md:text-4xl font-bold text-ink leading-snug">
+                        <span class="audience-parent-only">とらべの1日</span>
+                        <span class="audience-kids-only">とらべの<ruby>1日<rt>いちにち</rt></ruby></span>
+                    </h2>
+                    <p class="mt-3 text-sm md:text-base text-ink-soft">
+                        <span class="audience-parent-only">スタッフと組み立てる時間と、自分で選ぶ「余白」がバランスよくあります。</span>
+                        <span class="audience-kids-only">きまった<ruby>時間<rt>じかん</rt></ruby>と、じぶんで<ruby>選<rt>えら</rt></ruby>べる<ruby>時間<rt>じかん</rt></ruby>があるよ。</span>
+                    </p>
+                </div>
+
+                <!-- Horizontal timeline -->
+                <div class="relative">
+                    <!-- Dashed line -->
+                    <div class="hidden md:block absolute left-[40px] right-[40px] top-[23px] border-t-2 border-dashed border-ink/30"></div>
+
+                    <div class="grid grid-cols-2 md:grid-cols-5 gap-5 md:gap-3 relative">
+                        <div v-for="(step,i) in schedule" :key="i" class="timeline-step text-center">
+                            <div class="relative inline-block">
+                                <div :class="['step-dot rounded-full mx-auto mb-3 border-2 border-ink shadow-block-soft', step.color]">{{ step.icon }}</div>
+                            </div>
+                            <div class="bg-white stroke-wobble-sm p-3 md:p-4 shadow-block-soft min-h-[150px] flex flex-col">
+                                <p class="font-hand text-base md:text-lg text-primary-deep">{{ step.time }}</p>
+                                <h4 class="mt-1 text-sm md:text-base font-bold text-ink leading-tight">{{ step.title }}</h4>
+                                <p class="mt-2 text-xs text-ink-soft leading-relaxed">{{ step.desc }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- House + environment -->
+                <div class="mt-14 md:mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 items-center">
+                    <div class="photo-frame inline-block mx-auto md:mx-0">
+                        <img src="images/torabe-house.webp" alt="新井薬師前の一軒家" class="w-full h-auto block" width="600" height="600">
+                        <span class="caption">あたたかい、一軒家のスクール</span>
+                    </div>
+                    <div>
+                        <h3 class="text-xl md:text-2xl font-bold text-ink leading-snug">
+                            <span class="audience-parent-only">おうちのような、小さな学び舎</span>
+                            <span class="audience-kids-only">おうちみたいな、<ruby>小<rt>ちい</rt></ruby>さな<ruby>学<rt>まな</rt></ruby>びや</span>
+                        </h3>
+                        <p class="mt-3 text-sm md:text-base text-ink-soft leading-relaxed">
+                            <span class="audience-parent-only">少人数だから、スタッフの目がちゃんと届きます。工作も、読書も、ゴロンとする休憩も、自分のペースでOK。</span>
+                            <span class="audience-kids-only"><ruby>少<rt>すく</rt></ruby>ない<ruby>人数<rt>にんずう</rt></ruby>だから、スタッフがちゃんと<ruby>見<rt>み</rt></ruby>てくれるよ。<ruby>工作<rt>こうさく</rt></ruby>も、<ruby>読書<rt>どくしょ</rt></ruby>も、ゴロンと<ruby>休<rt>やす</rt></ruby>むのも、OK。</span>
+                        </p>
+                        <div class="mt-5 grid grid-cols-2 gap-3">
+                            <div v-for="(e,i) in envItems" :key="i" class="bg-white stroke-wobble-sm px-3 py-3 flex items-center gap-2">
+                                <span class="text-xl">{{ e.icon }}</span>
+                                <span class="text-xs md:text-sm font-medium text-ink">{{ e.label }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============== 5. 学びの柱 ============== -->
+        <section id="features" class="py-16 md:py-20 bg-cream/60 fade-in-section relative">
+            <div class="absolute inset-0 paper-grain pointer-events-none"></div>
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 relative">
+                <div class="text-center mb-12">
+                    <span class="squiggle text-xs font-bold tracking-[0.25em] text-primary uppercase">Learning Pillars</span>
+                    <h2 class="mt-3 text-2xl md:text-4xl font-bold text-ink leading-snug">
+                        <span class="audience-parent-only">4つの学びの柱</span>
+                        <span class="audience-kids-only">4つの<ruby>学<rt>まな</rt></ruby>びの<ruby>柱<rt>はしら</rt></ruby></span>
+                    </h2>
+                    <p class="mt-3 text-sm md:text-base text-ink-soft max-w-2xl mx-auto">
+                        <span class="audience-parent-only">20年以上の実績を持つ東京コミュニティスクールのノウハウを活かした、とらべの学び方。</span>
+                        <span class="audience-kids-only">とらべでやってる、4つの<ruby>大<rt>おお</rt></ruby>きな<ruby>活動<rt>かつどう</rt></ruby>だよ。</span>
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
+                    <div v-for="(f,i) in features" :key="i" class="bg-white stroke-wobble p-6 md:p-7 shadow-block-soft flex flex-col">
+                        <div class="flex items-start gap-4">
+                            <div :class="['flex-shrink-0 w-12 h-12 rounded-full border-2 border-ink flex items-center justify-center font-hand text-lg font-bold', f.badgeBg, f.badgeText]">{{ f.num }}</div>
+                            <div>
+                                <p class="text-xs font-bold tracking-widest uppercase" :class="f.accentText">{{ f.tag }}</p>
+                                <h3 class="mt-1 text-lg md:text-xl font-bold text-ink leading-snug">
+                                    <span class="audience-parent-only">{{ f.titleParent }}</span>
+                                    <span class="audience-kids-only" v-html="f.titleKid"></span>
+                                </h3>
+                            </div>
+                        </div>
+                        <p class="mt-4 text-sm md:text-base text-ink-soft leading-relaxed flex-grow">
+                            <span class="audience-parent-only">{{ f.descParent }}</span>
+                            <span class="audience-kids-only" v-html="f.descKid"></span>
+                        </p>
+                        <div class="mt-4 pt-4 border-t border-dashed border-ink/20">
+                            <div class="flex flex-wrap gap-1.5">
+                                <span v-for="(k,j) in f.keywords" :key="j" :class="['text-xs px-2.5 py-1 rounded-full border border-ink/20 bg-paper', j===0?'':'']">{{ k }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============== 6. STAFF ============== -->
+        <section id="staff" class="py-16 md:py-20 fade-in-section">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6">
+                <div class="text-center mb-12">
+                    <span class="squiggle text-xs font-bold tracking-[0.25em] text-primary uppercase">Staff</span>
+                    <h2 class="mt-3 text-2xl md:text-4xl font-bold text-ink leading-snug">
+                        <span class="audience-parent-only">いっしょに学びを創る、3人</span>
+                        <span class="audience-kids-only">とらべで<ruby>待<rt>ま</rt></ruby>ってるよ</span>
+                    </h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+                    <div v-for="(s,i) in staff" :key="i" class="bg-white stroke-wobble overflow-hidden shadow-block-soft flex flex-col">
+                        <div class="relative bg-cream aspect-square overflow-hidden">
+                            <img :src="s.img" :alt="s.name" class="w-full h-full object-cover">
+                            <div class="absolute top-3 left-3 bg-ink text-paper font-hand text-xs px-3 py-1 rounded-full">{{ s.role }}</div>
+                        </div>
+                        <div class="p-5 flex-grow flex flex-col">
+                            <h3 class="text-lg font-bold text-ink">{{ s.name }}</h3>
+                            <p class="mt-0.5 text-xs text-ink-soft">
+                                <span class="audience-parent-only">{{ s.bioParent }}</span>
+                                <span class="audience-kids-only">{{ s.bioKid }}</span>
+                            </p>
+                            <blockquote class="mt-4 pt-4 border-t border-dashed border-ink/20 flex-grow">
+                                <p class="font-hand text-sm md:text-base text-ink leading-relaxed">
+                                    <span class="text-2xl text-primary leading-none">“</span>
+                                    <span class="audience-parent-only">{{ s.quoteParent }}</span>
+                                    <span class="audience-kids-only" v-html="s.quoteKid"></span>
+                                    <span class="text-2xl text-primary leading-none">”</span>
+                                </p>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============== 7. 保護者の声 (parents only) ============== -->
+        <section class="py-16 md:py-20 bg-cream/60 fade-in-section relative audience-parent-only">
+            <div class="absolute inset-0 paper-grain pointer-events-none"></div>
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 relative">
+                <div class="text-center mb-12">
+                    <span class="squiggle text-xs font-bold tracking-[0.25em] text-primary uppercase">Voices</span>
+                    <h2 class="mt-3 text-2xl md:text-4xl font-bold text-ink leading-snug">とらべを選んだ、保護者の声</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div v-for="(t,i) in testimonials" :key="i" :class="['stroke-wobble p-6 md:p-7 shadow-block-soft flex flex-col', t.bg]">
+                        <div class="flex items-center gap-0.5 mb-3 text-xl">
+                            <span v-for="s in 5" :key="s" class="text-secondary">★</span>
+                        </div>
+                        <p class="font-hand text-base text-ink leading-relaxed flex-grow">「{{ t.text }}」</p>
+                        <div class="mt-5 pt-4 border-t border-dashed border-ink/20">
+                            <p class="text-xs font-bold text-ink">{{ t.who }}</p>
+                            <p class="text-xs text-ink-soft mt-0.5">{{ t.context }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============== 8. 料金 (parents only) ============== -->
+        <section id="fees" class="py-16 md:py-20 fade-in-section audience-parent-only">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6">
+                <div class="text-center mb-10">
+                    <span class="squiggle text-xs font-bold tracking-[0.25em] text-primary uppercase">Tuition</span>
+                    <h2 class="mt-3 text-2xl md:text-4xl font-bold text-ink leading-snug">募集要項・費用</h2>
+                </div>
+
+                <!-- 助成金バナー -->
+                <div class="bg-primary text-white stroke-wobble p-6 md:p-7 mb-8 shadow-block-secondary flex flex-col md:flex-row items-center gap-4">
+                    <div class="flex-shrink-0 w-16 h-16 rounded-full bg-white/15 border-2 border-white/40 flex items-center justify-center text-3xl">💰</div>
+                    <div class="text-center md:text-left">
+                        <p class="font-bold text-base md:text-lg mb-1">助成金制度のご案内</p>
+                        <p class="text-white/90 text-xs md:text-sm leading-relaxed">東京都をはじめ、自治体によってはフリースクール利用への助成金制度があります（例：東京都フリースクール等利用者助成金 <strong>上限2万円/月</strong>）。申請はスタッフがサポートします。</p>
+                    </div>
+                </div>
+
+                <!-- 費用ブレイクダウン -->
+                <div class="bg-white stroke-wobble overflow-hidden shadow-block-soft">
+                    <div class="divide-y-2 divide-dashed divide-ink/15">
+                        <div class="grid grid-cols-3 items-center px-5 md:px-7 py-5">
+                            <div class="col-span-1 font-bold text-sm text-ink-soft">対象</div>
+                            <div class="col-span-2 text-sm md:text-base font-medium">小学1〜6年生</div>
+                        </div>
+                        <div class="grid grid-cols-3 items-center px-5 md:px-7 py-5">
+                            <div class="col-span-1 font-bold text-sm text-ink-soft">入学金<span class="block text-xs text-ink-soft/70 font-normal">初年度のみ</span></div>
+                            <div class="col-span-2"><span class="font-hand text-xl md:text-2xl text-ink">220,000</span><span class="text-sm ml-1">円</span></div>
+                        </div>
+                        <div class="grid grid-cols-3 items-center px-5 md:px-7 py-5">
+                            <div class="col-span-1 font-bold text-sm text-ink-soft">施設拡充費<span class="block text-xs text-ink-soft/70 font-normal">初年度のみ</span></div>
+                            <div class="col-span-2"><span class="font-hand text-xl md:text-2xl text-ink">110,000</span><span class="text-sm ml-1">円</span></div>
+                        </div>
+                        <div class="grid grid-cols-3 items-center px-5 md:px-7 py-5 bg-cream/50">
+                            <div class="col-span-1 font-bold text-sm text-ink-soft">年間学費</div>
+                            <div class="col-span-2">
+                                <span class="font-hand text-2xl md:text-3xl text-ink">990,000</span><span class="text-sm ml-1">円</span>
+                                <span class="block text-xs text-ink-soft mt-1">助成金適用の場合 → 実質 <strong class="text-primary-deep">約 750,000 円/年</strong> の試算例</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="mt-3 text-xs text-ink-soft/80 leading-relaxed">※助成金は自治体・年度・審査により異なり、利用できない場合もあります。上記はあくまで試算例です。</p>
+            </div>
+        </section>
+
+        <!-- ============== 9. ACCESS ============== -->
+        <section id="access" class="py-16 md:py-20 bg-cream/60 fade-in-section relative">
+            <div class="absolute inset-0 paper-grain pointer-events-none"></div>
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 relative">
+                <div class="text-center mb-10">
+                    <span class="squiggle text-xs font-bold tracking-[0.25em] text-primary uppercase">Access</span>
+                    <h2 class="mt-3 text-2xl md:text-4xl font-bold text-ink leading-snug">
+                        <span class="audience-parent-only">アクセス</span>
+                        <span class="audience-kids-only">どこにある？</span>
+                    </h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-white stroke-wobble p-6 md:p-7 shadow-block-soft">
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-3">
+                                <span class="text-xl flex-shrink-0">📍</span>
+                                <div>
+                                    <p class="text-xs text-ink-soft">住所</p>
+                                    <p class="text-sm md:text-base font-medium">〒165-0026 東京都中野区新井2-35-2</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-xl flex-shrink-0">🚃</span>
+                                <div>
+                                    <p class="text-xs text-ink-soft">最寄り駅</p>
+                                    <p class="text-sm md:text-base font-medium">西武新宿線「新井薬師前」駅 徒歩圏内</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-xl flex-shrink-0">📞</span>
+                                <div>
+                                    <p class="text-xs text-ink-soft">電話</p>
+                                    <a href="tel:0353189700" class="text-sm md:text-base font-bold text-primary hover:underline">03-5318-9700</a>
+                                    <p class="text-xs text-ink-soft mt-0.5">繋がらない場合：<a href="tel:0359891869" class="text-primary hover:underline">03-5989-1869</a></p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-xl flex-shrink-0">🏢</span>
+                                <div>
+                                    <p class="text-xs text-ink-soft">運営</p>
+                                    <p class="text-sm md:text-base font-medium">NPO法人東京コミュニティスクール</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="stroke-wobble overflow-hidden shadow-block-soft aspect-[4/3] md:aspect-auto md:min-h-[320px] bg-white">
+                        <iframe src="https://maps.google.com/maps?q=35.7114807,139.66216&output=embed&hl=ja&z=17" class="w-full h-full block" style="border:0" loading="lazy" title="とらべの地図"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============== 10. FAQ ============== -->
+        <section id="faq" class="py-16 md:py-20 fade-in-section">
+            <div class="max-w-3xl mx-auto px-4 sm:px-6">
+                <div class="text-center mb-10">
+                    <span class="squiggle text-xs font-bold tracking-[0.25em] text-primary uppercase">FAQ</span>
+                    <h2 class="mt-3 text-2xl md:text-4xl font-bold text-ink leading-snug">
+                        <span class="audience-parent-only">よくあるご質問</span>
+                        <span class="audience-kids-only"><ruby>気<rt>き</rt></ruby>になること、ない？</span>
+                    </h2>
+                </div>
+
+                <div class="space-y-3">
+                    <div v-for="(faq, index) in currentFaqs" :key="index" class="bg-white stroke-wobble-sm overflow-hidden shadow-block-soft">
+                        <button @click="toggleFaq(index)" class="w-full text-left px-5 md:px-6 py-4 md:py-5 flex justify-between items-center gap-3 hover:bg-cream/40 transition-colors">
+                            <span class="flex items-start gap-3 flex-1">
+                                <span class="flex-shrink-0 font-hand text-primary text-xl md:text-2xl leading-none mt-0.5">Q.</span>
+                                <span class="font-bold text-sm md:text-base text-ink leading-relaxed" v-html="faq.q"></span>
+                            </span>
+                            <span :class="['flex-shrink-0 w-7 h-7 rounded-full border-2 border-ink flex items-center justify-center font-bold text-sm transition-transform duration-300', openFaqIndex===index?'rotate-45 bg-secondary':'bg-white']">+</span>
+                        </button>
+                        <div :class="['faq-content', { open: openFaqIndex === index }]">
+                            <div class="px-5 md:px-6 pb-5 pt-1 flex items-start gap-3 border-t border-dashed border-ink/20">
+                                <span class="flex-shrink-0 font-hand text-coral text-xl md:text-2xl leading-none mt-1">A.</span>
+                                <p class="text-sm md:text-base text-ink-soft leading-relaxed" v-html="faq.a"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============== 11. FINAL CTA ============== -->
+        <section id="cta" class="py-16 md:py-24 bg-ink text-paper relative overflow-hidden">
+            <div class="absolute inset-0 opacity-[0.07]" style="background-image:url('images/background.png');background-size:cover;background-position:center;"></div>
+            <div class="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
+
+                <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 mb-6">
+                    <span class="pulsing-dot w-2 h-2 rounded-full bg-secondary"></span>
+                    <span class="text-xs md:text-sm font-medium">2026年度 見学受付中</span>
+                </div>
+
+                <h2 class="text-3xl md:text-5xl font-bold leading-tight mb-5">
+                    <span class="audience-parent-only">入学を決めなくていい。<br>合うかを、一緒に確かめよう。</span>
+                    <span class="audience-kids-only"><ruby>遊<rt>あそ</rt></ruby>びにくる、でいいよ。<br>まずは<ruby>見<rt>み</rt></ruby>にきて。</span>
+                </h2>
+                <p class="text-white/80 text-sm md:text-lg mb-10 max-w-2xl mx-auto leading-relaxed">
+                    <span class="audience-parent-only">他スクール情報も提供する個別相談を実施中。<br class="hidden sm:inline">まずはお子さんと一緒に雰囲気を感じに来てください。</span>
+                    <span class="audience-kids-only">スタッフが<ruby>案内<rt>あんない</rt></ruby>するよ。<ruby>気<rt>き</rt></ruby>になったら、おうちの<ruby>人<rt>ひと</rt></ruby>に<ruby>伝<rt>つた</rt></ruby>えてね。</span>
+                </p>
+
+                <div class="grid grid-cols-3 gap-3 md:gap-4 mb-10 max-w-xl mx-auto">
+                    <div class="bg-white/10 border border-white/20 rounded-xl p-4">
+                        <div class="text-2xl md:text-3xl mb-1">⏱</div>
+                        <p class="text-xs md:text-sm font-bold">約1〜2時間</p>
+                    </div>
+                    <div class="bg-white/10 border border-white/20 rounded-xl p-4">
+                        <div class="text-2xl md:text-3xl mb-1">🧒</div>
+                        <p class="text-xs md:text-sm font-bold">同伴OK</p>
+                    </div>
+                    <div class="bg-white/10 border border-white/20 rounded-xl p-4">
+                        <div class="text-2xl md:text-3xl mb-1">🆓</div>
+                        <p class="text-xs md:text-sm font-bold">相談無料</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-3 justify-center items-center">
+                    <a href="#" class="group inline-flex items-center gap-2 bg-secondary text-ink px-7 py-4 rounded-full font-bold text-base md:text-lg shadow-[6px_6px_0_#F27059] hover:translate-y-[-2px] hover:translate-x-[-2px] hover:shadow-[8px_8px_0_#F27059] transition-all">
+                        <span>見学・説明会を申し込む</span>
+                        <span class="group-hover:translate-x-1 transition-transform">→</span>
+                    </a>
+                    <a href="tel:0353189700" class="inline-flex items-center gap-2 bg-white/10 border border-white/30 text-white px-6 py-4 rounded-full font-bold text-sm md:text-base hover:bg-white/20 transition-colors">
+                        <span>📞</span>
+                        <span>電話で相談する</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============== FOOTER ============== -->
+        <footer class="bg-ink text-paper/80 border-t border-white/10 py-10">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center">
+                <div class="inline-flex items-center gap-2 mb-4">
+                    <img src="images/torabe-log-white.png" alt="" class="h-8 w-8">
+                    <span class="font-bold text-lg text-white">とらべ / Torabe</span>
+                </div>
+                <p class="text-xs md:text-sm mb-1">〒165-0026 東京都中野区新井2-35-2 ／ 運営：NPO法人東京コミュニティスクール</p>
+                <p class="text-xs text-paper/50 mt-6">© 2026 Trust Base Free School. All rights reserved.</p>
+            </div>
+        </footer>
+
+        <!-- ============== Sticky mobile CTA ============== -->
+        <div class="sticky-cta md:hidden" v-show="showStickyCTA">
+            <button @click="scrollTo('cta')" class="w-full bg-ink text-paper py-3.5 rounded-full font-bold text-sm shadow-[0_6px_24px_rgba(47,42,36,0.4)] flex items-center justify-center gap-2">
+                <span>見学・説明会に申し込む</span>
+                <span>→</span>
+            </button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        // Auto-print after fonts + JS ready
+        (function autoPrint(){
+            const ready = (document.fonts && document.fonts.ready) || Promise.resolve();
+            ready.then(() => {
+                setTimeout(() => { try { window.print(); } catch(e){} }, 600);
+            });
+        })();
+    </script>
+</body>
+</html>

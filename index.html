@@ -175,13 +175,13 @@
                         <span class="font-bold text-xl text-white tracking-wide">とらべ</span>
                     </div>
                     <nav class="hidden md:flex items-center space-x-6">
-                        <a href="#features" @click.prevent="scrollTo('features')" class="text-white hover:text-secondary transition-colors text-sm font-medium">特長</a>
                         <a href="#concept" @click.prevent="scrollTo('concept')" class="text-white hover:text-secondary transition-colors text-sm font-medium">コンセプト</a>
+                        <a href="#features" @click.prevent="scrollTo('features')" class="text-white hover:text-secondary transition-colors text-sm font-medium">特長</a>
                         <a href="#schedule" @click.prevent="scrollTo('schedule')" class="text-white hover:text-secondary transition-colors text-sm font-medium">1日の流れ</a>
                         <a href="#staff" @click.prevent="scrollTo('staff')" class="text-white hover:text-secondary transition-colors text-sm font-medium">スタッフ</a>
                         <a href="#fees" @click.prevent="scrollTo('fees')" class="text-white hover:text-secondary transition-colors text-sm font-medium">料金</a>
                         <a href="#access" @click.prevent="scrollTo('access')" class="text-white hover:text-secondary transition-colors text-sm font-medium">アクセス</a>
-                        <a href="#faq" @click.prevent="scrollTo('faq')" class="text-white hover:text-secondary transition-colors text-sm font-medium">FAQ</a>
+                        <!-- <a href="#faq" @click.prevent="scrollTo('faq')" class="text-white hover:text-secondary transition-colors text-sm font-medium">FAQ</a> -->
                         <button @click="scrollTo('cta')" class="btn-ripple bg-secondary hover:bg-yellow-400 text-gray-900 px-5 py-2.5 rounded-full font-bold text-sm shadow-lg transition-transform transform hover:-translate-y-0.5">見学・説明会へ</button>
                     </nav>
                     <div class="md:hidden flex items-center">
@@ -208,13 +208,13 @@
                             見学・説明会に申し込む
                         </button>
                     </div>
-                    <a href="#features" @click.prevent="scrollTo('features')" class="px-6 py-4 border-b border-gray-100 text-gray-700 font-medium">特長</a>
                     <a href="#concept" @click.prevent="scrollTo('concept')" class="px-6 py-4 border-b border-gray-100 text-gray-700 font-medium">コンセプト</a>
+                    <a href="#features" @click.prevent="scrollTo('features')" class="px-6 py-4 border-b border-gray-100 text-gray-700 font-medium">特長</a>
                     <a href="#schedule" @click.prevent="scrollTo('schedule')" class="px-6 py-4 border-b border-gray-100 text-gray-700 font-medium">1日の流れ</a>
                     <a href="#staff" @click.prevent="scrollTo('staff')" class="px-6 py-4 border-b border-gray-100 text-gray-700 font-medium">スタッフ</a>
                     <a href="#fees" @click.prevent="scrollTo('fees')" class="px-6 py-4 border-b border-gray-100 text-gray-700 font-medium">料金</a>
                     <a href="#access" @click.prevent="scrollTo('access')" class="px-6 py-4 border-b border-gray-100 text-gray-700 font-medium">アクセス</a>
-                    <a href="#faq" @click.prevent="scrollTo('faq')" class="px-6 py-4 border-b border-gray-100 text-gray-700 font-medium">FAQ</a>
+                    <!-- <a href="#faq" @click.prevent="scrollTo('faq')" class="px-6 py-4 border-b border-gray-100 text-gray-700 font-medium">FAQ</a> -->
                 </div>
             </transition>
         </header>
@@ -225,7 +225,7 @@
             <div class="hero-scrim absolute inset-0 pointer-events-none" aria-hidden="true"></div>
             <!-- ハンバーガー（ヘッダー右）の下・ヒーロー右上 -->
             <div class="absolute z-20 right-3 top-20 sm:right-5 md:right-8 md:top-40">
-                <a href="https://tokyocs.org/14127" target="_blank" rel="noopener noreferrer" class="inline-block rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-transparent">
+                <a href="https://activo.jp/articles/112781" target="_blank" rel="noopener noreferrer" class="inline-block rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-transparent">
                     <img src="images/volunteer-logo.svg" alt="ボランティア募集中" class="h-8 sm:h-9 w-auto max-w-[min(58vw,12rem)] object-contain object-right drop-shadow-sm" width="165" height="36" decoding="async">
                 </a>
             </div>
@@ -289,7 +289,7 @@
                                 <span class="text-sm sm:text-base font-bold text-gray-900">アクセス</span>
                             </div>
                         </a>
-                        <a href="#faq" @click.prevent="scrollTo('faq')"
+                        <!-- <a href="#faq" @click.prevent="scrollTo('faq')"
                            class="group btn-ripple rounded-2xl border border-white/40 bg-white/85 hover:bg-white shadow-sm hover:shadow-md transition-all transform hover:-translate-y-0.5 focus:outline-none focus-visible:ring-4 focus-visible:ring-secondary/40">
                             <div class="p-3 sm:p-5 min-h-[88px] sm:min-h-[96px] flex flex-col items-center justify-center text-center">
                                 <span class="inline-flex items-center justify-center w-11 h-11 rounded-full bg-purple-500/15 text-purple-700 mb-2">
@@ -297,7 +297,7 @@
                                 </span>
                                 <span class="text-sm sm:text-base font-bold text-gray-900">FAQ</span>
                             </div>
-                        </a>
+                        </a> -->
                     </div>
                 </div>
 
@@ -308,29 +308,15 @@
         </section>
 
         <!-- ===== 2. コンセプト ===== -->
-        <section id="concept" class="py-20 bg-white fade-in-section">
+        <section id="concept" class="py-10 bg-white fade-in-section">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <span class="text-primary font-bold tracking-widest text-xs uppercase mb-2 block">Concept</span>
-                <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-8">
-                    私たちは、子どもたち一人ひとりが<br class="hidden sm:inline">
-                    「可能性と自信に満ちた学び手である」<br class="hidden sm:inline">
-                    と信じています。
-                </h2>
-
-                <!-- フレーミング段落 -->
-                <div class="bg-accent-yellow border border-yellow-200 rounded-xl p-6 mb-10 text-left">
-                    <p class="text-gray-700 leading-relaxed text-sm md:text-base">
-                        「今日は休んでいい」「今日は頑張れた」。<br class="hidden sm:inline">
-                        その両方を肯定できる場所として、とらべは存在しています。<br class="hidden sm:inline">
-                        学校に感じる「なんとなくの違和感」の正体が、ここに来ると言語化できるかもしれません。
-                    </p>
-                </div>
 
                 <div class="bg-gray-50 rounded-2xl p-8 md:p-12 border border-gray-100 relative overflow-hidden">
-                    <h3 class="text-xl md:text-2xl font-bold text-primary mb-8">
-                        「歩いてもいい、止まってもいい、つながっていい」歩止歩止（HodoHodo）
-                    </h3>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
+                    <h2 class="text-xl md:text-2xl font-bold text-primary mb-8">
+                        「歩いてもいい、止まってもいい」<br/>歩止歩止（HodoHodo）
+                    </h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10 max-w-2xl mx-auto">
                         <div class="text-center">
                             <div class="w-20 h-20 mx-auto bg-primary/10 rounded-full flex items-center justify-center mb-4">
                                 <span class="material-icons-outlined text-primary text-4xl">directions_walk</span>
@@ -349,15 +335,6 @@
                                 止まることも動き。自分の現在地を知る、振り返ることができる。
                             </p>
                         </div>
-                        <div class="text-center border-t md:border-t-0 border-gray-200 pt-8 md:pt-0">
-                            <div class="w-20 h-20 mx-auto bg-secondary/20 rounded-full flex items-center justify-center mb-4">
-                                <span class="material-icons-outlined text-yellow-600 text-4xl">people</span>
-                            </div>
-                            <h4 class="font-bold text-gray-800 mb-2">「つながる」</h4>
-                            <p class="text-xs text-gray-500 leading-relaxed">
-                                スタッフ・仲間・保護者。自分だけじゃない、つながりの中で育ちあう。
-                            </p>
-                        </div>
                     </div>
                     <div class="mt-10 pt-8 border-t border-gray-200">
                         <p class="text-sm font-medium text-gray-700">
@@ -370,7 +347,7 @@
         </section>
 
         <!-- ===== 3. 共感セクション ===== -->
-        <section class="py-20 bg-background-light fade-in-section">
+        <section class="py-10 bg-background-light fade-in-section">
             <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-2xl md:text-3xl font-bold text-center text-primary mb-12">
                     お子様の学びについて、こんな想いはありませんか？
@@ -413,13 +390,12 @@
                     <p class="font-bold text-lg md:text-xl">
                         その選択肢の一つとして、とらべがあります。
                     </p>
-                    <p class="text-white/80 text-sm mt-2">学校に感じる「なんとなくの違和感」の正体が、ここに来ると言語化できるかもしれません。</p>
                 </div>
             </div>
         </section>
 
         <!-- ===== 4. Mid-page CTA ===== -->
-        <section class="py-12 md:py-16 bg-background-light fade-in-section">
+        <section class="py-10 bg-white fade-in-section">
             <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="bg-accent-green rounded-2xl p-8 md:p-10 text-center border border-primary/20">
                     <p class="text-lg md:text-xl font-bold text-gray-900 mb-2">まずは見学に来てみてください</p>
@@ -437,11 +413,11 @@
         </section>
 
         <!-- ===== 5. 特長4選 ===== -->
-        <section id="features" class="py-20 bg-background-light fade-in-section">
+        <section id="features" class="py-10 bg-background-light fade-in-section">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16">
+                <div class="text-center mb-12">
                     <span class="text-primary font-bold tracking-widest text-xs uppercase mb-2 block">Features</span>
-                    <h2 class="text-3xl font-bold text-gray-900 mb-4">とらべが選ばれる4つの特長</h2>
+                    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">とらべが選ばれる4つの特長</h2>
                     <p class="text-sm text-gray-500 max-w-2xl mx-auto">
                         2004年設立の「東京コミュニティスクール (TCS)」が20年以上にわたり培ってきたノウハウを活かした第2校としてオープンしました。
                     </p>
@@ -456,7 +432,7 @@
                             </div>
                             <h3 class="font-bold text-lg text-gray-900">1. 日本語 — <span class="text-primary">「表現する力」を一生の武器に</span></h3>
                         </div>
-                        <p class="text-sm text-gray-600 mb-4 leading-relaxed">
+                        <p class="text-sm md:text-base text-gray-600 mb-4 leading-relaxed">
                             学び続ける力の基盤として、日本語の学びを重視しています。
                         </p>
                         <ul class="space-y-2 text-xs text-gray-500 pl-2">
@@ -476,7 +452,7 @@
                             </div>
                             <h3 class="font-bold text-lg text-gray-900">2. 探究 — <span class="text-orange-600">「なぜ？」を追いかける力が育つ</span></h3>
                         </div>
-                        <p class="text-sm text-gray-600 mb-4 leading-relaxed relative z-10">
+                        <p class="text-sm md:text-base text-gray-600 mb-4 leading-relaxed relative z-10">
                             「私たちはどのように自分らしく生き続けるのか？」などの6つの探究領域のもと学びます。
                         </p>
                         <div class="flex flex-col gap-2 relative z-10">
@@ -499,7 +475,7 @@
                             </div>
                             <h3 class="font-bold text-lg text-gray-900">3. 原体験 — <span class="text-primary">本物の体験が自信をつくる</span></h3>
                         </div>
-                        <p class="text-sm text-gray-600 mb-4 leading-relaxed">
+                        <p class="text-sm md:text-base text-gray-600 mb-4 leading-relaxed">
                             日々の公園などに加え、多くのアウトドアイベントを用意しています。<br/>
                             <span class="text-xs opacity-70">畑・川遊び・登山・乗馬・ムササビ観察・スキーなど。</span>
                         </p>
@@ -517,7 +493,7 @@
                             </div>
                             <h3 class="font-bold text-lg text-gray-900">4. 個別評価 — <span class="text-primary">成績でなく「成長」で見守る</span></h3>
                         </div>
-                        <p class="text-sm text-gray-600 mb-4 leading-relaxed">
+                        <p class="text-sm md:text-base text-gray-600 mb-4 leading-relaxed">
                             学期ごとに評価を作成し、子どもの現状から将来像まで視野を広げた「学びの方向性」をまとめます。
                         </p>
                         <div class="flex justify-around mt-6 border-t border-gray-100 pt-4">
@@ -544,11 +520,11 @@
         </section>
 
         <!-- ===== 6. 一日の流れ（学習環境） ===== -->
-        <section id="schedule" class="py-20 bg-background-light relative fade-in-section">
+        <section id="schedule" class="py-10 bg-white relative fade-in-section">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16">
+                <div class="text-center mb-12">
                     <span class="text-primary font-bold tracking-widest text-xs uppercase mb-2 block">Environment &amp; Schedule</span>
-                    <h2 class="text-3xl font-bold text-gray-900">学習環境と一日の過ごし方</h2>
+                    <h2 class="text-2xl md:text-3xl font-bold text-gray-900">学習環境と一日の過ごし方</h2>
                 </div>
                 <div class="flex flex-col lg:flex-row gap-12">
                     <div class="lg:w-1/2">
@@ -556,7 +532,7 @@
                             <img src="images/torabe-house.webp" alt="とらすとベース フリースクールの一軒家外観" class="absolute inset-0 w-full h-full object-cover" width="1080" height="1080" decoding="async">
                         </div>
                         <h3 class="text-xl font-bold text-gray-900 mb-3">安心して学べるアットホームな一軒家</h3>
-                        <p class="text-sm text-gray-600 mb-8 leading-relaxed">
+                        <p class="text-sm md:text-base text-gray-600 mb-8 leading-relaxed">
                             スタッフが組み立てる時間の他、子どもが自分で選ぶ<span class="text-primary font-bold">「余白」</span>の時間がたっぷりあります。「つくりたい」「しりたい」など、一人ひとりがやりたいことを選べます。
                         </p>
                         <div class="grid grid-cols-2 gap-4">
@@ -619,10 +595,10 @@
         </section>
 
         <!-- ===== 7. スタッフ紹介 ===== -->
-        <section id="staff" class="py-20 bg-white fade-in-section">
+        <section id="staff" class="py-10 bg-background-light fade-in-section">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <span class="text-primary font-bold tracking-widest text-xs uppercase mb-2 block">Staff</span>
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">共に学びを創るスタッフ</h2>
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">共に学びを創るスタッフ</h2>
                 <p class="text-sm text-gray-500 mb-12">
                     多様なバックグラウンドを持つスタッフが、子どもたち一人ひとりに寄り添います。
                 </p>
@@ -630,161 +606,135 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <!-- Staff 1 -->
                     <div class="bg-surface-light rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all border border-gray-100 flex flex-col h-full">
-                        <div class="h-40 sm:h-48 relative overflow-hidden"
-                             style="background: linear-gradient(135deg, #0B9B88 0%, #047a6a 100%);">
-                            <div class="absolute inset-0 flex items-center justify-center">
-                                <span class="text-7xl font-black text-white/20 select-none leading-none">永</span>
-                            </div>
-                            <div class="absolute inset-0 flex items-center justify-center">
-                                <span class="material-icons-outlined text-white/70" style="font-size: 4rem;">admin_panel_settings</span>
-                            </div>
-                            <div class="absolute bottom-3 right-3 bg-white/20 backdrop-blur-sm rounded-full px-2 py-0.5 flex items-center gap-1">
-                                <span class="material-icons-outlined text-white text-xs">school</span>
-                                <span class="text-white text-xs font-bold">Director</span>
-                            </div>
-                            <div class="absolute -top-6 -left-6 w-24 h-24 rounded-full bg-white/10"></div>
-                            <div class="absolute -bottom-4 -right-4 w-20 h-20 rounded-full bg-white/10"></div>
+                        <div class="h-40 sm:h-48 relative overflow-hidden">
+                            <img src="images/emachan.jpg" alt="永易 江麻" class="w-full h-full object-cover object-center">
                         </div>
                         <div class="p-6 text-left flex-grow flex flex-col">
                             <span class="text-xs font-bold text-primary uppercase tracking-wider mb-1 block">Director</span>
                             <h3 class="text-lg font-bold text-gray-900 mb-3">永易 江麻</h3>
-                            <p class="text-xs text-gray-500 leading-relaxed mb-4">
-                                TCS副理事長、東京都フリースクール等ネットワーク事務局長。教職課程を実体験するため小学校・幼稚園教諭免許を取得。政策提言活動も行う。二児の母。
-                            </p>
-                            <blockquote class="mt-auto border-l-2 border-primary/30 pl-3">
-                                <p class="text-xs text-teal-700 italic leading-relaxed">「子どもたちが自分らしく学べる場所を、20年かけてつくってきました。ここでの出会いが、きっとお子さんの力になると信じています。」</p>
-                            </blockquote>
+                            <!-- 導入部：常時表示 -->
+                            <div class="text-xs text-gray-500 leading-relaxed space-y-2 mb-2">
+                                <p>東京コミュニティスクール（TCS）に出会ったのは就活を控えた大学生の時。大学で自閉症やダウン症など障害がある子どもたちと過ごすサークルに参加したことから、人の成長や教育ということに関心を持ち始め、それをライフワークにしたいと考えていた頃でした。これまで、TCSには、スタッフ、理事、保護者と様々な立場で携わってきました。</p>
+                            </div>
+                            <!-- 折り畳み部分 -->
+                            <div :class="['overflow-hidden transition-all duration-500 ease-in-out', isEmaBioOpen ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0']">
+                                <div class="text-xs text-gray-500 leading-relaxed space-y-3 pt-2 mb-2">
+                                    <p>TCSに出会ってくれたご家庭の中には、不登校を経験しているケースもありました。私は、子どもが学校に通えていない現状を見るより、TCSがよりよい学び場であることが子どものためになると信じて、TCSの学びをいかによくするかということに尽力してきました。</p>
+                                    <p>転機となったのは、2019年に、東京都フリースクール等ネットワーク（TFN）の立ち上げに関わり、設立と同時に事務局長に就任したことです。活動を続ける中で、居場所がない、感覚の過敏さ、理解されないことへの不安、他の選択肢を選ぶパワーさえ失っている、不登校が子どもや保護者にもたらす深刻な現状に触れました。</p>
+                                    <p>そこで感じたことは、不登校（学校に通えない状態）ではなく、<span class="font-bold text-gray-700">不学（学びたいのに学びたいように学べていない状態）を解決したい</span>ということでした。</p>
+                                    <p>子どもたちには、「やりたい・知りたい・つくりたい・考えたい・やりとりしたい」、各々が学びたいという気持ちを持っています。その気持ちを失わせることなく、学ぶことを楽しんでほしい。</p>
+                                    <p>こうして、「学びの選択肢を提案し、学びを選べる時代へ」というTCSの思いを実現するために、TCS歴20年を経て、新たに得たミッションが「とらべ」の開校・運営です。</p>
+                                    <div class="pl-3 border-l-2 border-primary/30 space-y-1 my-1">
+                                        <p>「子どもを知るところから始める」</p>
+                                        <p>「子ども自身が動く」</p>
+                                        <p>「ラーニングコミュニティとして、大人も学び続ける」</p>
+                                        <p>「生きていく上で大切な概念の獲得」</p>
+                                        <p>「成長を促進するための評価」</p>
+                                    </div>
+                                    <p>というTCSカルチャーを維持しつつ、「学び続ける人・創造し続ける人」という目指す学習者像はそのままに、「余白の中で学びを組み立てる」という、東京コミュニティスクールとは違う学びのスタイルを提案することが試されています。</p>
+                                    <p>子どもの個性は様々で、学び方だって多様なはず。誰もが積極的に自分に合った学びを選択できる環境、それが公教育で実現できれば、我々の役目は終わりだと思っています。</p>
+                                    <p class="font-medium text-gray-600">その実験場として、とらべは生まれました。とらべにワクワクしてくださる方と共に、とらべを創っていきたい。一緒にとらべを創ってくれる、子どもたち・保護者・スタッフを待っています。</p>
+                                </div>
+                            </div>
+                            <!-- 続きを読むボタン -->
+                            <button @click="isEmaBioOpen = !isEmaBioOpen" class="mt-auto pt-3 text-xs text-primary font-bold flex items-center gap-1 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 rounded">
+                                <span>{{ isEmaBioOpen ? '閉じる' : '続きを読む' }}</span>
+                                <span class="material-icons-outlined text-sm">{{ isEmaBioOpen ? 'expand_less' : 'expand_more' }}</span>
+                            </button>
                         </div>
                     </div>
 
                     <!-- Staff 2 -->
                     <div class="bg-surface-light rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all border border-gray-100 flex flex-col h-full">
-                        <div class="h-40 sm:h-48 relative overflow-hidden"
-                             style="background: linear-gradient(135deg, #0d8c5e 0%, #0B9B88 100%);">
-                            <div class="absolute inset-0 flex items-center justify-center">
-                                <span class="text-7xl font-black text-white/20 select-none leading-none">稲</span>
-                            </div>
-                            <div class="absolute inset-0 flex items-center justify-center">
-                                <span class="material-icons-outlined text-white/70" style="font-size: 4rem;">menu_book</span>
-                            </div>
-                            <div class="absolute bottom-3 right-3 bg-white/20 backdrop-blur-sm rounded-full px-2 py-0.5 flex items-center gap-1">
-                                <span class="material-icons-outlined text-white text-xs">explore</span>
-                                <span class="text-white text-xs font-bold">Master</span>
-                            </div>
-                            <div class="absolute -top-6 -left-6 w-24 h-24 rounded-full bg-white/10"></div>
-                            <div class="absolute -bottom-4 -right-4 w-20 h-20 rounded-full bg-white/10"></div>
+                        <div class="h-40 sm:h-48 relative overflow-hidden">
+                            <img src="images/inabi.jpg" alt="稲葉 祐一朗" class="w-full h-full object-cover object-center">
                         </div>
                         <div class="p-6 text-left flex-grow flex flex-col">
                             <span class="text-xs font-bold text-primary uppercase tracking-wider mb-1 block">Master</span>
                             <h3 class="text-lg font-bold text-gray-900 mb-3">稲葉 祐一朗</h3>
-                            <p class="text-xs text-gray-500 leading-relaxed mb-4">
-                                カナダ語学留学後、デンマークのフォルケホイスコーレで「対話」中心の学びに魅せられる。帰国後、栃木県でフリースクール設立・運営経験あり。
-                            </p>
-                            <blockquote class="mt-auto border-l-2 border-primary/30 pl-3">
-                                <p class="text-xs text-teal-700 italic leading-relaxed">「デンマークで学んだのは、"対話"が人を育てるということ。子どもの『なんで？』に、一緒に向き合いたいと思っています。」</p>
-                            </blockquote>
+                            <!-- 第1節：常時表示 -->
+                            <div class="text-xs text-gray-500 leading-relaxed space-y-2 mb-2">
+                                <p class="font-bold text-gray-700">1. なぜ大人は忘れてしまうのか？</p>
+                                <p>小学生のころは明るく元気な少年だったと思うのですが、中学２年になるとそんな自分の「やり方」がわからなくなり、毎日、学校に行くのもつらくなりました。なぜか先生たちとうまく行かず、テストで点が取れていないわけでもないのに、通知表は悪くなっていく一方。それでも、そういう言葉になりきれない不安や不満を担任の先生に打ち明けてもみたのですが、全く理解してもらえませんでした。</p>
+                                <p>「自分だって子どもだったはずなのに、なんで忘れてしまうんだろう？」<br>自分だけは大人になっても子どものときの感覚を忘れない。そう強く心に誓ったのでした。</p>
+                            </div>
+                            <!-- 折り畳み部分（第2〜5節） -->
+                            <div :class="['overflow-hidden transition-all duration-500 ease-in-out', isStaffBioOpen ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0']">
+                                <div class="text-xs text-gray-500 leading-relaxed space-y-4 pt-2 mb-2">
+                                    <div>
+                                        <p class="font-bold text-gray-700 mb-1">2. デンマーク、新しい価値観との出会い</p>
+                                        <p>30代になるタイミングでデンマークのフォルケホイスコーレと出会いました。フォルケホイスコーレは16歳以上なら誰でも入れる「大人の学校」として知られる場所で、デンマーク国内だけで70近いフォルケホイスコーレがありました。そのうちの一つに入学し、世界中から集まった人々との寮生活を共にし、自分が学びたいと思う授業を選択しながら国際情勢や政治哲学、衝突と戦争という堅い科目から、体育や映画製作、アート＆クラフトなどの軽い科目まで履修して１年間を過ごしました。</p>
+                                        <p class="mt-1">フォルケホイスコーレで過ごす中で、デンマークという国ではいかに「普通」という概念が希薄かということに驚きました。「普通」がないとは言わないけれど、みんなそれに囚われていないのです。日本での生活は、たくさんの「普通」に縛られたものだったんだなと気づきました。また自分に合う学校が存在しないとき、自分たちでそれを作ってしまえばいい、という自由な発想がありました。帰国後、じゃあ自分でできることをかたちにしてみようと思いました。</p>
+                                    </div>
+                                    <div>
+                                        <p class="font-bold text-gray-700 mb-1">3. フリースクールを作ってみる</p>
+                                        <p>2016年から６年間、栃木県で「小山フリースクールおるたの家」というフリースクールを経営しました。自分にできることはなにか？という問いから日本が抱える不登校の問題に気づき、一軒家を借りて日中開放し、小中学生を受け入れることにしました。ただ場所がある、ということが、子どもたちにとってどれだけ大切なことか。学校外の選択肢を一つ作ることに大きな意義を感じました。</p>
+                                    </div>
+                                    <div>
+                                        <p class="font-bold text-gray-700 mb-1">4. 積極的な学びを経験する</p>
+                                        <p>学校で疲弊した子どもたちのエネルギーの回復を優先することと、学びを取り入れていくこととのギャップをどう埋めるかという部分に葛藤を抱えていました。そういったときに東京コミュニティスクールと出会い、コロナ禍でフリースクールを一度閉じ、より積極的に学びを作っていくTCSに入職するという決断をしました。</p>
+                                    </div>
+                                    <div>
+                                        <p class="font-bold text-gray-700 mb-1">5. マスターとしての役割</p>
+                                        <p>とらべが目指すのは、まさに私が経験してきたフリースクールとTCSの学びの間の部分です。個人個人の成長をしっかりと見極めながら、彼らにあった学びを提案していく。それがとらべのマスターとしての仕事だと考えています。</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 続きを読むボタン -->
+                            <button @click="isStaffBioOpen = !isStaffBioOpen" class="mt-auto pt-3 text-xs text-primary font-bold flex items-center gap-1 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 rounded">
+                                <span>{{ isStaffBioOpen ? '閉じる' : '続きを読む' }}</span>
+                                <span class="material-icons-outlined text-sm">{{ isStaffBioOpen ? 'expand_less' : 'expand_more' }}</span>
+                            </button>
                         </div>
                     </div>
 
                     <!-- Staff 3 -->
                     <div class="bg-surface-light rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all border border-gray-100 flex flex-col h-full">
-                        <div class="h-40 sm:h-48 relative overflow-hidden"
-                             style="background: linear-gradient(135deg, #FDB813 0%, #e8a50f 100%);">
-                            <div class="absolute inset-0 flex items-center justify-center">
-                                <span class="text-7xl font-black text-white/25 select-none leading-none">大</span>
-                            </div>
-                            <div class="absolute inset-0 flex items-center justify-center">
-                                <span class="material-icons-outlined text-white/70" style="font-size: 4rem;">favorite</span>
-                            </div>
-                            <div class="absolute bottom-3 right-3 bg-white/25 backdrop-blur-sm rounded-full px-2 py-0.5 flex items-center gap-1">
-                                <span class="material-icons-outlined text-white text-xs">spa</span>
-                                <span class="text-white text-xs font-bold">Anchor</span>
-                            </div>
-                            <div class="absolute -top-6 -left-6 w-24 h-24 rounded-full bg-white/15"></div>
-                            <div class="absolute -bottom-4 -right-4 w-20 h-20 rounded-full bg-white/15"></div>
+                        <div class="h-40 sm:h-48 relative overflow-hidden">
+                            <img src="images/yuyu.jpg" alt="大知里 由" class="w-full h-full object-cover object-center">
                         </div>
                         <div class="p-6 text-left flex-grow flex flex-col">
                             <span class="text-xs font-bold text-primary uppercase tracking-wider mb-1 block">Anchor</span>
                             <h3 class="text-lg font-bold text-gray-900 mb-3">大知里 由</h3>
-                            <p class="text-xs text-gray-500 leading-relaxed mb-4">
-                                生粋の芸術畑出身で、アートセラピーや心理学などを学ぶ。とらべの子どもたちやスタッフを温かく包み込む、母的な存在。
-                            </p>
-                            <blockquote class="mt-auto border-l-2 border-primary/30 pl-3">
-                                <p class="text-xs text-teal-700 italic leading-relaxed">「どんな状態で来てくれても、まず『よく来てくれたね』と伝えたい。ここが、あなたの安心できる場所になりますように。」</p>
-                            </blockquote>
+                            <!-- 第1節：常時表示 -->
+                            <div class="text-xs text-gray-500 leading-relaxed space-y-2 mb-2">
+                                <p class="font-bold text-gray-700">分かりたい気持ち</p>
+                                <p>「人の気持ちを理解できる弁護士になりたい」小学校の卒業文集に書いた私の夢です。大切な人に理解して貰えなかった経験から生まれた、私の中の根っことなる気持ちです。ただ、この夢が中学校卒業時には「アーティスト」に変わることになる。その人生の分岐点となったきっかけは、密やかで激しい揺らぎでした。中1の時、学級委員だった私は教壇に立ち文化祭について話をしていました。向かって左手側、前から4列目の席に座っていたTは、40人の中の1人として、ただ自分の席に座っていた。でも、みんなの前で何かをそれらしく話している私なんかよりも、茶色い重めの前髪の間から世界を見ている彼女の方がずっと信頼できるような、そういうものが彼女にはあった。そして察したのです。私には見えていない世界がある。ここにいては見えない世界がある。分かりたい。その瞬間、とぷん、と世界の裏っかわに潜ったような、そんな感覚をくっきりと覚えています。深い深い海でした。広く厳しく面白い世界でした。</p>
+                            </div>
+                            <!-- 折り畳み部分（第2〜4節） -->
+                            <div :class="['overflow-hidden transition-all duration-500 ease-in-out', isYuyuBioOpen ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0']">
+                                <div class="text-xs text-gray-500 leading-relaxed space-y-4 pt-2 mb-2">
+                                    <div>
+                                        <p class="font-bold text-gray-700 mb-1">分けられない思い</p>
+                                        <p>3歳から音楽を始め、絵本や小説も大好きだった私には、音楽も美術も文学も全てが分かち難く支え合って存在し、それぞれがそれぞれの言い換えだったり、部分的には溶け合っていたりするような感覚が幼い頃からありました。そして、実は学問もほとんど変わりなく、全ては美しさという点で私の中ではくっついている。なんてことを考えていた中3の冬、仲の良かった美術の先生に「お前、旭美（出身校の俗称）行けば？」と言われ、カルトンを抱えてデッサンを始めました。元々答えの決まっていることにはあまり興味が持てない性分でしたし、正解のない表現の世界にこそ自分の時間を費やす価値がある、という直感に従い、後戻りはできない自覚もなく芸術の道を選びました。</p>
+                                    </div>
+                                    <div>
+                                        <p class="font-bold text-gray-700 mb-1">分からせてもらったこと</p>
+                                        <p>そして、1学年普通科9クラスに美術科が1クラスという編成の公立高校に進学しました。すごい学校だった。すごい時間だった。何があって何がなかったのか、今こそ深ーく考えているわけですが、本当の自由があったことは確か。教師と生徒間には尊重があり、そこは寛容性に満ちていた。何かを押し付けられた覚えはなく、自主自律に終始して、本質的で上質な自由を謳歌した3年間でした。根底に揺るぎない信頼があり、場に対して、他者に対して、自分に対して、自分の将来に対して、自分と自分の力と世界への信頼感を全身に浴び続けるような時間でした。あなたの人生は信頼に値する、と。</p>
+                                    </div>
+                                    <div>
+                                        <p class="font-bold text-gray-700 mb-1">分かち合うという自分の使い方</p>
+                                        <p class="font-medium text-gray-600">勿論それから紆余曲折あり、1人娘の子育ても終わりに近づいてきた2025年、とらべのオープンに関わるご縁をいただきました。仕事や子育てをしながらも、芸術のみならず、学問という美しさからも逃れられなかった私は、現在も人間性心理学やコミュニケーション学を中心に学び続けています。様々な貴重な経験や学びから受け取ってきた素晴らしい心震わすものーー総称でいうと「愛」を、私を通して誰かに届けられたらいいなぁ、それができたら最高だな。こどもたちと分かち合いながらどこまでも成長していきたいです。</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 続きを読むボタン -->
+                            <button @click="isYuyuBioOpen = !isYuyuBioOpen" class="mt-auto pt-3 text-xs text-primary font-bold flex items-center gap-1 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 rounded">
+                                <span>{{ isYuyuBioOpen ? '閉じる' : '続きを読む' }}</span>
+                                <span class="material-icons-outlined text-sm">{{ isYuyuBioOpen ? 'expand_less' : 'expand_more' }}</span>
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ===== 8. 保護者の声（新規）===== -->
-        <section id="testimonials" class="py-20 bg-background-light fade-in-section">
-            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16">
-                    <span class="text-primary font-bold tracking-widest text-xs uppercase mb-2 block">Testimonials</span>
-                    <h2 class="text-3xl font-bold text-gray-900 mb-4">保護者の声</h2>
-                    <p class="text-sm text-gray-500">実際にとらべを選んだ保護者からのメッセージです。</p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <!-- Testimonial 1 -->
-                    <div class="bg-accent-green rounded-2xl p-8 border border-primary/15 flex flex-col">
-                        <div class="flex items-center gap-1 mb-4">
-                            <span class="material-icons-outlined text-secondary text-xl" v-for="i in 5" :key="i">star</span>
-                        </div>
-                        <blockquote class="flex-grow">
-                            <p class="text-sm text-gray-700 leading-relaxed italic mb-4">
-                                「公立校では物足りないと感じていた子が、ここで生き生きし始めました。マイプロジェクトを通じて『自分で学ぶ』ということを本当に楽しんでいます。」
-                            </p>
-                        </blockquote>
-                        <div class="border-t border-primary/15 pt-4 mt-2">
-                            <p class="text-xs font-bold text-gray-700">小3男子の保護者</p>
-                            <p class="text-xs text-gray-500">在籍1年目 ／ オルタナ教育を探して入学</p>
-                        </div>
-                    </div>
-
-                    <!-- Testimonial 2 -->
-                    <div class="bg-accent-yellow rounded-2xl p-8 border border-yellow-200 flex flex-col">
-                        <div class="flex items-center gap-1 mb-4">
-                            <span class="material-icons-outlined text-secondary text-xl" v-for="i in 5" :key="i">star</span>
-                        </div>
-                        <blockquote class="flex-grow">
-                            <p class="text-sm text-gray-700 leading-relaxed italic mb-4">
-                                「先生方が子どもの話をじっくり聞いてくださいます。成績ではなく成長で見てくださる個別評価が、うちの子に本当に合っていました。」
-                            </p>
-                        </blockquote>
-                        <div class="border-t border-yellow-200 pt-4 mt-2">
-                            <p class="text-xs font-bold text-gray-700">小5女子の保護者</p>
-                            <p class="text-xs text-gray-500">在籍2年目 ／ 一律評価に疑問を感じて入学</p>
-                        </div>
-                    </div>
-
-                    <!-- Testimonial 3 -->
-                    <div class="bg-surface-light rounded-2xl p-8 border border-gray-200 flex flex-col shadow-sm">
-                        <div class="flex items-center gap-1 mb-4">
-                            <span class="material-icons-outlined text-secondary text-xl" v-for="i in 5" :key="i">star</span>
-                        </div>
-                        <blockquote class="flex-grow">
-                            <p class="text-sm text-gray-700 leading-relaxed italic mb-4">
-                                「学校に行けなくて悩んでいたとき、見学に来て『合うかどうか一緒に考えましょう』と言われて救われました。押し付けがなくて、安心して通わせられています。」
-                            </p>
-                        </blockquote>
-                        <div class="border-t border-gray-200 pt-4 mt-2">
-                            <p class="text-xs font-bold text-gray-700">小2男子の保護者</p>
-                            <p class="text-xs text-gray-500">在籍半年 ／ 不登校がきっかけで入学</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== 9. 募集要項・費用 ===== -->
-        <section id="fees" class="py-20 bg-white fade-in-section">
+        <!-- ===== 8. 募集要項・費用 ===== -->
+        <section id="fees" class="py-10 bg-background-light fade-in-section">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-12">
                     <span class="text-primary font-bold tracking-widest text-xs uppercase mb-2 block">Information</span>
-                    <h2 class="text-3xl font-bold text-gray-900">募集要項・費用</h2>
+                    <h2 class="text-2xl md:text-3xl font-bold text-gray-900">募集要項・費用</h2>
                 </div>
 
                 <!-- 助成金バナー -->
@@ -833,7 +783,7 @@
                                 助成金（参考）
                             </div>
                             <div class="md:w-2/3 p-5">
-                                <p class="text-sm text-gray-700 font-medium">
+                                <p class="text-sm md:text-base text-gray-700 font-medium">
                                     自治体の助成金が適用される場合、<span class="text-gray-800 font-bold">実質負担が軽減される可能性があります</span>（試算例：990,000円 − 最大240,000円 = 約750,000円/年）
                                 </p>
                                 <p class="text-xs text-gray-500 mt-1">※助成金は自治体・年度・審査により異なり、利用できない場合もあります。上記はあくまで試算例です。</p>
@@ -845,11 +795,11 @@
         </section>
 
         <!-- ===== 10. アクセス ===== -->
-        <section id="access" class="py-20 bg-background-light fade-in-section">
+        <section id="access" class="py-10 bg-white fade-in-section">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-12">
                     <span class="text-primary font-bold tracking-widest text-xs uppercase mb-2 block">Access</span>
-                    <h2 class="text-3xl font-bold text-gray-900">アクセス</h2>
+                    <h2 class="text-2xl md:text-3xl font-bold text-gray-900">アクセス</h2>
                 </div>
 
                 <div class="bg-surface-light rounded-xl border border-gray-200 p-6 md:p-8">
@@ -867,13 +817,14 @@
                                 <div>
                                     <p class="text-xs text-gray-500">電話</p>
                                     <a href="tel:0353189700" class="text-sm text-primary font-bold hover:underline">03-5318-9700</a>
+                                    <p class="text-xs text-gray-500 mt-1">繋がらない場合はこちら： <a href="tel:0359891869" class="text-primary font-bold hover:underline">03-5989-1869</a></p>
                                 </div>
                             </div>
                             <div class="flex items-start gap-3">
                                 <span class="material-icons-outlined text-primary text-sm mt-0.5 flex-shrink-0">train</span>
                                 <div>
                                     <p class="text-xs text-gray-500">最寄り駅</p>
-                                    <p class="text-sm text-gray-700">西武新宿線「新井薬師前」駅 徒歩圏内</p>
+                                    <p class="text-sm text-gray-700">中野駅北口より徒歩15分</p>
                                 </div>
                             </div>
                             <div class="flex items-start gap-3">
@@ -901,11 +852,11 @@
         </section>
 
         <!-- ===== 11. FAQ ===== -->
-        <section id="faq" class="py-20 bg-background-light fade-in-section">
+        <!-- <section id="faq" class="py-10 bg-background-light fade-in-section">
             <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-12">
                     <span class="text-primary font-bold tracking-widest text-xs uppercase mb-2 block">FAQ</span>
-                    <h2 class="text-3xl font-bold text-gray-900 mb-4">よくあるご質問</h2>
+                    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">よくあるご質問</h2>
                     <p class="text-sm text-gray-500">見学前によく寄せられる疑問にお答えします。</p>
                 </div>
 
@@ -937,20 +888,20 @@
                     </button>
                 </div>
             </div>
-        </section>
+        </section> -->
 
-        <!-- ===== 10. SNS / Instagram ===== -->
-        <section class="py-20 bg-background-light fade-in-section">
+        <!-- ===== 12. SNS / Instagram ===== -->
+        <!-- <section class="py-10 bg-white fade-in-section">
             <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 
                 <div class="text-center mb-12">
                     <span class="text-primary font-bold tracking-widest text-xs uppercase mb-2 block">Social</span>
-                    <h2 class="text-3xl font-bold text-gray-900 mb-3">日々の様子をInstagramで発信中</h2>
+                    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-3">日々の様子をInstagramで発信中</h2>
                     <p class="text-sm text-gray-500">実際の活動の雰囲気をぜひご覧ください。</p>
-                </div>
+                </div> -->
 
                 <!-- 写真グリッド: 3列×2行 -->
-                <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3 md:gap-4 mb-10">
+                <!-- <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3 md:gap-4 mb-10">
                     <a href="https://www.instagram.com/torabe_freeschool/" target="_blank" rel="noopener noreferrer"
                        class="block aspect-square rounded-xl overflow-hidden group cursor-pointer">
                         <div class="w-full h-full bg-gradient-to-br from-primary/30 to-primary/10 flex flex-col items-center justify-center transition-transform duration-300 group-hover:scale-105">
@@ -993,10 +944,10 @@
                             <span class="text-yellow-700 font-bold text-xs md:text-sm">マイプロジェクト</span>
                         </div>
                     </a>
-                </div>
+                </div> -->
 
                 <!-- フォローボタン -->
-                <div class="text-center">
+                <!-- <div class="text-center">
                     <a href="https://www.instagram.com/torabe_freeschool/" target="_blank" rel="noopener noreferrer"
                        class="btn-ripple inline-flex items-center gap-2 bg-primary hover:bg-teal-700 text-white font-bold px-8 py-3 rounded-full shadow-lg transition-all transform hover:scale-105 text-sm">
                         <span class="material-icons-outlined text-sm">photo_camera</span>
@@ -1005,10 +956,10 @@
                 </div>
 
             </div>
-        </section>
+        </section> -->
 
-        <!-- ===== 12. 最終CTA ===== -->
-        <section id="cta" class="bg-primary pt-20 pb-16 relative overflow-hidden">
+        <!-- ===== 13. 最終CTA ===== -->
+        <section id="cta" class="bg-primary py-10 relative overflow-hidden">
             <div class="absolute inset-0 opacity-10 bg-[url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIklEQVQIW2NkQAKrVq36zwjjgzhhYWGMYAEYB8RmROaABADeOQ8CXl/xfgAAAABJRU5ErkJggg==')]"></div>
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
 
@@ -1104,6 +1055,9 @@
                 const isScrolled = ref(false);
                 const isHeaderHidden = ref(false);
                 const lastScrollY = ref(0);
+                const isEmaBioOpen = ref(false);
+                const isStaffBioOpen = ref(false);
+                const isYuyuBioOpen = ref(false);
                 const SCROLL_TOP_ALWAYS_VISIBLE = 80;
                 const SCROLL_DIRECTION_THRESHOLD = 8;
 
@@ -1132,11 +1086,11 @@
                     {
                         q: "助成金の申請は自分でやらないといけないですか？",
                         a: "東京都フリースクール等利用者助成金の申請は、基本的に保護者ご自身に行っていただきますが、申請方法や必要書類についてスタッフがサポートします。入学後の説明会でも詳しくご案内しています。"
-                    },
-                    {
-                        q: "不登校の子でも通えますか？",
-                        a: "はい、受け入れ実績があります。「学校に行けない」という状態のお子さんも、焦らず自分のペースで通い始められる環境を用意しています。最初は週数日から始めるなど、柔軟に対応しています。まずは見学にいらしてください。"
                     }
+                    // {
+                    //     q: "不登校の子でも通えますか？",
+                    //     a: "はい、受け入れ実績があります。「学校に行けない」という状態のお子さんも、焦らず自分のペースで通い始められる環境を用意しています。最初は週数日から始めるなど、柔軟に対応しています。まずは見学にいらしてください。"
+                    // }
                 ]);
 
                 const openFaqIndex = ref(null);
@@ -1213,6 +1167,9 @@
                     isMobileMenuOpen,
                     isScrolled,
                     isHeaderHidden,
+                    isEmaBioOpen,
+                    isStaffBioOpen,
+                    isYuyuBioOpen,
                     faqs,
                     openFaqIndex,
                     toggleFaq,

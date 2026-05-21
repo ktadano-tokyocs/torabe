@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head><meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: #F9FAFB; padding: 20px; }
+  .row { display: flex; gap: 12px; flex-wrap: wrap; }
+  .swatch { border-radius: 12px; overflow: hidden; flex: 1; min-width: 100px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+  .color-block { height: 72px; }
+  .color-info { background: white; padding: 8px 10px; }
+  .name { font-size: 11px; font-weight: 700; color: #374151; }
+  .hex  { font-size: 10px; color: #6B7280; font-family: monospace; margin-top: 2px; }
+  .var  { font-size: 9px; color: #9CA3AF; font-family: monospace; margin-top: 1px; }
+  h4 { font-size: 10px; font-weight: 700; color: #9CA3AF; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; margin-top: 16px; }
+  h4:first-child { margin-top: 0; }
+</style>
+</head>
+<body>
+  <h4>Brand</h4>
+  <div class="row">
+    <div class="swatch">
+      <div class="color-block" style="background:#0B9B88"></div>
+      <div class="color-info"><div class="name">Primary</div><div class="hex">#0B9B88</div><div class="var">--color-primary</div></div>
+    </div>
+    <div class="swatch">
+      <div class="color-block" style="background:#0a7c6d"></div>
+      <div class="color-info"><div class="name">Primary Dark</div><div class="hex">#0a7c6d</div><div class="var">--color-primary-dark</div></div>
+    </div>
+    <div class="swatch">
+      <div class="color-block" style="background:#0db8a2"></div>
+      <div class="color-info"><div class="name">Primary Light</div><div class="hex">#0db8a2</div><div class="var">--color-primary-light</div></div>
+    </div>
+    <div class="swatch">
+      <div class="color-block" style="background:#E6F5F2; border: 1px solid #d1ede9;"></div>
+      <div class="color-info"><div class="name">Primary Tint</div><div class="hex">#E6F5F2</div><div class="var">--color-primary-tint</div></div>
+    </div>
+  </div>
+  <h4>Secondary</h4>
+  <div class="row">
+    <div class="swatch">
+      <div class="color-block" style="background:#FDB813"></div>
+      <div class="color-info"><div class="name">Secondary</div><div class="hex">#FDB813</div><div class="var">--color-secondary</div></div>
+    </div>
+    <div class="swatch">
+      <div class="color-block" style="background:#FFD54F"></div>
+      <div class="color-info"><div class="name">Secondary Hover</div><div class="hex">#FFD54F</div><div class="var">--color-secondary-hover</div></div>
+    </div>
+    <div class="swatch">
+      <div class="color-block" style="background:#FFF9E6; border: 1px solid #faefc8;"></div>
+      <div class="color-info"><div class="name">Secondary Tint</div><div class="hex">#FFF9E6</div><div class="var">--color-secondary-tint</div></div>
+    </div>
+  </div>
+</body></html>

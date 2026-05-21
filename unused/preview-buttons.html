@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head><meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+<style>
+    @font-face {
+      font-family: 'Material Icons Outlined';
+      font-style: normal;
+      font-weight: 400;
+      font-display: block;
+      src: url(https://fonts.gstatic.com/s/materialiconsoutlined/v109/gok-H7zzDkdnRel8-DQ6KAXJ69wP1tGnf4ZGhUce.woff2) format('woff2');
+    }
+    .material-icons-outlined {
+      font-family: 'Material Icons Outlined';
+      font-weight: normal; font-style: normal; font-size: 24px; line-height: 1;
+      letter-spacing: normal; text-transform: none; display: inline-block;
+      white-space: nowrap; word-wrap: normal; direction: ltr;
+      -webkit-font-feature-settings: 'liga'; font-feature-settings: 'liga';
+      -webkit-font-smoothing: antialiased;
+    }
+  </style>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: #F9FAFB; padding: 20px; }
+  h4 { font-size: 10px; font-weight: 700; color: #9CA3AF; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 10px; margin-top: 14px; }
+  h4:first-child { margin-top: 0; }
+  .row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-bottom: 6px; }
+  .btn { display: inline-flex; align-items: center; gap: 6px; padding: 10px 20px; border-radius: 9999px; font-family: inherit; font-weight: 700; font-size: 13px; cursor: pointer; border: none; line-height: 1; }
+  .btn-sm { padding: 6px 14px; font-size: 11px; }
+  .btn-lg { padding: 14px 28px; font-size: 15px; }
+  .primary { background: #0B9B88; color: white; box-shadow: 0 4px 14px rgba(11,155,136,0.25); }
+  .secondary { background: #FDB813; color: #1F2937; box-shadow: 0 4px 14px rgba(253,184,19,0.35); }
+  .ghost { background: rgba(11,155,136,0.08); color: #0B9B88; border: 1.5px solid rgba(11,155,136,0.3); }
+  .ghost-white { background: rgba(255,255,255,0.2); color: white; border: 1.5px solid rgba(255,255,255,0.3); }
+  .icon { font-size: 16px !important; }
+  .on-dark { background: #0B9B88; padding: 10px 14px; border-radius: 12px; display: inline-flex; gap: 8px; align-items: center; }
+</style>
+</head>
+<body>
+  <h4>Primary</h4>
+  <div class="row">
+    <button class="btn primary btn-sm"><span class="material-icons-outlined icon">event_available</span>見学を申し込む（無料）</button>
+    <button class="btn primary">見学・説明会へ</button>
+    <button class="btn primary btn-lg"><span class="material-icons-outlined icon">event_available</span>見学・説明会・体験の申し込みはこちら</button>
+  </div>
+  <h4>Secondary (CTA)</h4>
+  <div class="row">
+    <button class="btn secondary btn-sm">見学を申し込む</button>
+    <button class="btn secondary"><span class="material-icons-outlined icon">event_available</span>これらを体感しに見学へ行く</button>
+  </div>
+  <h4>Ghost / Outline</h4>
+  <div class="row">
+    <button class="btn ghost">詳細を見る</button>
+    <div class="on-dark"><button class="btn ghost-white"><span class="material-icons-outlined icon">phone</span>電話で問い合わせる</button></div>
+  </div>
+</body></html>

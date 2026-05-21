@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LPデザイン比較・検討資料</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Vue.js 3 -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* カスタムスクロールバー */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c1c1c1; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a8a8a8; 
+        }
+        
+        .iframe-container {
+            transition: width 0.3s ease;
+            margin: 0 auto;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            background-color: white;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800 h-screen overflow-hidden flex flex-col font-sans">
+    <div id="app" class="h-full flex flex-col" v-cloak>
+        
+        <!-- Header -->
+        <header class="bg-slate-800 text-white shadow-md z-10 shrink-0">
+            <div class="px-4 py-3 flex flex-col sm:flex-row justify-between items-center gap-4">
+                <div>
+                    <h1 class="text-xl font-bold tracking-wide">LPデザイン比較検討ツール</h1>
+                    <p class="text-xs text-slate-300 mt-1">「とらべ」のLPデザイン比較・共有用資料です。</p>
+                </div>
+                
+                <div class="flex items-center space-x-6">
+                    <!-- デバイスサイズ切り替え -->
+                    <div class="flex bg-slate-700 rounded-lg p-1">
+                        <button @click="deviceMode = 'desktop'" 
+                                :class="{'bg-slate-500 text-white shadow': deviceMode === 'desktop', 'text-slate-300 hover:text-white': deviceMode !== 'desktop'}"
+                                class="p-2 rounded flex items-center justify-center transition-colors" title="PC表示">
+                            <i data-lucide="monitor"></i>
+                        </button>
+                        <button @click="deviceMode = 'mobile'"
+                                :class="{'bg-slate-500 text-white shadow': deviceMode === 'mobile', 'text-slate-300 hover:text-white': deviceMode !== 'mobile'}"
+                                class="p-2 rounded flex items-center justify-center transition-colors" title="スマートフォン表示 (375px)">
+                            <i data-lucide="smartphone"></i>
+                        </button>
+                    </div>
+
+                    <!-- 表示モード切り替え -->
+                    <div class="flex bg-slate-700 rounded-lg p-1">
+                        <button @click="viewMode = 'split'" 
+                                :class="{'bg-slate-500 text-white shadow': viewMode === 'split', 'text-slate-300 hover:text-white': viewMode !== 'split'}"
+                                class="px-3 py-1.5 rounded flex items-center text-sm font-medium transition-colors">
+                            <i data-lucide="columns" class="w-4 h-4 mr-2"></i> 分割
+                        </button>
+                        <button @click="viewMode = 'tab'" 
+                                :class="{'bg-slate-500 text-white shadow': viewMode === 'tab', 'text-slate-300 hover:text-white': viewMode !== 'tab'}"
+                                class="px-3 py-1.5 rounded flex items-center text-sm font-medium transition-colors">
+                            <i data-lucide="monitor-stop" class="w-4 h-4 mr-2"></i> 単体
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="flex-1 overflow-hidden relative flex flex-col">
+            
+            <!-- Tab Navigation (Only visible in 'tab' mode) -->
+            <div v-if="viewMode === 'tab'" class="flex border-b border-gray-300 bg-white shrink-0">
+                <button @click="activeTab = 'v1'" 
+                        :class="{'border-b-2 border-blue-600 text-blue-600 bg-blue-50/50': activeTab === 'v1', 'text-gray-500 hover:bg-gray-50': activeTab !== 'v1'}"
+                        class="flex-1 py-3 px-4 text-center font-medium transition-colors">
+                    デザイン A案 (index.html)
+                </button>
+                <button @click="activeTab = 'v2'" 
+                        :class="{'border-b-2 border-emerald-600 text-emerald-600 bg-emerald-50/50': activeTab === 'v2', 'text-gray-500 hover:bg-gray-50': activeTab !== 'v2'}"
+                        class="flex-1 py-3 px-4 text-center font-medium transition-colors">
+                    デザイン B案 (mockup_v2.html)
+                </button>
+            </div>
+
+            <!-- Content Area -->
+            <div class="flex-1 flex overflow-hidden bg-slate-200 p-2 sm:p-4 gap-4">
+                
+                <!-- Version 1 (index.html) -->
+                <div v-show="viewMode === 'split' || (viewMode === 'tab' && activeTab === 'v1')" 
+                     class="flex-1 flex flex-col overflow-hidden h-full">
+                    <div v-if="viewMode === 'split'" class="bg-blue-600 text-white text-center py-1.5 font-bold text-sm rounded-t-lg flex items-center justify-between px-4 shrink-0">
+                        <span>デザイン A案</span>
+                        <span class="text-xs font-normal opacity-80">index.html</span>
+                    </div>
+                    <div class="flex-1 overflow-y-auto overflow-x-hidden flex justify-center py-2 relative" :class="{'rounded-b-lg border-l border-r border-b border-gray-300 bg-gray-100': viewMode === 'split', 'rounded-lg': viewMode === 'tab'}">
+                        <iframe src="./index.html" 
+                                class="iframe-container h-full bg-white border border-gray-200" 
+                                :style="{ width: deviceWidthStr, height: deviceHeightStr }"
+                                title="現行デザイン"></iframe>
+                    </div>
+                </div>
+
+                <!-- Version 2 (mockup_v2.html) -->
+                <div v-show="viewMode === 'split' || (viewMode === 'tab' && activeTab === 'v2')" 
+                     class="flex-1 flex flex-col overflow-hidden h-full">
+                    <div v-if="viewMode === 'split'" class="bg-emerald-600 text-white text-center py-1.5 font-bold text-sm rounded-t-lg flex items-center justify-between px-4 shrink-0">
+                        <span>デザイン B案</span>
+                        <span class="text-xs font-normal opacity-80">mockup_v2.html</span>
+                    </div>
+                    <div class="flex-1 overflow-y-auto overflow-x-hidden flex justify-center py-2 relative" :class="{'rounded-b-lg border-l border-r border-b border-gray-300 bg-gray-100': viewMode === 'split', 'rounded-lg': viewMode === 'tab'}">
+                        <iframe src="./mockup_v2.html" 
+                                class="iframe-container h-full bg-white border border-gray-200" 
+                                :style="{ width: deviceWidthStr, height: deviceHeightStr }"
+                                title="新デザイン案"></iframe>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const { createApp, ref, computed, onMounted } = Vue;
+
+        createApp({
+            setup() {
+                // State
+                const viewMode = ref('split'); // 'split' or 'tab'
+                const activeTab = ref('v1'); // 'v1' or 'v2'
+                const deviceMode = ref('desktop'); // 'desktop', 'tablet', 'mobile'
+
+                // レスポンシブ対応による初期設定（画面幅が狭い場合は最初からタブモードにする）
+                onMounted(() => {
+                    if (window.innerWidth < 1024) {
+                        viewMode.value = 'tab';
+                    }
+                    // Lucide Icons の初期化
+                    lucide.createIcons();
+                });
+
+                // 画面幅が変わったときにアイコンを再描画する処理（VueのDOM更新後用）
+                Vue.watch(deviceMode, () => {
+                    Vue.nextTick(() => {
+                        lucide.createIcons();
+                    });
+                });
+                Vue.watch(viewMode, () => {
+                    Vue.nextTick(() => {
+                        lucide.createIcons();
+                    });
+                });
+
+                // Computed Properties
+                const deviceWidthStr = computed(() => {
+                    switch (deviceMode.value) {
+                        case 'mobile': return '375px';
+                        case 'desktop': return '100%';
+                        default: return '100%';
+                    }
+                });
+
+                const deviceHeightStr = computed(() => {
+                    switch (deviceMode.value) {
+                        case 'mobile': return '812px';
+                        case 'desktop': return '100%';
+                        default: return '100%';
+                    }
+                });
+
+                return {
+                    viewMode,
+                    activeTab,
+                    deviceMode,
+                    deviceWidthStr,
+                    deviceHeightStr
+                };
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>

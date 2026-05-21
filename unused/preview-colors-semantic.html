@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head><meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: #F9FAFB; padding: 20px; }
+  .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  .item { background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.07); }
+  .swatch { height: 40px; }
+  .info { padding: 6px 8px; }
+  .role { font-size: 10px; font-weight: 700; color: #374151; }
+  .hex  { font-size: 9px; color: #6B7280; font-family: monospace; }
+  h4 { font-size: 10px; font-weight: 700; color: #9CA3AF; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; }
+  .text-row { display: flex; gap: 8px; margin-top: 14px; }
+  .text-item { background: white; border-radius: 10px; padding: 8px 10px; flex: 1; border: 1px solid #E5E7EB; }
+  .sample { font-size: 13px; font-weight: 700; margin-bottom: 3px; }
+  .label { font-size: 9px; color: #9CA3AF; }
+</style>
+</head>
+<body>
+  <h4>Semantic UI Colors</h4>
+  <div class="grid">
+    <div class="item"><div class="swatch" style="background:#F9FAFB;border:1px solid #eee"></div><div class="info"><div class="role">Background</div><div class="hex">#F9FAFB</div></div></div>
+    <div class="item"><div class="swatch" style="background:#FFFFFF;border:1px solid #eee"></div><div class="info"><div class="role">Surface</div><div class="hex">#FFFFFF</div></div></div>
+    <div class="item"><div class="swatch" style="background:#E5E7EB"></div><div class="info"><div class="role">Border</div><div class="hex">#E5E7EB</div></div></div>
+    <div class="item"><div class="swatch" style="background:#F3F4F6;border:1px solid #eee"></div><div class="info"><div class="role">Border Light</div><div class="hex">#F3F4F6</div></div></div>
+    <div class="item"><div class="swatch" style="background:#EF4444"></div><div class="info"><div class="role">Error</div><div class="hex">#EF4444</div></div></div>
+    <div class="item"><div class="swatch" style="background:#F59E0B"></div><div class="info"><div class="role">Warning</div><div class="hex">#F59E0B</div></div></div>
+    <div class="item"><div class="swatch" style="background:#10B981"></div><div class="info"><div class="role">Success</div><div class="hex">#10B981</div></div></div>
+    <div class="item"><div class="swatch" style="background:#3B82F6"></div><div class="info"><div class="role">Info</div><div class="hex">#3B82F6</div></div></div>
+  </div>
+  <div class="text-row">
+    <div class="text-item"><div class="sample" style="color:#333333">テキスト本文</div><div class="label">Text Main #333333</div></div>
+    <div class="text-item"><div class="sample" style="color:#6B7280">サブテキスト</div><div class="label">Text Sub #6B7280</div></div>
+    <div class="text-item"><div class="sample" style="color:#9CA3AF">補足・注釈</div><div class="label">Text Muted #9CA3AF</div></div>
+    <div class="text-item" style="background:#0B9B88"><div class="sample" style="color:#fff">白テキスト</div><div class="label" style="color:rgba(255,255,255,0.7)">on Primary</div></div>
+  </div>
+</body></html>
