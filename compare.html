@@ -37,6 +37,92 @@
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             background-color: white;
         }
+
+        /* iPhone風スマホフレーム (モバイル表示時のみ適用) */
+        .phone-frame {
+            position: relative;
+            padding: 14px;
+            background: #2a2a2a;
+            border-radius: 55px;
+            box-shadow:
+                0 0 0 2px #1a1a1a,
+                0 25px 50px -12px rgba(0, 0, 0, 0.45),
+                0 10px 20px -8px rgba(0, 0, 0, 0.3);
+            margin: 12px auto;
+            flex-shrink: 0;
+            align-self: flex-start;
+        }
+
+        /* ダイナミックアイランド */
+        .phone-frame::before {
+            content: '';
+            position: absolute;
+            top: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 110px;
+            height: 32px;
+            background: #050505;
+            border-radius: 20px;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        /* ホームインジケーター */
+        .phone-frame::after {
+            content: '';
+            position: absolute;
+            bottom: 22px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 134px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 3px;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        /* フレーム内の iframe スタイル (デフォルトのシャドウなどを打ち消す) */
+        .phone-frame > iframe {
+            display: block;
+            border-radius: 42px;
+            box-shadow: none !important;
+            border: none !important;
+            background: #fff;
+        }
+
+        /* サイドボタン (左: サイレント・音量上・音量下 / 右: 電源) */
+        .phone-side-btn {
+            position: absolute;
+            background: #1f1f1f;
+            border-radius: 2px;
+            z-index: 1;
+        }
+        .phone-side-btn.silent {
+            left: -3px;
+            top: 90px;
+            width: 4px;
+            height: 28px;
+        }
+        .phone-side-btn.vol-up {
+            left: -3px;
+            top: 140px;
+            width: 4px;
+            height: 56px;
+        }
+        .phone-side-btn.vol-down {
+            left: -3px;
+            top: 210px;
+            width: 4px;
+            height: 56px;
+        }
+        .phone-side-btn.power {
+            right: -3px;
+            top: 160px;
+            width: 4px;
+            height: 90px;
+        }
     </style>
 </head>
 <body class="bg-gray-100 text-gray-800 h-screen overflow-hidden flex flex-col font-sans">
@@ -110,8 +196,17 @@
                         <span class="text-xs font-normal opacity-80">index.html</span>
                     </div>
                     <div class="flex-1 overflow-y-auto overflow-x-hidden flex justify-center py-2 relative" :class="{'rounded-b-lg border-l border-r border-b border-gray-300 bg-gray-100': viewMode === 'split', 'rounded-lg': viewMode === 'tab'}">
-                        <iframe src="./index.html" 
-                                class="iframe-container h-full bg-white border border-gray-200" 
+                        <div v-if="deviceMode === 'mobile'" class="phone-frame">
+                            <span class="phone-side-btn silent"></span>
+                            <span class="phone-side-btn vol-up"></span>
+                            <span class="phone-side-btn vol-down"></span>
+                            <span class="phone-side-btn power"></span>
+                            <iframe src="./index.html"
+                                    :style="{ width: deviceWidthStr, height: deviceHeightStr }"
+                                    title="現行デザイン"></iframe>
+                        </div>
+                        <iframe v-else src="./index.html"
+                                class="iframe-container h-full bg-white border border-gray-200"
                                 :style="{ width: deviceWidthStr, height: deviceHeightStr }"
                                 title="現行デザイン"></iframe>
                     </div>
@@ -125,8 +220,17 @@
                         <span class="text-xs font-normal opacity-80">mockup_v2.html</span>
                     </div>
                     <div class="flex-1 overflow-y-auto overflow-x-hidden flex justify-center py-2 relative" :class="{'rounded-b-lg border-l border-r border-b border-gray-300 bg-gray-100': viewMode === 'split', 'rounded-lg': viewMode === 'tab'}">
-                        <iframe src="./mockup_v2.html" 
-                                class="iframe-container h-full bg-white border border-gray-200" 
+                        <div v-if="deviceMode === 'mobile'" class="phone-frame">
+                            <span class="phone-side-btn silent"></span>
+                            <span class="phone-side-btn vol-up"></span>
+                            <span class="phone-side-btn vol-down"></span>
+                            <span class="phone-side-btn power"></span>
+                            <iframe src="./mockup_v2.html"
+                                    :style="{ width: deviceWidthStr, height: deviceHeightStr }"
+                                    title="新デザイン案"></iframe>
+                        </div>
+                        <iframe v-else src="./mockup_v2.html"
+                                class="iframe-container h-full bg-white border border-gray-200"
                                 :style="{ width: deviceWidthStr, height: deviceHeightStr }"
                                 title="新デザイン案"></iframe>
                     </div>
