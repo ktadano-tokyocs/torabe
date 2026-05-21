@@ -2,7 +2,7 @@
 
 **対象ファイル**: `index-v3.html`
 **対象セクション**: `<!-- ===== 10. SNS / Instagram ===== -->`
-**Instagramアカウント**: [@torabe_freeschool](https://www.instagram.com/torabe_freeschool/)1
+**Instagramアカウント**: [@torabe_freeschool](https://www.instagram.com/torabe_freeschool/)
 
 ---
 
