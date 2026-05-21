@@ -83,10 +83,20 @@
             pointer-events: none;
         }
 
+        /* iframeをクリップする内側ラッパー (角丸を確実にクリップ) */
+        .phone-frame > .phone-screen {
+            border-radius: 41px;        /* 55 - 14 = 41px, phone-frame内側カーブと一致 */
+            overflow: hidden;
+            background: #fff;           /* サブピクセル漏れを白で埋める (iframe本文と同色) */
+            -webkit-mask-image: -webkit-radial-gradient(white, black); /* Safari クリップ保険 */
+            line-height: 0;             /* iframe下のインラインベースライン余白除去 */
+            position: relative;
+        }
+
         /* フレーム内の iframe スタイル (デフォルトのシャドウなどを打ち消す) */
-        .phone-frame > iframe {
+        .phone-frame > .phone-screen > iframe {
             display: block;
-            border-radius: 42px;
+            border-radius: 41px;
             box-shadow: none !important;
             border: none !important;
             background: #fff;
@@ -201,9 +211,11 @@
                             <span class="phone-side-btn vol-up"></span>
                             <span class="phone-side-btn vol-down"></span>
                             <span class="phone-side-btn power"></span>
-                            <iframe src="./index.html"
-                                    :style="{ width: deviceWidthStr, height: deviceHeightStr }"
-                                    title="現行デザイン"></iframe>
+                            <div class="phone-screen">
+                                <iframe src="./index.html"
+                                        :style="{ width: deviceWidthStr, height: deviceHeightStr }"
+                                        title="現行デザイン"></iframe>
+                            </div>
                         </div>
                         <iframe v-else src="./index.html"
                                 class="iframe-container h-full bg-white border border-gray-200"
@@ -225,9 +237,11 @@
                             <span class="phone-side-btn vol-up"></span>
                             <span class="phone-side-btn vol-down"></span>
                             <span class="phone-side-btn power"></span>
-                            <iframe src="./mockup_v2.html"
-                                    :style="{ width: deviceWidthStr, height: deviceHeightStr }"
-                                    title="新デザイン案"></iframe>
+                            <div class="phone-screen">
+                                <iframe src="./mockup_v2.html"
+                                        :style="{ width: deviceWidthStr, height: deviceHeightStr }"
+                                        title="新デザイン案"></iframe>
+                            </div>
                         </div>
                         <iframe v-else src="./mockup_v2.html"
                                 class="iframe-container h-full bg-white border border-gray-200"
