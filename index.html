@@ -215,6 +215,7 @@
                     <a href="#concept" @click.prevent="scrollTo('concept')" class="px-6 py-4 border-b border-gray-100 text-gray-700 font-medium">コンセプト</a>
                     <a href="#features" @click.prevent="scrollTo('features')" class="px-6 py-4 border-b border-gray-100 text-gray-700 font-medium">特長</a>
                     <a href="#schedule" @click.prevent="scrollTo('schedule')" class="px-6 py-4 border-b border-gray-100 text-gray-700 font-medium">1日の流れ</a>
+                    <a href="#note" @click.prevent="scrollTo('note')" class="px-6 py-4 border-b border-gray-100 text-gray-700 font-medium">note</a>
                     <a href="#staff" @click.prevent="scrollTo('staff')" class="px-6 py-4 border-b border-gray-100 text-gray-700 font-medium">スタッフ</a>
                     <a href="#fees" @click.prevent="scrollTo('fees')" class="px-6 py-4 border-b border-gray-100 text-gray-700 font-medium">料金</a>
                     <a href="#access" @click.prevent="scrollTo('access')" class="px-6 py-4 border-b border-gray-100 text-gray-700 font-medium">アクセス</a>
@@ -607,8 +608,87 @@
             </div>
         </section>
 
+        <!-- ===== 6.5 note（オンラインジャーナル） ===== -->
+        <section id="note" class="py-10 bg-background-light fade-in-section">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <span class="text-primary font-bold tracking-widest text-xs uppercase mb-2 block">Journal / note</span>
+                    <h2 class="text-2xl md:text-3xl font-bold text-gray-900">とらべの日々を、綴る場所</h2>
+                    <p class="text-sm text-gray-500 mt-3 max-w-xl mx-auto leading-relaxed">
+                        子どもたちの学びや、スタッフが日々考えていることを noteで発信しています。見学前の「雰囲気を知る」きっかけにもどうぞ。
+                    </p>
+                </div>
+
+                <div class="flex flex-col lg:flex-row gap-8 lg:gap-12 items-stretch">
+                    <!-- 左: note.com 風カードのモック -->
+                    <div class="lg:w-5/12">
+                        <div class="bg-white rounded-2xl shadow-md border border-gray-100 p-6 h-full flex flex-col justify-center relative">
+                            <span class="absolute top-4 right-4 text-[10px] tracking-[0.2em] font-bold text-primary uppercase">— note.com —</span>
+                            <div class="flex items-center gap-2 mb-3 text-xs tracking-widest text-gray-500 font-bold">
+                                <span class="w-6 h-6 rounded-full bg-gray-900 text-white inline-flex items-center justify-center text-[11px] font-black">n</span>
+                                <span>とらべ</span>
+                            </div>
+                            <p class="text-sm font-bold text-gray-900 leading-relaxed mb-3">
+                                「歩いてもいい、止まってもいい」<br>とらべの一週間より
+                            </p>
+                            <div class="space-y-1.5 mb-3">
+                                <span class="block h-1.5 rounded bg-gray-200 w-[96%]"></span>
+                                <span class="block h-1.5 rounded bg-gray-200 w-[88%]"></span>
+                                <span class="block h-1.5 rounded bg-gray-200 w-[64%]"></span>
+                            </div>
+                            <div class="flex justify-between items-center text-[10px] text-gray-400 border-t border-dashed border-gray-200 pt-2">
+                                <span>2026.05</span>
+                                <span class="inline-flex items-center gap-1 text-primary">
+                                    <span class="material-icons-outlined" style="font-size:12px;">favorite_border</span>
+                                    read more
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 右: 説明 + チップ + CTA -->
+                    <div class="lg:w-7/12 flex flex-col justify-center">
+                        <span class="text-xs font-bold text-primary uppercase tracking-widest mb-2 block">@torabefs on note</span>
+                        <h3 class="text-xl md:text-2xl font-bold text-gray-900 leading-snug mb-4">
+                            学びの裏側を、<span class="text-primary">そのままの言葉</span>でお届けします。
+                        </h3>
+                        <p class="text-sm md:text-base text-gray-600 leading-relaxed mb-6">
+                            パンフレットには載らない、教室での小さな気づき、子どもたちの探究の様子、スタッフが大切にしている考え方。とらべの「いま」を綴るオンラインジャーナルです。
+                        </p>
+
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="inline-flex items-center gap-1 bg-accent-green text-primary px-3 py-1.5 rounded-full text-xs font-bold">
+                                <span class="material-icons-outlined" style="font-size:14px;">auto_stories</span>
+                                探究の記録
+                            </span>
+                            <span class="inline-flex items-center gap-1 bg-accent-green text-primary px-3 py-1.5 rounded-full text-xs font-bold">
+                                <span class="material-icons-outlined" style="font-size:14px;">forest</span>
+                                原体験の日々
+                            </span>
+                            <span class="inline-flex items-center gap-1 bg-accent-green text-primary px-3 py-1.5 rounded-full text-xs font-bold">
+                                <span class="material-icons-outlined" style="font-size:14px;">groups</span>
+                                スタッフの考え
+                            </span>
+                        </div>
+
+                        <div class="flex flex-wrap items-center gap-4">
+                            <a href="https://note.com/torabefs" target="_blank" rel="noopener noreferrer"
+                               class="inline-flex items-center gap-2 bg-primary hover:bg-teal-700 text-white font-bold px-8 py-3 rounded-full shadow-lg transition-all transform hover:scale-105">
+                                <span class="material-icons-outlined">open_in_new</span>
+                                noteを読みに行く
+                            </a>
+                            <span class="inline-flex items-center gap-1 text-sm text-gray-400 tracking-wider">
+                                <span class="material-icons-outlined" style="font-size:14px;">link</span>
+                                note.com/torabefs
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- ===== 7. スタッフ紹介 ===== -->
-        <section id="staff" class="py-10 bg-background-light fade-in-section">
+        <section id="staff" class="py-10 bg-white fade-in-section">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <span class="text-primary font-bold tracking-widest text-xs uppercase mb-2 block">Staff</span>
                 <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">共に学びを創るスタッフ</h2>

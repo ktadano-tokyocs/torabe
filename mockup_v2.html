@@ -553,6 +553,110 @@ img{display:block;max-width:100%;}
 .tl-h{font-family:"Noto Serif JP",serif;font-size:14px;font-weight:700;color:var(--ink);margin-top:4px;letter-spacing:0.02em;}
 .tl-p{font-size:12px;color:var(--muted);margin-top:4px;line-height:1.8;}
 
+/* ───────── NOTE / JOURNAL ───────── */
+.note-sec{background:var(--bg);}
+.note-card{
+  position:relative;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:22px;
+  padding:28px 22px;
+  display:grid;grid-template-columns:1fr;gap:24px;
+  box-shadow:0 1px 0 rgba(31,41,55,0.02), 0 14px 36px -24px rgba(31,41,55,0.2);
+  overflow:hidden;
+}
+@media (min-width:768px){
+  .note-card{grid-template-columns:0.85fr 1.15fr;gap:36px;padding:40px;align-items:center;}
+}
+.note-visual{
+  position:relative;
+  aspect-ratio:4/3;
+  border-radius:16px;
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(11,155,136,0.10), transparent 60%),
+    radial-gradient(ellipse at 80% 80%, rgba(253,184,19,0.12), transparent 55%),
+    var(--bg);
+  border:1px solid var(--line);
+  overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+}
+.note-visual::before{
+  content:"";position:absolute;inset:0;
+  background-image:
+    linear-gradient(to bottom, transparent 0, transparent calc(100% - 1px), rgba(11,155,136,0.08) calc(100% - 1px));
+  background-size:100% 28px;
+  opacity:0.7;
+}
+.note-mock{
+  position:relative;z-index:1;
+  width:78%;padding:18px 18px 16px;
+  background:#fff;border:1px solid var(--line);border-radius:12px;
+  box-shadow:0 8px 22px -14px rgba(31,41,55,0.25);
+  display:flex;flex-direction:column;gap:10px;
+  transform:rotate(-1.5deg);
+}
+.note-mock .note-brand{
+  display:flex;align-items:center;gap:8px;
+  font-family:"Cormorant Garamond",serif;font-style:italic;
+  font-size:13px;letter-spacing:0.18em;color:var(--ink-soft);
+}
+.note-mock .note-brand .nlogo{
+  width:22px;height:22px;border-radius:50%;
+  background:var(--ink);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-family:"Noto Sans JP",sans-serif;font-style:normal;font-weight:900;font-size:12px;
+  letter-spacing:0;
+}
+.note-mock .note-title{
+  font-family:"Noto Serif JP",serif;font-weight:700;font-size:14px;line-height:1.6;
+  color:var(--ink);letter-spacing:0.02em;
+}
+.note-mock .note-lines{display:flex;flex-direction:column;gap:5px;margin-top:2px;}
+.note-mock .note-lines span{display:block;height:5px;border-radius:2px;background:var(--line);}
+.note-mock .note-lines span:nth-child(1){width:96%;}
+.note-mock .note-lines span:nth-child(2){width:88%;}
+.note-mock .note-lines span:nth-child(3){width:64%;}
+.note-mock .note-meta{
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:10px;color:var(--muted);letter-spacing:0.04em;
+  border-top:1px dashed var(--line);padding-top:8px;margin-top:4px;
+}
+.note-mock .note-meta .heart{display:inline-flex;align-items:center;gap:4px;color:var(--primary);}
+.note-stamp{
+  position:absolute;top:14px;right:14px;z-index:2;
+  padding:6px 12px;border-radius:999px;
+  background:rgba(255,255,255,0.92);
+  font-family:"Cormorant Garamond",serif;font-style:italic;font-size:11px;letter-spacing:0.2em;
+  color:var(--primary-deep);text-transform:uppercase;
+}
+.note-body{display:flex;flex-direction:column;gap:18px;}
+.note-eyebrow{
+  display:inline-flex;align-items:center;gap:10px;align-self:flex-start;
+  font-family:"Cormorant Garamond",serif;font-style:italic;
+  font-size:13px;letter-spacing:0.24em;color:var(--primary);
+}
+.note-eyebrow::before{content:"";width:24px;height:1px;background:currentColor;opacity:0.6;}
+.note-h{
+  font-family:"Noto Serif JP",serif;font-weight:700;
+  font-size:clamp(20px,4.4vw,26px);letter-spacing:0.04em;line-height:1.55;color:var(--ink);
+}
+.note-h .em{color:var(--primary);}
+.note-p{font-size:13.5px;color:var(--ink-soft);line-height:1.95;}
+.note-topics{display:flex;flex-wrap:wrap;gap:8px;}
+.note-topic{
+  font-size:12px;font-weight:500;padding:6px 12px;border-radius:999px;
+  background:var(--primary-soft);color:var(--primary-deep);letter-spacing:0.04em;
+  display:inline-flex;align-items:center;gap:6px;
+}
+.note-topic .material-icons-outlined{font-size:14px;}
+.note-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px;align-items:center;}
+.note-url{
+  display:inline-flex;align-items:center;gap:6px;
+  font-family:"Cormorant Garamond",serif;font-style:italic;
+  font-size:13px;color:var(--muted);letter-spacing:0.08em;
+}
+.note-url .material-icons-outlined{font-size:14px;}
+
 /* ───────── STAFF ───────── */
 .staff{background:var(--bg-mist);}
 .staff-grid{display:grid;grid-template-columns:1fr;gap:20px;}
@@ -806,10 +910,11 @@ img{display:block;max-width:100%;}
       <a class="m-link" href="#concept"  @click.prevent="scrollTo('concept')"><span>コンセプト</span><span class="mn">01</span></a>
       <a class="m-link" href="#features" @click.prevent="scrollTo('features')"><span>特長</span><span class="mn">02</span></a>
       <a class="m-link" href="#schedule" @click.prevent="scrollTo('schedule')"><span>1日の流れ</span><span class="mn">03</span></a>
-      <a class="m-link" href="#staff"    @click.prevent="scrollTo('staff')"><span>スタッフ</span><span class="mn">04</span></a>
-      <a class="m-link" href="#fees"     @click.prevent="scrollTo('fees')"><span>料金</span><span class="mn">05</span></a>
-      <a class="m-link" href="#access"   @click.prevent="scrollTo('access')"><span>アクセス</span><span class="mn">06</span></a>
-      <a class="m-link" href="#faq"      @click.prevent="scrollTo('faq')"><span>FAQ</span><span class="mn">07</span></a>
+      <a class="m-link" href="#note"     @click.prevent="scrollTo('note')"><span>note</span><span class="mn">04</span></a>
+      <a class="m-link" href="#staff"    @click.prevent="scrollTo('staff')"><span>スタッフ</span><span class="mn">05</span></a>
+      <a class="m-link" href="#fees"     @click.prevent="scrollTo('fees')"><span>料金</span><span class="mn">06</span></a>
+      <a class="m-link" href="#access"   @click.prevent="scrollTo('access')"><span>アクセス</span><span class="mn">07</span></a>
+      <a class="m-link" href="#faq"      @click.prevent="scrollTo('faq')"><span>FAQ</span><span class="mn">08</span></a>
     </div>
   </transition>
 </header>
@@ -1077,6 +1182,55 @@ img{display:block;max-width:100%;}
             <span class="tl-time">17:00</span>
             <h4 class="tl-h">クローズ</h4>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ NOTE / JOURNAL ═══════════════ -->
+<section id="note" class="note-sec section fade-in" data-screen-label="05.5 Note">
+  <div class="wrap">
+    <div class="s-head">
+      <span class="eyebrow center">Journal &nbsp;／&nbsp; note</span>
+      <h2>とらべの日々を、<br class="sm:hidden">綴る場所</h2>
+      <p class="lede">子どもたちの学びや、スタッフが日々考えていることを noteで発信しています。見学前の「雰囲気を知る」きっかけにもどうぞ。</p>
+    </div>
+
+    <div class="note-card">
+      <div class="note-visual" aria-hidden="true">
+        <span class="note-stamp">— note.com —</span>
+        <div class="note-mock">
+          <div class="note-brand">
+            <span class="nlogo">n</span>
+            <span>とらべ</span>
+          </div>
+          <p class="note-title">「歩いてもいい、止まってもいい」<br>とらべの一週間より</p>
+          <div class="note-lines"><span></span><span></span><span></span></div>
+          <div class="note-meta">
+            <span>2026.05</span>
+            <span class="heart"><span class="material-icons-outlined" style="font-size:12px;">favorite_border</span>read more</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="note-body">
+        <span class="note-eyebrow">@torabefs on note</span>
+        <h3 class="note-h">学びの裏側を、<span class="em">そのままの言葉</span>でお届けします。</h3>
+        <p class="note-p">パンフレットには載らない、教室での小さな気づき、子どもたちの探究の様子、スタッフが大切にしている考え方。とらべの「いま」を綴るオンラインジャーナルです。</p>
+
+        <div class="note-topics">
+          <span class="note-topic"><span class="material-icons-outlined">auto_stories</span>探究の記録</span>
+          <span class="note-topic"><span class="material-icons-outlined">forest</span>原体験の日々</span>
+          <span class="note-topic"><span class="material-icons-outlined">groups</span>スタッフの考え</span>
+        </div>
+
+        <div class="note-actions">
+          <a href="https://note.com/torabefs" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+            <span class="material-icons-outlined" style="font-size:18px;">open_in_new</span>
+            noteを読みに行く <span class="arr">→</span>
+          </a>
+          <span class="note-url"><span class="material-icons-outlined">link</span>note.com/torabefs</span>
         </div>
       </div>
     </div>
