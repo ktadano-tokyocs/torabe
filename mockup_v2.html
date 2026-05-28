@@ -602,6 +602,32 @@ img{display:block;max-width:100%;}
 .staff-toggle .material-icons-outlined{font-size:18px;transition:transform .3s;}
 .staff-toggle.open .material-icons-outlined{transform:rotate(180deg);}
 
+/* ───────── FAQ ───────── */
+.faq-list{display:flex;flex-direction:column;gap:12px;}
+.faq-item{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:border-color .25s;}
+.faq-item:hover{border-color:var(--primary);}
+.faq-q{
+  width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;
+  padding:20px 24px;text-align:left;
+  font-family:"Noto Serif JP",serif;font-weight:700;font-size:15px;color:var(--ink);
+  line-height:1.6;
+}
+.faq-q .material-icons-outlined{color:var(--primary);transition:transform .3s;flex-shrink:0;}
+.faq-q.open .material-icons-outlined{transform:rotate(180deg);}
+.faq-a{
+  max-height:0;opacity:0;overflow:hidden;
+  transition:max-height .35s ease, opacity .3s ease;
+}
+.faq-a.open{
+  max-height:500px;opacity:1;overflow-y:auto;
+}
+.faq-a-inner{
+  padding:4px 24px 22px;border-top:1px solid var(--line-soft);
+  font-size:14px;color:var(--ink-soft);line-height:1.9;
+  white-space:pre-line;
+}
+.faq-foot{margin-top:36px;text-align:center;color:var(--muted);font-size:13px;}
+
 /* ───────── FEES ───────── */
 .subsidy{
   background:linear-gradient(135deg, #2A3340 0%, #1F2937 100%);
@@ -735,8 +761,7 @@ img{display:block;max-width:100%;}
   padding:32px 24px;max-width:520px;margin:0 auto;
   text-align:center;
 }
-.footer-icon{width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.14);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;}
-.footer-icon .material-icons-outlined{color:#fff;font-size:26px;}
+.footer-icon{width:64px;height:64px;display:block;margin:0 auto 14px;object-fit:contain;}
 .footer-name{font-family:"Noto Serif JP",serif;font-size:18px;font-weight:700;color:#fff;letter-spacing:0.08em;margin-bottom:14px;}
 .footer-info{display:flex;flex-direction:column;gap:8px;font-size:13px;color:rgba(255,255,255,0.85);}
 .footer-info a{color:#fff;border-bottom:1px solid rgba(255,255,255,0.3);}
@@ -1264,8 +1289,32 @@ img{display:block;max-width:100%;}
   </div>
 </section>
 
+<!-- ═══════════════ FAQ ═══════════════ -->
+<section id="faq" class="section fade-in" data-screen-label="09 FAQ" style="background:var(--bg-mist);">
+  <div class="wrap-sm">
+    <div class="s-head">
+      <span class="eyebrow center">FAQ &nbsp;／&nbsp; 07</span>
+      <h2>よくあるご質問</h2>
+    </div>
+
+    <div class="faq-list">
+      <div v-for="(faq, index) in faqs" :key="index" class="faq-item">
+        <button class="faq-q" :class="{open: openFaqIndex === index}" @click="toggleFaq(index)">
+          <span>{{ faq.q }}</span>
+          <span class="material-icons-outlined">expand_more</span>
+        </button>
+        <div class="faq-a" :class="{open: openFaqIndex === index}">
+          <p class="faq-a-inner">{{ faq.a }}</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="faq-foot">他にご不明な点は、見学・説明会でも何でもお聞きください。</p>
+  </div>
+</section>
+
 <!-- ═══════════════ FINAL CTA ═══════════════ -->
-<section id="cta" class="cta" data-screen-label="09 CTA">
+<section id="cta" class="cta" data-screen-label="10 CTA">
   <div class="wrap">
     <div class="cta-status">
       <span class="dot pulse-dot"></span>
@@ -1316,7 +1365,7 @@ img{display:block;max-width:100%;}
 <footer class="footer">
   <div class="wrap">
     <div class="footer-card">
-      <div class="footer-icon"><span class="material-icons-outlined">school</span></div>
+      <img class="footer-icon" src="images/torabe-log-white.png" alt="とらすとベース フリースクール">
       <h3 class="footer-name">とらすとベース<br>フリースクール</h3>
       <div class="footer-info">
         <span>〒165-0026 東京都中野区新井2-35-2</span>
@@ -1342,6 +1391,41 @@ createApp({
     const isEmaBioOpen = ref(false);
     const isStaffBioOpen = ref(false);
     const isYuyuBioOpen = ref(false);
+
+    const openFaqIndex = ref(null);
+    const faqs = ref([
+      {
+        q: "毎日通えるかわかりません。",
+        a: "とらべの教育理念「歩止歩止」に合わせて、お子さんのペースで、週１日から通える仕組みを作っています。\n通常の学費は毎日通う前提の設定になっていますが、別途、週１〜２日もしくは１週間単位での費用を設定しています。どのような通い方が合いそうか、ご家庭とスクールで相談しながら決めていきましょう。費用等の詳細はお問い合わせください。"
+      },
+      {
+        q: "少人数すぎて、社会性が育たないのでは？",
+        a: "30～40人学級であれば、性に合わない、気に入らない相手を「無視」することで問題が解決してしまうために、逆にコミュニケーション力は高まりにくいと考えます。\nそもそも社会性の基本は「人を信じられる力」であり、スクールの中だけで身に付くものではなく、それこそ社会で身につけていくものです。\nとらべは、少人数の中で過ごすことで、最初はウマが合わないと思っていた相手とも「この子にはこんないいところがある」などの気付きを得て、関係を構築できる環境があります。そしてスクールの外に積極的に飛び出して人と出会える機会もたくさんあります。そういった人と人のつながり（コミュニティ）を通して、子どもの社会性を育んでいきたいです。"
+      },
+      {
+        q: "発達に特性がある子も受け入れていますか？",
+        a: "保護者の中には、子どもの発達特性から「この学び場に、我が子は受け入れてもらえないのではないか」と不安に感じる方もいるかもしれません。当法人では、創立以来、何らかの障害がある子どもたちも受け入れてきました。障害の診断だけで、子どもを判断しません。実際に子どもに向き合い、どういう学びのスタイルが合うのか共に考えます。\n一番大事なことは、親御さんが我々とパートナーシップを組んで、子どもの成長のために伴走くださることです。子どもに合う学び場はどこか、ぜひ前向きな気持ちで検討していただきたいと思います。"
+      },
+      {
+        q: "どんなイベントがありますか？",
+        a: "年間を通して、多くのイベントがあります。\n皆で昼食をつくって食べる「とらべランチ」、子どもが計画する「プラっとらべ」、東京都三鷹市の冨澤ファーム（https://tomizawa-farm.tokyo/）にて農家さんのお手伝いをする「とらべる_畑」の他、サマーキャンプ・ムササビツアー・ホースキャンプ・スキー合宿といった宿泊行事も年３回程度あります。\n運動会とスクールコンサートなど、一部のイベントは東京コミュニティスクールと合同で実施します。\n年間予定表で定められたイベントの他、達人との出会いや、子どもたちの「これがやりたい！」の声から新たな企画が生まれることも多々あります。年間予定表は、毎年見直しを行っています。"
+      },
+      {
+        q: "家族の参加が必要な行事はありますか？",
+        a: "休日や夜間に実施する運動会やスクールコンサートといった一部イベント、そして保護者会への参加をお願いしています。\n任意ですが、アウトドアイベントや、学期末の夕食会「とらべdinner」への参加も可能（歓迎）です。\n子どもも大人も育ち合うコミュニティとして、ご家族の皆さんにも、とらべライフを楽しんでいただきたいです。"
+      },
+      {
+        q: "小学校の学習範囲を習得できますか？",
+        a: "子どもの現状の習得度や学びの傾向を把握して、その子に合った学習内容や学習方法を検討します。学習指導要領など学年相当の学習内容を参考にはしますが、学年相応の習得を目指す場ではありません。そのため、先の学年の内容を学習する場合や、一部の教科学習のみをどんどん学ぶこともあり得ます。\n大事なことは、「学びを楽しみ続けること」と「自ら学び続ける力を育む」ことです。そうすれば、「この学びをしたい」と思った時にいつでも学ぶことができるからです。\n自ら学びの計画を立てて主体的に学べるようになることをとらべはサポートします。そのために、「日本語」「算数」「IT」など、各教科の時間を週間スケジュールに組み込んでいます。"
+      },
+      {
+        q: "第一校TCS（東京コミュニティスクール）との違いは何ですか？",
+        a: "教育に関する価値観（教育観）は共通しますが、学びのスタイルが異なります。\n\n＜個学・和学＞\nTCSでは、教科学習含めて、”和（みんな）”で学ぶ時間が多くあり、カリキュラムで定めたペースに沿って学ぶことができます。\nとらべでは、”個（自分）”で学ぶ時間が多くあり、その子に合ったペースで学ぶことができます。\n\nTCSは、一コマ45分・一日7コマで時間割を設定、一学年9名定員で、クラス（教科・活動）によって1〜2学年全員で学びます。\nとらべは、週明けの「チェックイン」の時間に、スタッフが作った週間スケジュールに沿って、子どもの学びの進捗度や学びたいことに応じて、子ども一人ひとりの学びの計画を立てます。個別対応できるように、一学年4〜6名定員とTCSより少人数に、そして活動内容の前後に余白の時間を設けて、「この続きを、もうちょっとやりたい」「一緒にやってほしい」場合にも対応します。\n\n\n＜テーマ学習（探究）＞\n「個に寄り添う学び方では、協調性は育たないのでは？」と思われるかもしれません。\nとらべでは、個で探究する中で「◯◯がやっていること面白いね。」「それ、すごい！」と他の子のやっていることに自然と興味を持っていく場面がよく見られます。そうすると「みんなでやると楽しいかも」という気付きから、グループでアウトプットを作り出すこともあります。\n\nTCSでは、個人のアイデアを持ち寄って皆で話し合うことでチームの解を出す学びの機会が多くあります。そしてテーマごとにプレゼンテーションの機会を設けています。一つのテーマを６週間と決めて、様々なテーマの探究を年間で多く経験できるようにしています。\n\nとらべは学期ごとにテーマを設定し、一つのテーマについて長い期間をかけてじっくり深掘りして探究できます。プレゼンテーションの機会は敢えて設けませんが、アウトプットができたらビデオに撮影して保護者に共有したり、とらべdinnerなど保護者が集う日に展示するなど、お披露目の機会が自然と生まれています。\n\n\n＜保護者・子どもとの面談＞\nとらべは三学期制を採用し、学期ごとに評価表を作成し、保護者面談を実施しています。\nおうちの様子や、保護者が子どもをどう捉えて何を考えているかを知るためにも、保護者面談はとても重要な機会となっています。\n\n子どもとの面談も定期的に実施しています。最近の調子、とらべが居場所になっているか、やりたいこと、困っていることなど、子どもの声を聞いていきます。毎週のチェックイン・チェックアウトの時間と合わせて、子どもの思考を知る機会にしています。"
+      }
+    ]);
+    const toggleFaq = (index) => {
+      openFaqIndex.value = openFaqIndex.value === index ? null : index;
+    };
 
     const toggleMenu = () => { isMobileMenuOpen.value = !isMobileMenuOpen.value; };
     const scrollTo = (id) => {
@@ -1375,7 +1459,8 @@ createApp({
     });
     onUnmounted(() => window.removeEventListener('scroll', handleScroll));
 
-    return { isMobileMenuOpen, isScrolled, isHeaderHidden, isEmaBioOpen, isStaffBioOpen, isYuyuBioOpen, toggleMenu, scrollTo };
+    return { isMobileMenuOpen, isScrolled, isHeaderHidden, isEmaBioOpen, isStaffBioOpen, isYuyuBioOpen, toggleMenu, scrollTo,
+             faqs, openFaqIndex, toggleFaq };
   }
 }).mount('#app');
 </script>
