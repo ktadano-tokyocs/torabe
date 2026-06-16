@@ -185,6 +185,7 @@
                         <a href="#staff" @click.prevent="scrollTo('staff')" class="text-white hover:text-secondary transition-colors text-sm font-medium">スタッフ</a>
                         <a href="#fees" @click.prevent="scrollTo('fees')" class="text-white hover:text-secondary transition-colors text-sm font-medium">料金</a>
                         <a href="#access" @click.prevent="scrollTo('access')" class="text-white hover:text-secondary transition-colors text-sm font-medium">アクセス</a>
+                        <a href="#news" @click.prevent="scrollTo('news')" class="text-white hover:text-secondary transition-colors text-sm font-medium">お知らせ</a>
                         <a href="#faq" @click.prevent="scrollTo('faq')" class="text-white hover:text-secondary transition-colors text-sm font-medium">FAQ</a>
                         <button @click="scrollTo('cta')" class="btn-ripple bg-secondary hover:bg-yellow-400 text-gray-900 px-5 py-2.5 rounded-full font-bold text-sm shadow-lg transition-transform transform hover:-translate-y-0.5">見学・説明会へ</button>
                     </nav>
@@ -219,6 +220,7 @@
                     <a href="#staff" @click.prevent="scrollTo('staff')" class="px-6 py-4 border-b border-gray-100 text-gray-700 font-medium">スタッフ</a>
                     <a href="#fees" @click.prevent="scrollTo('fees')" class="px-6 py-4 border-b border-gray-100 text-gray-700 font-medium">料金</a>
                     <a href="#access" @click.prevent="scrollTo('access')" class="px-6 py-4 border-b border-gray-100 text-gray-700 font-medium">アクセス</a>
+                    <a href="#news" @click.prevent="scrollTo('news')" class="px-6 py-4 border-b border-gray-100 text-gray-700 font-medium">お知らせ</a>
                     <a href="#faq" @click.prevent="scrollTo('faq')" class="px-6 py-4 border-b border-gray-100 text-gray-700 font-medium">FAQ</a>
                 </div>
             </transition>
@@ -238,7 +240,7 @@
 
                 <img src="images/title.png" alt="とらすとべーす フリースクール" class="hero-title-img w-full max-w-[80vw] sm:max-w-2xl md:max-w-3xl mx-auto mb-4 mt-12 sm:mt-10 md:mt-8 h-auto object-contain" width="800" height="240" decoding="async">
 
-                <img src="images/torabe-log.png" alt="とらすとべーす フリースクール" class="hero-title-img w-full max-w-[50vw] sm:max-w-2xl md:max-w-3xl mx-auto mb-4 h-auto object-contain" width="800" height="240" decoding="async">
+                <img src="images/torabe-log.png" alt="とらすとべーす フリースクール" class="hero-title-img w-full max-w-[50vw] sm:max-w-2xl md:max-w-sm mx-auto mb-4 h-auto object-contain" width="800" height="240" decoding="async">
                 <h1 class="sr-only">とらすとべーす フリースクール</h1>
 
                 <p class="text-gray-800 font-bold text-5xl sm:text-6xl md:text-7xl mb-2">歩 止 歩 止</p>
@@ -332,18 +334,12 @@
                     </h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10 max-w-2xl mx-auto">
                         <div class="text-center">
-                            <div class="w-20 h-20 mx-auto bg-primary/10 rounded-full flex items-center justify-center mb-4">
-                                <span class="material-icons-outlined text-primary text-4xl">directions_walk</span>
-                            </div>
                             <h4 class="font-bold text-gray-800 mb-2">「歩」く</h4>
                             <p class="text-xs text-gray-500 leading-relaxed">
                                 右足と左足、両足で自分のペースで学んでいくことができる。
                             </p>
                         </div>
                         <div class="text-center border-t md:border-t-0 border-gray-200 pt-8 md:pt-0">
-                            <div class="w-20 h-20 mx-auto bg-orange-100 rounded-full flex items-center justify-center mb-4">
-                                <span class="material-icons-outlined text-orange-500 text-4xl">pan_tool</span>
-                            </div>
                             <h4 class="font-bold text-gray-800 mb-2">「止」まる</h4>
                             <p class="text-xs text-gray-500 leading-relaxed">
                                 止まることも動き。自分の現在地を知る、振り返ることができる。
@@ -364,7 +360,7 @@
         <section class="py-10 bg-background-light fade-in-section">
             <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-2xl md:text-3xl font-bold text-center text-primary mb-12">
-                    お子様の学びについて、こんな想いはありませんか？
+                    子どもの学びについて、こんな想いはありませんか？
                 </h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
                     <div class="bg-surface-light p-6 rounded-xl shadow-sm border border-gray-100 flex items-start space-x-4">
@@ -396,13 +392,13 @@
                             <span class="material-icons-outlined text-orange-400 text-2xl">sentiment_dissatisfied</span>
                         </div>
                         <p class="text-sm md:text-base text-gray-700 leading-relaxed pt-1">
-                            「学校に行き渋っている。でも家にいるだけでは不安…」
+                            「学校に行き渋っている。何が、子どもにとって幸せなんだろうか」
                         </p>
                     </div>
                 </div>
                 <div class="bg-primary text-white p-6 md:p-8 rounded-xl shadow-sm text-center">
                     <p class="font-bold text-lg md:text-xl">
-                        その選択肢の一つとして、とらべがあります。
+                        学びの選択肢として、とらべがあります。
                     </p>
                 </div>
             </div>
@@ -414,9 +410,9 @@
                 <div class="bg-accent-green rounded-2xl p-8 md:p-10 text-center border border-primary/20">
                     <p class="text-lg md:text-xl font-bold text-gray-900 mb-2">まずは見学に来てみてください</p>
                     <p class="text-sm text-gray-600 mb-6">
-                        <span class="inline-flex items-center gap-1 mr-3"><span class="material-icons-outlined text-sm text-primary">schedule</span>約1〜2時間</span>
-                        <span class="inline-flex items-center gap-1 mr-3"><span class="material-icons-outlined text-sm text-primary">child_care</span>お子さん同伴OK</span>
-                        <span class="inline-flex items-center gap-1"><span class="material-icons-outlined text-sm text-primary">chat</span>個別相談無料</span>
+                        <span class="inline-flex items-center gap-1 mr-3"><span class="material-icons-outlined text-sm text-primary">schedule</span>スクール説明あり</span>
+                        <span class="inline-flex items-center gap-1 mr-3"><span class="material-icons-outlined text-sm text-primary">child_care</span>子ども同伴も可能</span>
+                        <span class="inline-flex items-center gap-1"><span class="material-icons-outlined text-sm text-primary">chat</span>個別対応</span>
                     </p>
                     <button @click="scrollTo('cta')" class="btn-ripple inline-flex items-center gap-2 bg-primary hover:bg-teal-700 text-white font-bold px-8 py-3 rounded-full shadow-lg transition-all transform hover:scale-105">
                         <span class="material-icons-outlined">event_available</span>
@@ -649,9 +645,6 @@
                     <!-- 右: 説明 + チップ + CTA -->
                     <div class="lg:w-7/12 flex flex-col justify-center">
                         <span class="text-xs font-bold text-primary uppercase tracking-widest mb-2 block">@torabefs on note</span>
-                        <h3 class="text-xl md:text-2xl font-bold text-gray-900 leading-snug mb-4">
-                            学びの裏側を、<span class="text-primary">そのままの言葉</span>でお届けします。
-                        </h3>
                         <p class="text-sm md:text-base text-gray-600 leading-relaxed mb-6">
                             パンフレットには載らない、教室での小さな気づき、子どもたちの探究の様子、スタッフが大切にしている考え方。とらべの「いま」を綴るオンラインジャーナルです。
                         </p>
@@ -684,6 +677,65 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- ===== お知らせ（GAS + スプレッドシート連携） ===== -->
+        <!--
+            【セットアップ手順】
+            1. Google スプレッドシートを作成
+               列: A=日付 / B=タイトル / C=概要 / D=リンクURL（任意） / E=公開（TRUE/FALSE）
+            2. 拡張機能 → Apps Script で以下の関数を貼り付けて保存：
+               function doGet() {
+                 var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+                 var data = sheet.getDataRange().getValues();
+                 var news = data.slice(1).filter(function(r){return r[4]===true;}).map(function(r){
+                   return {
+                     date: r[0] ? Utilities.formatDate(new Date(r[0]),'Asia/Tokyo','yyyy/MM/dd') : '',
+                     title: String(r[1]||''), summary: String(r[2]||''), url: String(r[3]||'')
+                   };
+                 }).reverse();
+                 return ContentService.createTextOutput(JSON.stringify(news))
+                   .setMimeType(ContentService.MimeType.JSON);
+               }
+            3. デプロイ → 新しいデプロイ → 種類：ウェブアプリ
+               実行ユーザー：自分 / アクセス：全員
+            4. 発行されたURLを下記 GAS_NEWS_URL に貼り付ける
+        -->
+        <section id="news" class="py-10 bg-white fade-in-section">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-8">
+                    <span class="text-primary font-bold tracking-widest text-xs uppercase mb-2 block">News</span>
+                    <h2 class="text-2xl md:text-3xl font-bold text-gray-900">お知らせ</h2>
+                </div>
+
+                <!-- ローディング中: スケルトン -->
+                <div v-if="newsLoading" class="space-y-3">
+                    <div v-for="i in 3" :key="i" class="h-16 bg-gray-100 rounded-xl animate-pulse"></div>
+                </div>
+
+                <!-- ニュース一覧 -->
+                <div v-else-if="newsItems.length > 0" class="space-y-3">
+                    <component
+                        :is="item.url ? 'a' : 'div'"
+                        v-for="(item, i) in newsItems"
+                        :key="i"
+                        :href="item.url || undefined"
+                        :target="item.url ? '_blank' : undefined"
+                        :rel="item.url ? 'noopener noreferrer' : undefined"
+                        class="flex items-start gap-4 bg-surface-light rounded-xl border border-gray-100 p-4 hover:shadow-md transition-shadow"
+                    >
+                        <span class="flex-shrink-0 text-xs text-gray-400 mt-0.5 w-24">{{ item.date }}</span>
+                        <div class="flex-1 min-w-0">
+                            <p class="font-bold text-gray-800 text-sm leading-snug">{{ item.title }}</p>
+                            <p v-if="item.summary" class="text-xs text-gray-500 mt-0.5 line-clamp-1">{{ item.summary }}</p>
+                        </div>
+                        <span v-if="item.url" class="material-icons-outlined text-primary flex-shrink-0 text-sm">open_in_new</span>
+                    </component>
+                </div>
+
+                <!-- データなし -->
+                <p v-else class="text-center text-gray-400 text-sm py-8">現在お知らせはありません。</p>
             </div>
         </section>
 
@@ -749,11 +801,11 @@
                             <div class="text-xs text-gray-500 leading-relaxed space-y-2 mb-2">
                                 <p class="font-bold text-gray-700">1. なぜ大人は忘れてしまうのか？</p>
                                 <p>小学生のころは明るく元気な少年だったと思うのですが、中学２年になるとそんな自分の「やり方」がわからなくなり、毎日、学校に行くのもつらくなりました。なぜか先生たちとうまく行かず、テストで点が取れていないわけでもないのに、通知表は悪くなっていく一方。それでも、そういう言葉になりきれない不安や不満を担任の先生に打ち明けてもみたのですが、全く理解してもらえませんでした。</p>
-                                <p>「自分だって子どもだったはずなのに、なんで忘れてしまうんだろう？」<br>自分だけは大人になっても子どものときの感覚を忘れない。そう強く心に誓ったのでした。</p>
                             </div>
-                            <!-- 折り畳み部分（第2〜5節） -->
+                            <!-- 折り畳み部分（第1節続き〜5節） -->
                             <div :class="['overflow-hidden transition-all duration-500 ease-in-out', isStaffBioOpen ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0']">
                                 <div class="text-xs text-gray-500 leading-relaxed space-y-4 pt-2 mb-2">
+                                    <p>「自分だって子どもだったはずなのに、なんで忘れてしまうんだろう？」<br>自分だけは大人になっても子どものときの感覚を忘れない。そう強く心に誓ったのでした。</p>
                                     <div>
                                         <p class="font-bold text-gray-700 mb-1">2. デンマーク、新しい価値観との出会い</p>
                                         <p>30代になるタイミングでデンマークのフォルケホイスコーレと出会いました。フォルケホイスコーレは16歳以上なら誰でも入れる「大人の学校」として知られる場所で、デンマーク国内だけで70近いフォルケホイスコーレがありました。そのうちの一つに入学し、世界中から集まった人々との寮生活を共にし、自分が学びたいと思う授業を選択しながら国際情勢や政治哲学、衝突と戦争という堅い科目から、体育や映画製作、アート＆クラフトなどの軽い科目まで履修して１年間を過ごしました。</p>
@@ -792,11 +844,12 @@
                             <!-- 第1節：常時表示 -->
                             <div class="text-xs text-gray-500 leading-relaxed space-y-2 mb-2">
                                 <p class="font-bold text-gray-700">分かりたい気持ち</p>
-                                <p>「人の気持ちを理解できる弁護士になりたい」小学校の卒業文集に書いた私の夢です。大切な人に理解して貰えなかった経験から生まれた、私の中の根っことなる気持ちです。ただ、この夢が中学校卒業時には「アーティスト」に変わることになる。その人生の分岐点となったきっかけは、密やかで激しい揺らぎでした。中1の時、学級委員だった私は教壇に立ち文化祭について話をしていました。向かって左手側、前から4列目の席に座っていたTは、40人の中の1人として、ただ自分の席に座っていた。でも、みんなの前で何かをそれらしく話している私なんかよりも、茶色い重めの前髪の間から世界を見ている彼女の方がずっと信頼できるような、そういうものが彼女にはあった。そして察したのです。私には見えていない世界がある。ここにいては見えない世界がある。分かりたい。その瞬間、とぷん、と世界の裏っかわに潜ったような、そんな感覚をくっきりと覚えています。深い深い海でした。広く厳しく面白い世界でした。</p>
+                                <p>「人の気持ちを理解できる弁護士になりたい」小学校の卒業文集に書いた私の夢です。大切な人に理解して貰えなかった経験から生まれた、私の中の根っことなる気持ちです。ただ、この夢が中学校卒業時には「アーティスト」に変わることになる。その人生の分岐点となったきっかけは、密やかで激しい揺らぎでした。</p>
                             </div>
-                            <!-- 折り畳み部分（第2〜4節） -->
+                            <!-- 折り畳み部分（第1節続き〜4節） -->
                             <div :class="['overflow-hidden transition-all duration-500 ease-in-out', isYuyuBioOpen ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0']">
                                 <div class="text-xs text-gray-500 leading-relaxed space-y-4 pt-2 mb-2">
+                                    <p>中1の時、学級委員だった私は教壇に立ち文化祭について話をしていました。向かって左手側、前から4列目の席に座っていたTは、40人の中の1人として、ただ自分の席に座っていた。でも、みんなの前で何かをそれらしく話している私なんかよりも、茶色い重めの前髪の間から世界を見ている彼女の方がずっと信頼できるような、そういうものが彼女にはあった。そして察したのです。私には見えていない世界がある。ここにいては見えない世界がある。分かりたい。その瞬間、とぷん、と世界の裏っかわに潜ったような、そんな感覚をくっきりと覚えています。深い深い海でした。広く厳しく面白い世界でした。</p>
                                     <div>
                                         <p class="font-bold text-gray-700 mb-1">分けられない思い</p>
                                         <p>3歳から音楽を始め、絵本や小説も大好きだった私には、音楽も美術も文学も全てが分かち難く支え合って存在し、それぞれがそれぞれの言い換えだったり、部分的には溶け合っていたりするような感覚が幼い頃からありました。そして、実は学問もほとんど変わりなく、全ては美しさという点で私の中ではくっついている。なんてことを考えていた中3の冬、仲の良かった美術の先生に「お前、旭美（出身校の俗称）行けば？」と言われ、カルトンを抱えてデッサンを始めました。元々答えの決まっていることにはあまり興味が持てない性分でしたし、正解のない表現の世界にこそ自分の時間を費やす価値がある、という直感に従い、後戻りはできない自覚もなく芸術の道を選びました。</p>
@@ -1147,6 +1200,18 @@
                 const isEmaBioOpen = ref(false);
                 const isStaffBioOpen = ref(false);
                 const isYuyuBioOpen = ref(false);
+
+                // ===== お知らせ（GAS連携）=====
+                // GAS Web App URLをデプロイ後にここへ貼り付ける
+                const GAS_NEWS_URL = 'https://script.google.com/macros/s/AKfycbyN5RyHWvEP18-zsl8Z1vQj-UoQoKfkF724zwDgfmAhyQwtDnzGnIGH4JxCwiv-Qo_kXA/exec';
+                const newsItems = ref([]);
+                const newsLoading = ref(true);
+                fetch(GAS_NEWS_URL)
+                    .then(function(res) { return res.json(); })
+                    .then(function(data) { newsItems.value = data; })
+                    .catch(function() {})
+                    .finally(function() { newsLoading.value = false; });
+                // ================================
                 const SCROLL_TOP_ALWAYS_VISIBLE = 80;
                 const SCROLL_DIRECTION_THRESHOLD = 8;
 
@@ -1263,7 +1328,9 @@
                     openFaqIndex,
                     toggleFaq,
                     toggleMenu,
-                    scrollTo
+                    scrollTo,
+                    newsItems,
+                    newsLoading
                 };
             }
         }).mount('#app');
