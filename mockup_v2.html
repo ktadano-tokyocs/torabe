@@ -894,6 +894,9 @@ img{display:block;max-width:100%;}
         <a class="nav-link" href="#staff" @click.prevent="scrollTo('staff')">スタッフ</a>
         <a class="nav-link" href="#fees" @click.prevent="scrollTo('fees')">料金</a>
         <a class="nav-link" href="#access" @click.prevent="scrollTo('access')">アクセス</a>
+        <a class="nav-link" href="#news" @click.prevent="scrollTo('news')">お知らせ</a>
+        <a class="nav-link" href="#faq" @click.prevent="scrollTo('faq')">FAQ</a>
+        <a class="nav-link" href="#seminar" @click.prevent="scrollTo('seminar')">説明会</a>
         <button class="btn btn-secondary" style="padding:10px 22px;min-height:auto;font-size:13px;" @click="scrollTo('cta')">見学・説明会へ <span class="arr">→</span></button>
       </nav>
       <div class="md:hidden">
@@ -913,10 +916,12 @@ img{display:block;max-width:100%;}
       <a class="m-link" href="#features" @click.prevent="scrollTo('features')"><span>特長</span><span class="mn">02</span></a>
       <a class="m-link" href="#schedule" @click.prevent="scrollTo('schedule')"><span>1日の流れ</span><span class="mn">03</span></a>
       <a class="m-link" href="#note"     @click.prevent="scrollTo('note')"><span>note</span><span class="mn">04</span></a>
-      <a class="m-link" href="#staff"    @click.prevent="scrollTo('staff')"><span>スタッフ</span><span class="mn">05</span></a>
-      <a class="m-link" href="#fees"     @click.prevent="scrollTo('fees')"><span>料金</span><span class="mn">06</span></a>
-      <a class="m-link" href="#access"   @click.prevent="scrollTo('access')"><span>アクセス</span><span class="mn">07</span></a>
-      <a class="m-link" href="#faq"      @click.prevent="scrollTo('faq')"><span>FAQ</span><span class="mn">08</span></a>
+      <a class="m-link" href="#news"     @click.prevent="scrollTo('news')"><span>お知らせ</span><span class="mn">05</span></a>
+      <a class="m-link" href="#staff"    @click.prevent="scrollTo('staff')"><span>スタッフ</span><span class="mn">06</span></a>
+      <a class="m-link" href="#fees"     @click.prevent="scrollTo('fees')"><span>料金</span><span class="mn">07</span></a>
+      <a class="m-link" href="#access"   @click.prevent="scrollTo('access')"><span>アクセス</span><span class="mn">08</span></a>
+      <a class="m-link" href="#faq"      @click.prevent="scrollTo('faq')"><span>FAQ</span><span class="mn">09</span></a>
+      <a class="m-link" href="#seminar"  @click.prevent="scrollTo('seminar')"><span>説明会</span><span class="mn">10</span></a>
     </div>
   </transition>
 </header>
@@ -1239,6 +1244,40 @@ img{display:block;max-width:100%;}
   </div>
 </section>
 
+<!-- ═══════════════ NEWS ═══════════════ -->
+<section id="news" class="section fade-in" style="background:#fff;">
+  <div class="wrap-sm">
+    <div class="s-head">
+      <span class="eyebrow center">News</span>
+      <h2>お知らせ</h2>
+    </div>
+
+    <div v-if="newsLoading" style="display:flex;flex-direction:column;gap:12px;">
+      <div v-for="i in 3" :key="i" style="height:64px;background:var(--line-soft);border-radius:12px;animation:pulse 1.5s ease-in-out infinite;"></div>
+    </div>
+
+    <div v-else-if="newsItems.length > 0" style="display:flex;flex-direction:column;gap:10px;">
+      <component
+        :is="item.url ? 'a' : 'div'"
+        v-for="(item, i) in newsItems" :key="i"
+        :href="item.url || undefined"
+        :target="item.url ? '_blank' : undefined"
+        :rel="item.url ? 'noopener noreferrer' : undefined"
+        class="card" style="display:flex;align-items:flex-start;gap:16px;padding:16px 20px;text-decoration:none;"
+      >
+        <span style="flex-shrink:0;font-size:12px;color:var(--muted);min-width:80px;margin-top:2px;">{{ item.date }}</span>
+        <div style="flex:1;min-width:0;">
+          <p style="font-weight:700;color:var(--ink);font-size:14px;line-height:1.5;">{{ item.title }}</p>
+          <p v-if="item.summary" style="font-size:12px;color:var(--muted);margin-top:4px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;">{{ item.summary }}</p>
+        </div>
+        <span v-if="item.url" class="material-icons-outlined" style="color:var(--primary);font-size:16px;flex-shrink:0;">open_in_new</span>
+      </component>
+    </div>
+
+    <p v-else style="text-align:center;color:var(--muted);font-size:14px;padding:32px 0;">現在お知らせはありません。</p>
+  </div>
+</section>
+
 <!-- ═══════════════ STAFF ═══════════════ -->
 <section id="staff" class="staff section fade-in" data-screen-label="06 Staff">
   <div class="wrap">
@@ -1392,6 +1431,80 @@ img{display:block;max-width:100%;}
   </div>
 </section>
 
+<!-- ═══════════════ FLOW ═══════════════ -->
+<section id="flow" class="section fade-in" style="background:var(--bg-mist);">
+  <div class="wrap-sm">
+    <div class="s-head">
+      <span class="eyebrow center">Admission</span>
+      <h2>入学までの流れ</h2>
+    </div>
+
+    <div style="max-width:480px;margin:0 auto;">
+      <!-- Step 1 -->
+      <div style="display:flex;gap:20px;">
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <div style="width:40px;height:40px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;">1</div>
+          <div style="width:2px;flex:1;background:rgba(11,155,136,0.2);margin:8px 0;"></div>
+        </div>
+        <div style="padding-bottom:32px;">
+          <p style="font-weight:700;color:var(--ink);margin-bottom:4px;">親子見学</p>
+          <p style="font-size:14px;color:var(--ink-soft);">無料、何回でも。</p>
+        </div>
+      </div>
+      <!-- Step 2 -->
+      <div style="display:flex;gap:20px;">
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <div style="width:40px;height:40px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;">2</div>
+          <div style="width:2px;flex:1;background:rgba(11,155,136,0.2);margin:8px 0;"></div>
+        </div>
+        <div style="padding-bottom:32px;">
+          <p style="font-weight:700;color:var(--ink);margin-bottom:4px;">体験入学</p>
+          <p style="font-size:14px;color:var(--ink-soft);">3回目まで無料。延長は4週間まで可能（1週間 22,000円・税込）。</p>
+        </div>
+      </div>
+      <!-- Step 3 -->
+      <div style="display:flex;gap:20px;">
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <div style="width:40px;height:40px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;">3</div>
+          <div style="width:2px;flex:1;background:rgba(11,155,136,0.2);margin:8px 0;"></div>
+        </div>
+        <div style="padding-bottom:32px;">
+          <p style="font-weight:700;color:var(--ink);margin-bottom:4px;">出願</p>
+          <p style="font-size:14px;color:var(--ink-soft);">入学願書の提出と、出願料 13,200円（税込）の納付。</p>
+        </div>
+      </div>
+      <!-- Step 4 -->
+      <div style="display:flex;gap:20px;">
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <div style="width:40px;height:40px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;">4</div>
+          <div style="width:2px;flex:1;background:rgba(11,155,136,0.2);margin:8px 0;"></div>
+        </div>
+        <div style="padding-bottom:32px;">
+          <p style="font-weight:700;color:var(--ink);margin-bottom:4px;">スクールとの面談</p>
+          <p style="font-size:14px;color:var(--ink-soft);">グリーンシートの説明。保護者と子どもの意思を確認。</p>
+        </div>
+      </div>
+      <!-- Step 5 -->
+      <div style="display:flex;gap:20px;">
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <div style="width:40px;height:40px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;">5</div>
+        </div>
+        <div style="padding-bottom:8px;">
+          <p style="font-weight:700;color:var(--ink);">入学決定</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:40px;">
+      <a href="https://tokyocs.org/admissions/torabe/guideline_torabe2" target="_blank" rel="noopener noreferrer"
+         style="display:inline-flex;align-items:center;gap:6px;color:var(--primary);font-size:14px;font-weight:700;">
+        <span class="material-icons-outlined" style="font-size:16px;">open_in_new</span>
+        募集要項の詳細はこちら
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- ═══════════════ ACCESS ═══════════════ -->
 <section id="access" class="section fade-in" data-screen-label="08 Access" style="background:#fff;">
   <div class="wrap-sm">
@@ -1467,6 +1580,76 @@ img{display:block;max-width:100%;}
     </div>
 
     <p class="faq-foot">他にご不明な点は、見学・説明会でも何でもお聞きください。</p>
+  </div>
+</section>
+
+<!-- ═══════════════ SEMINAR ═══════════════ -->
+<section id="seminar" class="section fade-in" style="background:#fff;">
+  <div class="wrap-sm">
+    <div class="s-head">
+      <span class="eyebrow center">Seminar</span>
+      <h2>説明会</h2>
+      <p class="lede">どういった理念のもと、どのような学びを実践しているのかスタッフから説明します</p>
+    </div>
+
+    <div v-if="scheduleLoading" style="display:flex;flex-direction:column;gap:8px;">
+      <div v-for="i in 4" :key="i" style="height:20px;background:var(--line-soft);border-radius:6px;animation:pulse 1.5s ease-in-out infinite;"></div>
+    </div>
+
+    <ul v-else-if="scheduleItems.length > 0" style="list-style:disc;padding-left:1.5em;display:flex;flex-direction:column;gap:8px;color:var(--ink-soft);font-size:14px;line-height:1.8;text-align:center;list-style-position:inside;">
+      <li v-for="(item, i) in scheduleItems" :key="i">
+        {{ item.date }}　{{ item.time }}　{{ item.format }}
+      </li>
+    </ul>
+
+    <p v-else style="text-align:center;color:var(--muted);font-size:14px;padding:32px 0;">現在予定されている説明会はありません。</p>
+  </div>
+</section>
+
+<!-- ═══════════════ SNS ═══════════════ -->
+<section class="section fade-in" style="background:var(--bg-mist);">
+  <div class="wrap">
+    <div class="s-head">
+      <span class="eyebrow center">Social Media</span>
+      <h2>SNSでも発信中</h2>
+      <p class="lede">日々の活動の様子や最新情報をお届けしています。</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;">
+      <!-- Instagram -->
+      <a href="https://www.instagram.com/torabe_freeschool/" target="_blank" rel="noopener noreferrer"
+         class="card" style="overflow:hidden;text-decoration:none;">
+        <div style="height:112px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" style="width:48px;height:48px;">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+          </svg>
+        </div>
+        <div style="padding:24px;">
+          <p style="font-weight:700;font-size:17px;color:var(--ink);margin-bottom:6px;">Instagram</p>
+          <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">探究・アウトドア・日常の様子を写真で発信中。<br>@torabe_freeschool</p>
+          <span class="btn btn-primary" style="padding:10px 22px;min-height:auto;font-size:13px;">
+            フォローする <span class="material-icons-outlined" style="font-size:14px;">open_in_new</span>
+          </span>
+        </div>
+      </a>
+
+      <!-- Facebook -->
+      <a href="https://www.facebook.com/torabefs?locale=ja_JP" target="_blank" rel="noopener noreferrer"
+         class="card" style="overflow:hidden;text-decoration:none;">
+        <div style="height:112px;display:flex;align-items:center;justify-content:center;background:#1877F2;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" style="width:48px;height:48px;">
+            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+          </svg>
+        </div>
+        <div style="padding:24px;">
+          <p style="font-weight:700;font-size:17px;color:var(--ink);margin-bottom:6px;">Facebook</p>
+          <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">イベント情報やお知らせを随時更新しています。<br>とらべフリースクール</p>
+          <span class="btn btn-primary" style="padding:10px 22px;min-height:auto;font-size:13px;">
+            フォローする <span class="material-icons-outlined" style="font-size:14px;">open_in_new</span>
+          </span>
+        </div>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -1549,6 +1732,19 @@ createApp({
     const isStaffBioOpen = ref(false);
     const isYuyuBioOpen = ref(false);
 
+    const GAS_NEWS_URL = 'https://script.google.com/macros/s/AKfycbyN5RyHWvEP18-zsl8Z1vQj-UoQoKfkF724zwDgfmAhyQwtDnzGnIGH4JxCwiv-Qo_kXA/exec';
+    const newsItems = ref([]);
+    const newsLoading = ref(true);
+    fetch(GAS_NEWS_URL)
+      .then(r => r.json()).then(d => { newsItems.value = d; })
+      .catch(() => {}).finally(() => { newsLoading.value = false; });
+
+    const scheduleItems = ref([]);
+    const scheduleLoading = ref(true);
+    fetch(GAS_NEWS_URL + '?type=schedule')
+      .then(r => r.json()).then(d => { scheduleItems.value = d; })
+      .catch(() => {}).finally(() => { scheduleLoading.value = false; });
+
     const openFaqIndex = ref(null);
     const faqs = ref([
       {
@@ -1617,7 +1813,8 @@ createApp({
     onUnmounted(() => window.removeEventListener('scroll', handleScroll));
 
     return { isMobileMenuOpen, isScrolled, isHeaderHidden, isEmaBioOpen, isStaffBioOpen, isYuyuBioOpen, toggleMenu, scrollTo,
-             faqs, openFaqIndex, toggleFaq };
+             faqs, openFaqIndex, toggleFaq,
+             newsItems, newsLoading, scheduleItems, scheduleLoading };
   }
 }).mount('#app');
 </script>
