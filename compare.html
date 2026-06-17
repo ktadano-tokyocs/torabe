@@ -147,6 +147,13 @@
                 </div>
                 
                 <div class="flex items-center space-x-6">
+                    <!-- B案トグル -->
+                    <button @click="showPlanB = !showPlanB"
+                            :class="{'bg-emerald-600 text-white': showPlanB, 'bg-slate-700 text-slate-300 hover:text-white': !showPlanB}"
+                            class="px-3 py-1.5 rounded text-sm font-medium transition-colors">
+                        {{ showPlanB ? 'B案を隠す' : 'B案を表示' }}
+                    </button>
+
                     <!-- デバイスサイズ切り替え -->
                     <div class="flex bg-slate-700 rounded-lg p-1">
                         <button @click="deviceMode = 'desktop'" 
@@ -188,7 +195,7 @@
                         class="flex-1 py-3 px-4 text-center font-medium transition-colors">
                     デザイン A案 (index.html)
                 </button>
-                <button @click="activeTab = 'v2'" 
+                <button v-if="showPlanB" @click="activeTab = 'v2'"
                         :class="{'border-b-2 border-emerald-600 text-emerald-600 bg-emerald-50/50': activeTab === 'v2', 'text-gray-500 hover:bg-gray-50': activeTab !== 'v2'}"
                         class="flex-1 py-3 px-4 text-center font-medium transition-colors">
                     デザイン B案 (mockup_v2.html)
@@ -225,7 +232,7 @@
                 </div>
 
                 <!-- Version 2 (mockup_v2.html) -->
-                <div v-show="viewMode === 'split' || (viewMode === 'tab' && activeTab === 'v2')" 
+                <div v-if="showPlanB && (viewMode === 'split' || (viewMode === 'tab' && activeTab === 'v2'))"
                      class="flex-1 flex flex-col overflow-hidden h-full">
                     <div v-if="viewMode === 'split'" class="bg-emerald-600 text-white text-center py-1.5 font-bold text-sm rounded-t-lg flex items-center justify-between px-4 shrink-0">
                         <span>デザイン B案</span>
@@ -263,6 +270,7 @@
                 const viewMode = ref('split'); // 'split' or 'tab'
                 const activeTab = ref('v1'); // 'v1' or 'v2'
                 const deviceMode = ref('desktop'); // 'desktop', 'tablet', 'mobile'
+                const showPlanB = ref(false);
 
                 // レスポンシブ対応による初期設定（画面幅が狭い場合は最初からタブモードにする）
                 onMounted(() => {
@@ -283,6 +291,9 @@
                     Vue.nextTick(() => {
                         lucide.createIcons();
                     });
+                });
+                Vue.watch(showPlanB, (val) => {
+                    if (!val) activeTab.value = 'v1';
                 });
 
                 // Computed Properties
@@ -307,7 +318,8 @@
                     activeTab,
                     deviceMode,
                     deviceWidthStr,
-                    deviceHeightStr
+                    deviceHeightStr,
+                    showPlanB
                 };
             }
         }).mount('#app');
