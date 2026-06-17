@@ -267,17 +267,12 @@
         createApp({
             setup() {
                 // State
-                const viewMode = ref('split'); // 'split' or 'tab'
+                const viewMode = ref('tab'); // 'split' or 'tab'
                 const activeTab = ref('v1'); // 'v1' or 'v2'
-                const deviceMode = ref('desktop'); // 'desktop', 'tablet', 'mobile'
+                const deviceMode = ref('mobile'); // 'desktop', 'tablet', 'mobile'
                 const showPlanB = ref(false);
 
-                // レスポンシブ対応による初期設定（画面幅が狭い場合は最初からタブモードにする）
                 onMounted(() => {
-                    if (window.innerWidth < 1024) {
-                        viewMode.value = 'tab';
-                    }
-                    // Lucide Icons の初期化
                     lucide.createIcons();
                 });
 
