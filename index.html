@@ -192,7 +192,7 @@
                         <a href="#news" @click.prevent="scrollTo('news')" class="text-white hover:text-secondary transition-colors text-sm font-medium">お知らせ</a>
                         <a href="#faq" @click.prevent="scrollTo('faq')" class="text-white hover:text-secondary transition-colors text-sm font-medium">FAQ</a>
                         <a href="#seminar" @click.prevent="scrollTo('seminar')" class="text-white hover:text-secondary transition-colors text-sm font-medium">説明会</a>
-                        <button @click="scrollTo('cta')" class="btn-ripple bg-secondary hover:bg-yellow-400 text-gray-900 px-5 py-2.5 rounded-full font-bold text-sm shadow-lg transition-transform transform hover:-translate-y-0.5">見学・説明会へ</button>
+                        <a href="https://tokyocs.org/about/contact" target="_blank" rel="noopener noreferrer" class="btn-ripple bg-secondary hover:bg-yellow-400 text-gray-900 px-5 py-2.5 rounded-full font-bold text-sm shadow-lg transition-transform transform hover:-translate-y-0.5">見学・説明会へ</a>
                     </nav>
                     <div class="md:hidden flex items-center">
                         <button @click="toggleMenu" class="p-2 text-white hover:text-secondary focus:outline-none">
@@ -214,9 +214,9 @@
                 <div v-if="isMobileMenuOpen" class="md:hidden absolute top-full left-0 w-full bg-white shadow-lg flex flex-col border-b border-gray-100">
                     <!-- CTA帯: 先頭に配置 -->
                     <div class="bg-primary px-6 py-4">
-                        <button @click="scrollTo('cta')" class="w-full btn-ripple bg-secondary hover:bg-yellow-400 text-gray-900 px-6 py-4 rounded-full font-bold shadow-lg text-base">
+                        <a href="https://tokyocs.org/about/contact" target="_blank" rel="noopener noreferrer" class="w-full btn-ripple bg-secondary hover:bg-yellow-400 text-gray-900 px-6 py-4 rounded-full font-bold shadow-lg text-base text-center block">
                             見学・説明会に申し込む
-                        </button>
+                        </a>
                     </div>
                     <a href="#concept" @click.prevent="scrollTo('concept')" class="px-6 py-4 border-b border-gray-100 text-gray-700 font-medium">コンセプト</a>
                     <a href="#features" @click.prevent="scrollTo('features')" class="px-6 py-4 border-b border-gray-100 text-gray-700 font-medium">特長</a>
@@ -327,9 +327,9 @@
         <!-- ===== 2. コンセプト ===== -->
         <section id="concept" class="py-10 bg-white fade-in-section">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <span class="text-primary font-bold tracking-widest text-xs uppercase mb-2 block">Concept</span>
-
                 <div class="bg-gray-50 rounded-2xl p-8 md:p-12 border border-gray-100 relative overflow-hidden">
+                    <p class="text-gray-700 text-xs mb-3">運営：<a href="https://tokyocs.org/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-0.5 text-primary underline underline-offset-2 hover:text-teal-700 transition-colors">NPO法人東京コミュニティスクール<span class="material-icons-outlined" style="font-size:12px;">open_in_new</span></a></p>
+                    <span class="text-primary font-bold tracking-widest text-xs uppercase mb-6 block">Concept</span>
                     <h2 class="text-xl md:text-2xl font-bold text-primary mb-8">
                         「歩いてもいい、止まってもいい」<br/>歩止歩止（HodoHodo）
                     </h2>
@@ -415,10 +415,10 @@
                         <span class="inline-flex items-center gap-1 mr-3"><span class="material-icons-outlined text-sm text-primary">child_care</span>子ども同伴も可能</span>
                         <span class="inline-flex items-center gap-1"><span class="material-icons-outlined text-sm text-primary">chat</span>個別対応</span>
                     </p>
-                    <button @click="scrollTo('cta')" class="btn-ripple inline-flex items-center gap-2 bg-primary hover:bg-teal-700 text-white font-bold px-8 py-3 rounded-full shadow-lg transition-all transform hover:scale-105">
+                    <a href="https://tokyocs.org/about/contact" target="_blank" rel="noopener noreferrer" class="btn-ripple inline-flex items-center gap-2 bg-primary hover:bg-teal-700 text-white font-bold px-8 py-3 rounded-full shadow-lg transition-all transform hover:scale-105">
                         <span class="material-icons-outlined">event_available</span>
                         見学を申し込む（無料）
-                    </button>
+                    </a>
                 </div>
             </div>
         </section>
@@ -522,10 +522,10 @@
 
                 <!-- Features Mid-CTA -->
                 <div class="text-center">
-                    <button @click="scrollTo('cta')" class="btn-ripple inline-flex items-center gap-2 bg-secondary hover:bg-yellow-400 text-gray-900 font-bold px-8 py-3 rounded-full shadow-lg transition-all transform hover:scale-105">
+                    <a href="https://tokyocs.org/about/contact" target="_blank" rel="noopener noreferrer" class="btn-ripple inline-flex items-center gap-2 bg-secondary hover:bg-yellow-400 text-gray-900 font-bold px-8 py-3 rounded-full shadow-lg transition-all transform hover:scale-105">
                         <span class="material-icons-outlined">event_available</span>
                         これらを体感しに見学へ行く
-                    </button>
+                    </a>
                 </div>
             </div>
         </section>
@@ -1058,7 +1058,7 @@
                                 <span class="material-icons-outlined text-primary text-sm mt-0.5 flex-shrink-0">business</span>
                                 <div>
                                     <p class="text-xs text-gray-500">運営</p>
-                                    <p class="text-sm text-gray-700">NPO法人東京コミュニティスクール</p>
+                                    <a href="https://tokyocs.org/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-0.5 text-sm text-primary underline underline-offset-2 hover:text-teal-700 transition-colors">NPO法人東京コミュニティスクール<span class="material-icons-outlined" style="font-size:12px;">open_in_new</span></a>
                                 </div>
                             </div>
                         </div>
@@ -1209,7 +1209,7 @@
                 </h2>
                 <p class="text-white/90 text-sm md:text-base mb-10">
                     他スクール情報も提供する個別相談を実施中です。<br class="hidden sm:inline">
-                    まずはお子さんと一緒に、雰囲気を感じに来てください。
+                    まずは雰囲気を感じに来てください。
                 </p>
 
                 <!-- 見学内容の具体化 -->
@@ -1233,7 +1233,7 @@
 
                 <!-- CTA ボタン群 -->
                 <div class="flex flex-col sm:flex-row gap-4 justify-center mb-6">
-                    <a href="#" class="btn-ripple btn-pulse inline-flex items-center justify-center bg-secondary hover:bg-yellow-400 text-gray-900 text-base sm:text-lg font-bold px-6 sm:px-10 py-4 rounded-full shadow-xl transition-all transform hover:scale-105">
+                    <a href="https://tokyocs.org/about/contact" target="_blank" rel="noopener noreferrer" class="btn-ripple btn-pulse inline-flex items-center justify-center bg-secondary hover:bg-yellow-400 text-gray-900 text-base sm:text-lg font-bold px-6 sm:px-10 py-4 rounded-full shadow-xl transition-all transform hover:scale-105">
                         <span class="material-icons-outlined mr-2">event_available</span>
                         見学・説明会・体験の<br class="sm:hidden">お申し込みはこちら
                     </a>
@@ -1273,13 +1273,27 @@
                         </p>
                         <p class="flex items-center justify-center gap-2 text-xs opacity-70 mt-4">
                             <span class="material-icons-outlined text-xs">business</span>
-                            運営：NPO法人東京コミュニティスクール
+                            運営：<a href="https://tokyocs.org/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-0.5 underline underline-offset-2 hover:opacity-100 transition-opacity">NPO法人東京コミュニティスクール<span class="material-icons-outlined" style="font-size:12px;">open_in_new</span></a>
                         </p>
                     </div>
                 </div>
             </div>
-            <div class="text-center text-xs text-white/40">
-                <a href="https://schoolfree.tokyo/" target="_blank" rel="noopener noreferrer" class="underline hover:text-white/70">東京都フリースクール等ネットワーク会員</a><br>© 2026 とらすとベース フリースクール All rights reserved.
+            <div class="flex justify-center px-4 pb-4 pt-2">
+                <a href="https://schoolfree.tokyo/" target="_blank" rel="noopener noreferrer"
+                   class="inline-flex items-center gap-3 bg-white/10 hover:bg-white/15 transition-colors rounded-xl px-5 py-3 border border-white/20 group">
+                    <div class="bg-white rounded-lg flex-shrink-0 flex items-center justify-center" style="width:48px;height:48px;">
+                        <img src="images/TFN-logo.png" alt="東京都フリースクール等ネットワーク" class="h-12 w-12 object-contain" width="48" height="48" decoding="async">
+                    </div>
+                    <div class="text-left">
+                        <p class="text-xs text-white/55 leading-none mb-1">加盟団体</p>
+                        <p class="text-sm font-semibold text-white/90 group-hover:text-white transition-colors leading-tight">東京都フリースクール等ネットワーク</p>
+                        <p class="text-xs text-white/70 mt-0.5">スクール会員</p>
+                    </div>
+                    <span class="material-icons-outlined text-white/40 group-hover:text-white/60 transition-colors" style="font-size:16px;">open_in_new</span>
+                </a>
+            </div>
+            <div class="text-center text-xs text-white/40 pb-2">
+                © 2026 とらすとベース フリースクール All rights reserved.
             </div>
         </footer>
     </div>
