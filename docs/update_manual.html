@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>とらべLP 更新マニュアル（職員向け）</title>
+<style>
+  :root{ --navy:#1f3d5c; --blue:#2e5b8a; --line:#cbd6e2; --alt:#eef3f8; --ink:#222;
+         --green:#3c7a3c; --greenbg:#e3efe3; --amber:#9a6b1f; --amberbg:#f6efe0;
+         --red:#a23a3a; --redbg:#f7e6e6; }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  body{ background:#e9edf1; font-family:"Yu Gothic","Hiragino Kaku Gothic ProN","Meiryo",sans-serif;
+        color:var(--ink); padding:20px; }
+  .page{ width:210mm; min-height:297mm; margin:0 auto 16px; background:#fff; padding:11mm 14mm 9mm;
+         box-shadow:0 2px 12px rgba(0,0,0,.15); }
+  .page.first{ page-break-after:always; }
+
+  h1{ font-size:18px; color:var(--navy); border-bottom:3px solid var(--blue);
+      padding-bottom:5px; margin-bottom:3px; }
+  .meta{ font-size:10.5px; color:#666; margin-bottom:8px; }
+  h2{ font-size:13px; color:#fff; background:var(--blue); margin:10px 0 5px; padding:3px 9px;
+      border-radius:3px; }
+  h2 .num{ display:inline-block; background:#fff; color:var(--blue); font-weight:700;
+           border-radius:50%; width:17px; height:17px; line-height:17px; text-align:center;
+           font-size:11px; margin-right:6px; }
+  h3{ font-size:11.5px; color:var(--navy); margin:7px 0 3px; padding-left:7px;
+      border-left:4px solid var(--blue); }
+  p{ font-size:11.5px; line-height:1.5; margin-bottom:4px; }
+  .lead{ font-size:11.5px; }
+  .hl{ color:var(--navy); font-weight:700; }
+
+  table{ width:100%; border-collapse:collapse; margin:4px 0 3px; font-size:10.8px; }
+  th,td{ border:1px solid var(--line); padding:3px 7px; text-align:center; vertical-align:middle; }
+  th{ background:var(--blue); color:#fff; }
+  td:first-child,th:first-child{ text-align:left; }
+  tbody tr:nth-child(even){ background:var(--alt); }
+  td.code,th.code{ font-family:monospace; font-size:9.6px; text-align:left; word-break:break-all; }
+  .rowh{ background:#f1f5f9 !important; font-weight:700; color:var(--navy); white-space:nowrap; }
+
+  /* numbered steps */
+  ol.steps{ list-style:none; counter-reset:st; margin:4px 0 4px; }
+  ol.steps li{ counter-increment:st; position:relative; padding:2px 0 2px 26px; font-size:11.3px;
+               line-height:1.45; margin-bottom:2px; }
+  ol.steps li::before{ content:counter(st); position:absolute; left:0; top:2px; width:18px; height:18px;
+               background:var(--blue); color:#fff; border-radius:50%; text-align:center; line-height:18px;
+               font-size:10.5px; font-weight:700; }
+  ul.bul{ margin:3px 0 4px 18px; }
+  ul.bul li{ font-size:11px; line-height:1.45; margin-bottom:2px; }
+
+  /* two-column layout */
+  .cols{ display:flex; gap:12px; }
+  .cols > div{ flex:1; }
+
+  /* callout boxes */
+  .box{ border:1px solid var(--line); border-left-width:5px; padding:5px 10px; margin:5px 0;
+        font-size:10.8px; line-height:1.5; border-radius:0 3px 3px 0; }
+  .box .t{ font-weight:700; display:block; margin-bottom:1px; }
+  .box.warn{ border-left-color:var(--red); background:var(--redbg); }
+  .box.warn .t{ color:var(--red); }
+  .box.ok{ border-left-color:var(--green); background:var(--greenbg); }
+  .box.ok .t{ color:var(--green); }
+  .box.info{ border-left-color:var(--amber); background:var(--amberbg); }
+  .box.info .t{ color:var(--amber); }
+
+  .note{ font-size:10px; color:#555; line-height:1.45; margin:3px 0; }
+  .src{ border-top:1px solid var(--line); margin-top:9px; padding-top:4px;
+        font-size:9.2px; color:#777; line-height:1.45; }
+
+  @media print{ body{ background:#fff; padding:0; } .page{ box-shadow:none; margin:0; }
+                @page{ size:A4 portrait; margin:0; } }
+</style>
+</head>
+<body>
+
+<!-- ============ PAGE 1 ============ -->
+<div class="page first">
+  <h1>とらべLP 更新マニュアル（職員向け）</h1>
+  <div class="meta">職員共有資料 ／ 写真・お知らせ・説明会を自力で更新するための手引き ／ 作成日：2026年6月25日</div>
+
+  <p class="lead">とらべのサイトは <span class="hl">1枚の静的HTML</span> で動いています。日々の更新は <span class="hl">2か所だけ</span> 触れば完結し、HTMLを編集する必要はありません。①特長セクションの写真は <span class="hl">WordPressメディア</span>（同じファイル名のまま上書き）、②お知らせ・説明会は <span class="hl">Googleスプレッドシート</span>（編集すると自動でサイトに反映）で管理しています。</p>
+
+  <h2><span class="num">1</span>特長セクションの写真を差し替える</h2>
+  <p>「とらべが選ばれる4つの特長」の写真は、WordPressメディアの<span class="hl">固定URL</span>で配信しています。<span class="hl">同じファイル名のまま中身だけ上書き</span>すれば、HTMLを触らずにサイトへ反映されます。</p>
+
+  <table>
+    <thead><tr><th>特長</th><th class="code">ファイル名</th><th class="code">配信URL（2026/06フォルダ）</th></tr></thead>
+    <tbody>
+      <tr><td>1. 日本語</td><td class="code">feature1-japanese.jpg</td><td class="code">…/uploads/2026/06/feature1-japanese.jpg</td></tr>
+      <tr><td>2. 探究</td><td class="code">feature2-inquiry.jpg</td><td class="code">…/uploads/2026/06/feature2-inquiry.jpg</td></tr>
+      <tr><td>3. 原体験</td><td class="code">feature3-experience.jpg</td><td class="code">…/uploads/2026/06/feature3-experience.jpg</td></tr>
+      <tr><td>4. 個別評価</td><td class="code">feature4-evaluation.jpg</td><td class="code">…/uploads/2026/06/feature4-evaluation.jpg</td></tr>
+    </tbody>
+  </table>
+  <p class="note">URLの先頭は共通：https://tokyocs.org/wordpress/wp-content/uploads/2026/06/</p>
+
+  <h3>差し替え手順</h3>
+  <ol class="steps">
+    <li>WordPress管理画面にログインし、<span class="hl">メディア</span>を開く</li>
+    <li>差し替えたい画像（例：<span style="font-family:monospace">feature1-japanese.jpg</span>）を選択する</li>
+    <li>編集画面の <span class="hl">「Enable Media Replace（メディアを置換）」</span> をクリック</li>
+    <li><span class="hl">「ファイルを置換（ファイル名はそのまま）」</span> を選び、新しい画像をアップロードして保存</li>
+    <li>サイトを開いて、写真が変わっていることを確認</li>
+  </ol>
+
+  <div class="box warn"><span class="t">⚠ ここだけ注意</span>
+    必ず「<b>ファイル名はそのまま</b>」モードを選んでください。もう一方の「新しいファイル名にして更新」を選ぶと<b>URLが変わり、サイトに表示されなくなります</b>。拡張子も <b>.jpg のまま</b>にしてください。</div>
+  <div class="box ok"><span class="t">✓ きれいに見せるコツ</span>
+    横長（縦横比 4:3〜16:9 程度）／ サイズの目安は横1200px前後。大きすぎる画像は表示が重くなります。</div>
+  <p class="note">反映されないとき：ブラウザのスーパーリロード（Mac <b>Shift+⌘+R</b> ／ Windows <b>Ctrl+F5</b>）で再読み込み。WordPress側のキャッシュは最新版プラグインが自動クリアします。</p>
+
+  <h2><span class="num">2</span>お知らせ・説明会を更新する（スプレッドシート）</h2>
+  <p>「お知らせ」と「説明会」は <span class="hl">Googleスプレッドシート</span> で管理しています。シートを編集して保存すると、自動的にサイトへ反映されます（<span class="hl">サイト側の作業は不要</span>）。下の表のとおり各列に入力し、<span class="hl">公開列を TRUE</span> にすれば表示、<span class="hl">FALSE</span> なら下書き（非表示）です。</p>
+
+  <div class="cols">
+    <div>
+      <h3>「お知らせ」シート</h3>
+      <table>
+        <thead><tr><th>列</th><th>内容</th></tr></thead>
+        <tbody>
+          <tr><td class="rowh">A</td><td>日付（例 2026/06/16）</td></tr>
+          <tr><td class="rowh">B</td><td>タイトル</td></tr>
+          <tr><td class="rowh">C</td><td>概要（任意）</td></tr>
+          <tr><td class="rowh">D</td><td>リンクURL（任意・空欄可）</td></tr>
+          <tr><td class="rowh">E</td><td>公開 TRUE / FALSE</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <h3>「説明会」シート</h3>
+      <table>
+        <thead><tr><th>列</th><th>内容</th></tr></thead>
+        <tbody>
+          <tr><td class="rowh">A</td><td>日付（例 2026/06/16）</td></tr>
+          <tr><td class="rowh">B</td><td>時間（例 19:00〜20:30）</td></tr>
+          <tr><td class="rowh">C</td><td>形式（オンライン／現地）</td></tr>
+          <tr><td class="rowh">D</td><td>公開 TRUE / FALSE</td></tr>
+          <tr><td class="rowh">－</td><td>（お知らせより1列少ない）</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <ol class="steps">
+    <li>シートに行を追加、または既存の行を編集する</li>
+    <li>表示したい行は<span class="hl">公開列を TRUE</span> にする（下書きは FALSE）</li>
+    <li>保存すれば自動でサイトに反映されます</li>
+  </ol>
+  <div class="box info"><span class="t">ⓘ 覚えておくこと</span>
+    お知らせは<b>新しい日付が上</b>に表示されます。<b>データを更新するだけなら再デプロイは不要</b>です（プログラム <span style="font-family:monospace">news.gs</span> 自体を変えたときだけ再デプロイが必要）。</div>
+</div>
+
+<!-- ============ PAGE 2 ============ -->
+<div class="page">
+  <h1>第1章の写真更新に必要なプラグインについて（導入のお願い）</h1>
+  <div class="meta">WordPress管理者・決裁者の方へ ／ 「Enable Media Replace」導入の許可をお願いする資料です</div>
+
+  <h2><span class="num">3</span>なぜ「Enable Media Replace」が必要なのか</h2>
+  <p>第1章の写真差し替えは、<span class="hl">同じファイル名のまま中身だけを上書き</span>することで、サイトのHTMLを一切触らずに写真を更新できる仕組みです。ところが、<span class="hl">WordPressの標準機能には「ファイル名を変えずに上書きする」機能がありません</span>。標準のやり方で画像をアップロードすると毎回ファイル名（=URL）が変わってしまい、その都度サイトのHTMLを書き換える作業が発生します。</p>
+  <p>これを解決するのが、写真を安全に上書きするための定番プラグイン <span class="hl">「Enable Media Replace」</span> です。導入をご許可いただけますようお願いいたします。</p>
+
+  <h3>このプラグインで得られること</h3>
+  <div class="box ok"><span class="t">✓ 非エンジニアの職員だけで更新が完結する</span>
+    導入後は、職員が<b>管理画面のボタン操作だけ</b>で写真を差し替えられます。外注や開発者を待つ必要がなく、思い立ったその場で最新の写真に更新できます。HTMLの知識は一切不要です。</div>
+  <div class="box ok"><span class="t">✓ 安全・信頼できる（公式・無料・実績）</span>
+    <ul class="bul" style="margin-top:2px;">
+      <li><b>WordPress公式ディレクトリ</b>に掲載された<b>無料</b>プラグインで、有効インストール数が非常に多く、長期間メンテナンスされ続けている定番です。</li>
+      <li>役割は<b>「メディアの置換」だけ</b>に限定されており、サイトの他の部分には影響しません。</li>
+      <li><b>URLを変えずに安全に上書き</b>でき、最新版は主要なキャッシュも自動でクリアします。</li>
+    </ul></div>
+  <div class="box info"><span class="t">ⓘ 導入しない場合に起きること</span>
+    写真を更新するたびにURLが変わるため、<b>毎回エンジニアによるHTML編集</b>（サイト内4か所のURL書き換え）が必要になり、手間とコストがかかり続けます。</div>
+
+  <h3>導入手順（管理者の作業・数分で完了）</h3>
+  <ol class="steps">
+    <li>WordPress管理画面 → <span class="hl">プラグイン</span> → <span class="hl">新規追加</span> を開く</li>
+    <li>検索欄に <span class="hl">「Enable Media Replace」</span> と入力して検索</li>
+    <li><span class="hl">今すぐインストール</span> → <span class="hl">有効化</span> をクリック</li>
+  </ol>
+  <div class="box ok"><span class="t">✓ 導入のお願い（まとめ）</span>
+    公式・無料・実績豊富で、権限はメディア置換に限定。導入により<b>職員だけで写真更新が完結し、運用の手間とコストを継続的に削減</b>できます。上記3ステップでの有効化をご許可ください。</div>
+
+  <h3>困ったとき（トラブルシュート）</h3>
+  <ul class="bul">
+    <li><b>特長の写真が表示されない：</b>URLが <span style="font-family:monospace">https://</span> になっているか／ファイル名・拡張子（.jpg）・月フォルダ（2026/06）が一致しているか／その画像がメディアに存在するか。</li>
+    <li><b>お知らせ・説明会が表示されない：</b>公開列が TRUE になっているか／スプレッドシートを保存したか（反映に少し時間がかかる場合あり）。</li>
+  </ul>
+
+  <div class="src">
+    本資料の元情報：とらべLPリポジトリ内 <span style="font-family:monospace">README.md</span>（更新手順）／ <span style="font-family:monospace">news.gs</span>（スプレッドシート列構成・GAS仕様）／ <span style="font-family:monospace">index.html</span>（特長画像のURL）。プラグイン名・仕様は WordPress公式ディレクトリの「Enable Media Replace」に準拠。導入前に最新の公式情報をご確認ください。
+  </div>
+</div>
+
+</body>
+</html>
